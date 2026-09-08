@@ -1,0 +1,156 @@
+/* Stiluri comune pentru paginile de stare: 404 și eroare.
+   Folosesc aceleași variabile de temă ca restul site-ului. */
+
+.wrapper {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background-color: #fbfdfa;
+}
+
+.card {
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 48px 32px;
+  box-shadow: 0 4px 24px rgba(39, 79, 56, 0.06);
+}
+
+.iconCircle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px auto;
+  border-radius: 50%;
+  background-color: #f4f8f1;
+  border: 1px solid #d6e4d9;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.code {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+
+.description {
+  font-size: 1rem;
+  color: #5c6f61;
+  line-height: 1.65;
+  max-width: 420px;
+  margin: 0 auto 32px auto;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
+  padding: 14px 24px;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.secondaryLink {
+  display: inline-block;
+  padding: 10px 16px;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.secondaryLink:hover {
+  border-bottom-color: var(--color-primary);
+}
+
+.suggestions {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.suggestionsTitle {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a9a8f;
+  margin-bottom: 14px;
+}
+
+.suggestionsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.suggestionChip {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--color-text-main);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.suggestionChip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.errorDigest {
+  margin-top: 20px;
+  font-size: 0.72rem;
+  color: #a3b0a7;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 36px 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

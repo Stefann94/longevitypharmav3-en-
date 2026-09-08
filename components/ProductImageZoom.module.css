@@ -1,0 +1,127 @@
+.productImage {
+  object-fit: contain;
+  cursor: pointer; /* Modificat din zoom-in în pointer (deget) */
+  padding: 20px;
+  transition: transform 0.2s ease;
+}
+
+.productImage:hover {
+  transform: scale(1.03);
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundal întunecat pentru a evidenția fereastra */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out; /* Aici rămâne cursorul de ieșire (sau poți da click pe X) */
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: var(--color-primary); /* Culoare verde plin */
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ffffff; /* X-ul va fi alb pe fundal verde */
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* Buton rotund */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10000;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  line-height: 1;
+}
+
+.closeBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--color-primary-light);
+}
+
+.lightboxContent {
+  position: relative;
+  width: 850px; /* Fereastră mult mai generoasă */
+  height: 850px;
+  max-width: 95vw; /* Pentru ecrane mai mici */
+  max-height: 95vh;
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default; /* Interiorul ferestrei are cursor normal */
+  overflow: hidden;
+}
+
+.zoomContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Ascundem ce iese din poză când facem zoom */
+  cursor: zoom-in; /* Cursor de lupă pe fereastră */
+  border-radius: 12px;
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightboxImage {
+  object-fit: contain;
+  transition: transform 0.1s linear; /* Tranzitie lină dar rapidă pentru zoom continuu */
+}
+
+/* =========================================
+   MOBIL
+   ========================================= */
+@media (max-width: 768px) {
+  /* `dvh` ține cont de bara de adrese a browserului mobil, pe care `100vh`
+     o ignoră — fereastra ieșea parțial sub ea. */
+  .lightbox {
+    height: 100dvh;
+  }
+
+  .lightboxContent {
+    /* Pătrat, cât permite ecranul: la 850px fix, `max-width: 95vw` lăsa
+       fereastra înaltă și îngustă, cu poza pierdută la mijloc. */
+    width: min(95vw, 95dvh);
+    height: min(95vw, 95dvh);
+    max-height: 95dvh;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .closeBtn {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Fără mouse nu există zoom la deplasarea cursorului; lăsăm imaginea
+     întreagă și cursorul implicit. */
+  .zoomContainer {
+    cursor: default;
+  }
+}

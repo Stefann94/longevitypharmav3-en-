@@ -1,0 +1,177 @@
+:root {
+  /* Colors */
+  --color-primary: #274f38; /* Forest Green */
+  --color-primary-light: #2E523A;
+  --color-primary-dark: #1b3827;
+  
+  --color-accent: #d4af37; /* Vibrant Gold/Yellow */
+  --color-accent-hover: #e5c158;
+  --color-accent-dark: #b8962e; /* Darker Gold for Text/Contrast */
+  
+  --color-text-main: #1d3324;
+  --color-text-light: #ffffff;
+  
+  --color-bg-main: #ffffff; /* Off-white with a hint of green */
+  --color-bg-dark: #274f38;
+  
+  --color-border: #e0e6e2;
+  
+  /* Fonts will be imported in layout.tsx via Next.js Google Fonts */
+  --font-heading: var(--font-outfit), sans-serif;
+  --font-body: var(--font-outfit), sans-serif;
+  
+  /* Layout constraints */
+  --max-width: 1200px;
+  --header-height: 80px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f5e9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+html, body {
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+/* Derulare lină la salturile pe ancore din aceeași pagină.
+   Nu afectează apelurile care își declară explicit comportamentul
+   (ScrollToTop folosește 'auto', butonul "înapoi sus" folosește 'smooth'). */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Utilities */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-primary-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline {
+  border: 2px solid var(--color-accent);
+  color: var(--color-text-light);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Make favorite buttons permanently visible and colored if they are active */
+.is-favorite-active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  color: var(--color-primary) !important;
+}
+
+/* =========================================
+   MOBIL — reguli de bază
+   Totul stă în @media (max-width: 768px), deci desktopul nu vede nimic
+   de aici.
+   ========================================= */
+@media (max-width: 768px) {
+  /* Plasă de siguranță împotriva derulării laterale. Folosim `clip`, nu
+     `hidden`: `hidden` ar transforma pagina în container de derulare și ar
+     strica antetul `position: sticky`. */
+  body {
+    overflow-x: clip;
+  }
+
+  /* iOS mărește singur textul unor blocuri la rotirea telefonului. */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Mai multă lățime utilă pe ecrane înguste. */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Numele lungi de produse sau adresele nu mai împing layoutul în lateral. */
+  h1, h2, h3, h4, h5, h6, p, li, a {
+    overflow-wrap: break-word;
+  }
+
+  /* Zone de apăsare mai apropiate de minimul recomandat de 44px. */
+  .btn {
+    padding: 14px 24px;
+  }
+}

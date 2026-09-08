@@ -1,0 +1,383 @@
+.footer {
+  background-color: #f4f8f1; /* Verde deschis pal, premium */
+  color: var(--color-text-main);
+  padding-top: 80px;
+  border-top: 1px solid rgba(39, 79, 56, 0.08);
+  font-family: var(--font-body);
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  padding-bottom: 60px;
+}
+
+.footerCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.logoIcon {
+  color: var(--color-accent-dark);
+}
+
+.logoTextLight {
+  font-weight: 300;
+}
+
+.brandDesc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4a5c51;
+  margin-bottom: 25px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 15px;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(39, 79, 56, 0.05);
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.socialLinks a:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.colTitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.colTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linkList a {
+  color: #4a5c51;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.linkList a:hover {
+  color: var(--color-accent-dark);
+  transform: translateX(3px);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.contactInfo li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #4a5c51;
+  font-size: 0.95rem;
+}
+
+.contactInfo svg {
+  color: var(--color-accent-dark);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.newsletter h4 {
+  font-size: 1rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+}
+
+.newsInputForm {
+  display: flex;
+  background: white;
+  border-radius: 30px;
+  padding: 4px;
+  border: 1px solid rgba(39, 79, 56, 0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.newsInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 15px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  color: var(--color-text-main);
+}
+
+.newsBtn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsBtn:hover {
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+}
+
+.newsBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Mesajul de după abonare, sub câmpul de email */
+.newsMsgOk,
+.newsMsgErr {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.newsMsgOk {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.newsMsgErr {
+  color: #b3261e;
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(39, 79, 56, 0.1);
+  padding: 30px 0;
+}
+
+.romaniaCompliance {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.anpcBadge {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid rgba(39, 79, 56, 0.15);
+  border-radius: 8px;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--color-primary-dark);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.anpcBadge:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+}
+
+.anpcText {
+  display: flex;
+  flex-direction: column;
+}
+
+.anpcText strong {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin-bottom: 2px;
+}
+
+.anpcText span {
+  font-size: 0.75rem;
+  color: #6a7b70;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.copyright p {
+  color: #6a7b70;
+  font-size: 0.9rem;
+}
+
+.paymentMethods {
+  display: flex;
+  gap: 10px;
+}
+
+.payIcon {
+  background: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #888;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .footerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .copyright {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .romaniaCompliance {
+    flex-direction: column;
+  }
+  
+  .anpcBadge {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer {
+    padding-top: 48px;
+  }
+
+  .footerGrid {
+    padding-bottom: 40px;
+  }
+
+  .colTitle {
+    margin-bottom: 18px;
+  }
+
+  .footerBottom {
+    padding: 24px 0;
+  }
+
+  .paymentMethods {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Datele de contact conțin acum linkuri (telefon, email, site). Fără regula
+   asta ar moșteni albastrul implicit al browserului și ar ieși din paleta
+   footerului. */
+.contactInfo a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contactInfo a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+/* Datele de identificare ale firmei.
+   Stau în banda de jos, lângă mențiunile ANPC și copyright — locul obișnuit
+   pentru informațiile legale, unde sunt ușor de găsit fără să încarce coloana
+   de contact. Textul e mai mic și mai discret: se citește la nevoie, nu
+   concurează cu restul footerului. */
+.legalInfo {
+  border-top: 1px solid rgba(39, 79, 56, 0.1);
+  padding-top: 20px;
+  margin-bottom: 24px;
+  color: #6b7d72;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.legalInfo strong {
+  display: block;
+  color: var(--color-primary-dark);
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Pe telefon, datele despărțite prin bară verticală ar produce rânduri rupte
+   ciudat; separatorul dispare și fiecare informație stă pe rândul ei. */
+.legalSep {
+  margin: 0 8px;
+  opacity: 0.5;
+}
+
+@media (max-width: 640px) {
+  .legalInfo {
+    text-align: left;
+  }
+
+  .legalSep {
+    display: none;
+  }
+
+  .legalInfo span {
+    display: block;
+  }
+}

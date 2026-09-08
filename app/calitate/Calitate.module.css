@@ -1,0 +1,273 @@
+/* =========================================
+   CALITATE & INGREDIENTE - MINIMALIST DESIGN
+   ========================================= */
+
+/* ─── BREADCRUMBS ─── */
+.breadcrumbs {
+  padding: 24px 0 16px 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #8a9b8e;
+}
+
+.breadcrumbs a {
+  color: #8a9b8e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumbSep {
+  margin: 0 10px;
+  color: #c5d0c8;
+}
+
+.breadcrumbCurrent {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+/* ─── DESCRIERE SIMPLĂ (50/50 Layout) ─── */
+.simpleSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 40px 0 80px 0;
+  align-items: center;
+}
+
+.simpleText {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f8f1;
+  padding: 40px 50px;
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(39, 79, 56, 0.08);
+  border: 1px solid rgba(39, 79, 56, 0.1);
+}
+
+.simpleTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  color: var(--color-primary-dark);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.simpleDesc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.simpleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.simpleList li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #555555;
+  line-height: 1.5;
+}
+
+.simpleList li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.simpleImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.simpleImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── ZIGZAG LAYOUT ─── */
+.zigzagSection {
+  padding: 40px 0 80px 0;
+  background-color: transparent;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  color: var(--color-primary-dark);
+  margin: 0 auto;
+  line-height: 1.1;
+}
+
+.sectionTitle span {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent-dark);
+}
+
+.zigzagContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.zigzagItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.zigzagItem.reversed {
+  direction: rtl; /* Flip the grid */
+}
+
+.zigzagItem.reversed > * {
+  direction: ltr; /* Reset text direction */
+}
+
+.zigzagContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fdfcf0; /* Warm subtle color */
+  padding: 40px 50px;
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(39, 79, 56, 0.08);
+  border: 1px solid rgba(39, 79, 56, 0.1);
+}
+
+.zigzagLabel {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-accent-dark);
+  margin-bottom: 15px;
+}
+
+.zigzagTitle {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.zigzagDesc {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.zigzagImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.zigzagImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── BANDA DE CERTIFICĂRI ─── */
+.certBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  background-color: var(--color-primary-dark);
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 60px;
+}
+
+.certItem {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.certDivider {
+  color: var(--color-accent);
+  font-weight: 300;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .simpleSection,
+  .zigzagItem {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .zigzagItem.reversed {
+    direction: ltr;
+  }
+  
+  .zigzagContainer {
+    gap: 60px;
+  }
+  
+  .simpleText {
+    order: 2;
+  }
+  .simpleImageWrapper {
+    order: 1;
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (max-width: 600px) {
+  .zigzagTitle, .simpleTitle {
+    font-size: 1.8rem;
+  }
+  
+  .certBar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+  .certDivider {
+    display: none;
+  }
+}

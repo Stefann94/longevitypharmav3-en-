@@ -1,0 +1,941 @@
+.productPage {
+  padding: 40px 0 80px 0;
+  background-color: #ffffff;
+}
+
+.breadcrumb {
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.breadcrumb a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.mainSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+/* LEFT COLUMN - IMAGE */
+.imageColumn {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid rgba(39, 79, 56, 0.2);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  aspect-ratio: 1/1;
+}
+
+.productImage {
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.imageColumn:hover .productImage {
+  transform: scale(1.02);
+}
+
+.tagsContainer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: 2;
+}
+
+.tag {
+  background-color: var(--color-accent);
+  color: var(--color-primary-dark);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 14px;
+  border-radius: 30px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.tagDiscount {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* RIGHT COLUMN - DETAILS */
+.detailsColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.productTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+  margin: 0 0 15px 0;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  color: #f1c40f; /* Auriu */
+}
+
+.reviewsCount {
+  font-size: 0.95rem;
+  color: #666;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.priceBlock {
+  margin-bottom: 30px;
+}
+
+.price {
+  font-family: var(--font-body);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1;
+}
+
+.currency {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #6a7b70;
+}
+
+/* INSTALLMENTS BOX */
+.installmentBox {
+  background-color: #f4f8f1;
+  border: 1px solid rgba(39, 79, 56, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.installmentText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.installmentTitle {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  font-size: 1.05rem;
+}
+
+.installmentSub {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.installmentBadge {
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ACTIONS */
+.actionsBlock {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.actionsBlock > :first-child {
+  flex-grow: 1;
+}
+
+.btnAddToCart {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 18px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(39, 79, 56, 0.15);
+  width: 100%;
+}
+
+.btnAddToCart:hover {
+  background-color: var(--color-accent);
+  box-shadow: 0 15px 25px rgba(39, 79, 56, 0.25);
+}
+
+.btnFav {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btnFav:hover {
+  background-color: #f4f8f1;
+}
+
+/* === NEW INFO & LOGISTICS BLOCKS === */
+.infoNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.infoIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #888;
+}
+
+.logisticsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.logisticRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  font-weight: 500;
+}
+
+.logisticIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.fullDescriptionSection {
+  margin-bottom: 80px;
+}
+
+/* === RICH CONTENT === */
+.richContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%; /* Să ocupe tot spațiul, începând din stânga */
+}
+
+.richBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Modificăm blocul "De ce recomandăm" să fie centrat */
+.richBlockCentered {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; /* Centrează conținutul */
+  text-align: center;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalContent {
+  background: white;
+  padding: 35px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  transform: scale(0.95);
+  animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+/* Numărul de recenzii, când duce la secțiunea de recenzii */
+.reviewsLink {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(39, 79, 56, 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.reviewsLink:hover {
+  color: var(--color-primary);
+  text-decoration-color: var(--color-primary);
+}
+
+.reviewsLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Antetul este sticky, deci saltul pe ancoră trebuie oprit sub el.
+   Înălțimi măsurate în browser: 185px la 1280px lățime, 205px în jur de
+   900px (bannerul se desface pe două rânduri), 121px sub 768px, unde
+   meniul de jos este ascuns. Valorile de mai jos includ o marjă de aer. */
+.reviewsAnchor {
+  scroll-margin-top: 225px;
+}
+
+@media (max-width: 768px) {
+  .reviewsAnchor {
+    scroll-margin-top: 145px;
+  }
+}
+
+/* Text explicativ sub titlul modalului (folosit de modalul de favorite) */
+.modalText {
+  margin: -14px 0 0 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #5c6f61;
+}
+
+/* .btnContinue a fost scris pentru <button>, care primește de la browser
+   centrarea textului și comportamentul de bloc. Când aceleași stiluri sunt
+   folosite pe un <a>, trebuie date explicit. */
+.btnAsLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* Buton discret de închidere, sub acțiunile principale */
+.modalDismiss {
+  margin-top: 4px;
+  background: none;
+  border: none;
+  padding: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #8a9a8f;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modalDismiss:hover {
+  color: var(--color-primary);
+}
+
+.modalIcon {
+  width: 50px;
+  height: 50px;
+  background-color: #eaf3ed;
+  color: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalIcon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-text-main);
+  font-weight: 700;
+}
+
+.modalButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btnCart {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 14px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnCart:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 4px 15px rgba(39, 79, 56, 0.2);
+}
+
+.btnContinue {
+  background-color: #fff;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnContinue:hover {
+  background-color: #f4f8f1;
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.richTitle {
+  font-size: 1.8rem;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 10px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.richBlockCentered .richTitle {
+  align-self: center; /* Centrează doar acest titlu */
+}
+
+.richText {
+  color: #444;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.richText p {
+  margin-bottom: 15px;
+}
+
+/* TABLE */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 2px solid #d4ddd7; /* Margini mai pronunțate */
+  border-radius: 0; /* Pătrățos */
+}
+
+.ingredientsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 1.05rem;
+}
+
+.ingredientsTable th,
+.ingredientsTable td {
+  padding: 15px 20px;
+  border: 1px solid #d4ddd7; /* Linii mai pronunțate între celule */
+}
+
+.ingredientsTable th {
+  background-color: #6a9c78; /* Verde mai deschis */
+  color: white;
+  font-weight: 600;
+}
+
+.ingredientsTable td {
+  background-color: #ffffff; /* Toate rândurile albe */
+}
+
+/* IMAGE */
+.richImageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px; /* Păstrăm pe mijloc, limitând lățimea */
+  margin: 0 auto; /* Centrare */
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.richImage {
+  object-fit: contain;
+}
+
+/* BANNER */
+.richBanner {
+  background-color: #f0f7f2; /* Verde pal deschis */
+  border: 1px solid #dcebdf; /* Chenar fin ton în ton */
+  border-radius: 8px; /* Mai puțin rotunjit */
+  padding: 20px 30px; /* Mult mai subțire */
+  text-align: center;
+  max-width: 800px; /* Mai mic */
+  margin: 0 auto; /* Centrat */
+}
+
+.bannerText {
+  font-size: 1.15rem; /* Text mai mic, nu țipător */
+  color: var(--color-text-main); /* Text normal, nu alb */
+  font-weight: 600;
+}
+
+/* RECOMMENDATIONS */
+.recommendList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left; /* Textul recomandărilor în sine rămâne aliniat la stânga pentru citire, dar blocul e centrat */
+}
+
+.recommendItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.checkIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* FAQ (Accordion) */
+.faqContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faqItem {
+  background-color: #fff;
+  border: 2px solid #dcebdf; /* Verde deschis, mai groase conform cerințelor anterioare */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.faqItemOpen {
+  border-color: var(--color-primary-dark); /* Verde închis la deschidere */
+}
+
+.faqSummaryBtn {
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.faqSummaryBtn:hover {
+  background-color: #fcfdfc;
+}
+
+.faqIcon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+}
+
+.faqIcon::before, .faqIcon::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color-primary);
+  transition: transform 0.3s ease;
+}
+
+.faqIcon::before {
+  width: 14px;
+  height: 2px;
+  top: 6px;
+  left: 0;
+}
+
+.faqIcon::after {
+  width: 2px;
+  height: 14px;
+  top: 0;
+  left: 6px;
+}
+
+.faqItemOpen .faqIcon::after {
+  transform: scaleY(0); /* Turn + into - */
+}
+
+.faqAnswerWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faqItemOpen .faqAnswerWrapper {
+  grid-template-rows: 1fr;
+}
+
+.faqAnswerInner {
+  overflow: hidden;
+}
+
+.faqAnswerInner p {
+  padding: 0 20px 20px 20px;
+  color: #555;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* REVIEWS MARQUEE */
+.marqueeContainer {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  padding: 10px 0; /* Spațiu pentru shadow */
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+}
+
+.marqueeGroup {
+  display: flex;
+  gap: 20px;
+  animation: scrollMarquee 30s linear infinite;
+  width: max-content;
+  flex-shrink: 0;
+  padding-right: 20px; /* Acesta este spațiul dintre grupuri (egal cu gap) */
+}
+
+.marqueeTrack:hover .marqueeGroup {
+  animation-play-state: paused; /* Pauză la hover */
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } /* Se mută exact cu lățimea unui grup */
+}
+
+.reviewCard {
+  width: 350px;
+  flex-shrink: 0;
+  background-color: #fff;
+  border: 2px solid #dcebdf; /* Verde deschis, mai groase */
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reviewCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reviewStars {
+  display: flex;
+  gap: 2px;
+}
+
+.reviewDate {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.reviewAuthorBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reviewAuthor {
+  font-weight: 700;
+  color: var(--color-text-main);
+  font-size: 1.1rem;
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: #eaf3ed;
+  padding: 4px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.reviewText {
+  color: #444;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* === DESCRIPTION === */
+.descriptionBlock {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.descriptionTitle {
+  font-size: 1.5rem;
+  color: var(--color-text-main);
+  margin-bottom: 15px;
+}
+
+.descriptionText {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .mainSection {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .imageColumn {
+    aspect-ratio: 4/3;
+  }
+}
+
+@media (max-width: 768px) {
+  .productPage {
+    padding: 24px 0 48px 0;
+  }
+
+  .breadcrumb {
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+  }
+
+  .mainSection {
+    margin-bottom: 48px;
+  }
+
+  .imageColumn {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .price {
+    font-size: 2.2rem;
+  }
+
+  .currency {
+    font-size: 1.1rem;
+  }
+
+  .priceBlock {
+    margin-bottom: 24px;
+  }
+
+  .installmentBox {
+    padding: 16px;
+    margin-bottom: 24px;
+    gap: 12px;
+  }
+
+  .actionsBlock {
+    margin-bottom: 28px;
+  }
+
+  .btnAddToCart {
+    padding: 16px;
+    font-size: 1rem;
+  }
+
+  .btnFav {
+    width: 52px;
+    height: 52px;
+  }
+
+  .fullDescriptionSection {
+    margin-bottom: 48px;
+  }
+
+  .richContentWrapper {
+    gap: 36px;
+  }
+
+  .richTitle {
+    font-size: 1.35rem;
+  }
+
+  .richText,
+  .recommendItem {
+    font-size: 1rem;
+  }
+
+  .richBanner {
+    padding: 16px 20px;
+  }
+
+  .bannerText {
+    font-size: 1rem;
+  }
+
+  .descriptionBlock {
+    padding: 24px 0;
+  }
+
+  .descriptionText {
+    font-size: 1rem;
+  }
+
+  /* Iconița +/- este poziționată absolut la dreapta; fără spațiu rezervat,
+     întrebările lungi treceau pe sub ea pe ecran îngust. */
+  .faqSummaryBtn {
+    padding: 16px 46px 16px 16px;
+    font-size: 1rem;
+  }
+
+  .faqIcon {
+    right: 16px;
+  }
+
+  .faqAnswerInner p {
+    padding: 0 16px 16px 16px;
+    font-size: 0.95rem;
+  }
+
+  .ingredientsTable {
+    font-size: 0.95rem;
+  }
+
+  .ingredientsTable th,
+  .ingredientsTable td {
+    padding: 10px 12px;
+  }
+
+  /* Cardul de 350px era mai lat decât zona utilă a unui telefon. */
+  .reviewCard {
+    width: min(300px, 78vw);
+    padding: 20px;
+  }
+
+  .modalContent {
+    padding: 28px 20px;
+  }
+
+  .modalTitle {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,291 @@
+.carouselSection {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--color-primary-dark);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.title span {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent-dark);
+}
+
+.navArrows {
+  display: flex;
+  gap: 10px;
+}
+
+.arrowBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(39, 79, 56, 0.2);
+  background: white;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.arrowBtn:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.carouselContainer {
+  overflow: hidden;
+  margin: 0 -15px; /* Compensate for slide padding */
+  padding: 0 15px;
+}
+
+.carouselTrack {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carouselSlide {
+  padding: 0 15px; /* Gap between cards */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CARDS STYLES (Copied from page.module.css to ensure independence) */
+.productCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(39, 79, 56, 0.35);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Forțează cardul să ocupe tot spațiul slide-ului (înălțime uniformă) */
+}
+
+.productCard:hover {
+  border-color: rgba(39, 79, 56, 0.9);
+  box-shadow: 0 0 0 1px rgba(39, 79, 56, 0.9);
+}
+
+.productImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: #f8f9f6;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.productImage {
+  object-fit: contain;
+  padding: 8%;
+}
+
+.favoriteBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  z-index: 2;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(-5px);
+}
+
+.productCard:hover .favoriteBtn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.productInfo {
+  padding: 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.productName {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.productName a {
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.productName a:hover {
+  color: var(--color-accent-dark);
+}
+
+.productFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.productPrice {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+}
+
+.currency {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6a7b70;
+}
+
+.addToCartBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.addToCartBtn:hover {
+  background-color: var(--color-accent-dark);
+  transform: scale(1.05);
+}
+
+/* DOTS */
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(39, 79, 56, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.activeDot {
+  background-color: var(--color-accent);
+  width: 24px;
+  border-radius: 10px;
+}
+
+/* =========================================
+   MOBIL
+   ========================================= */
+
+/* Pe touch nu există hover, deci butonul de favorite rămânea invizibil. */
+@media (hover: none) {
+  .favoriteBtn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselSection {
+    padding: 40px 0;
+  }
+
+  .header {
+    margin-bottom: 24px;
+    gap: 12px;
+  }
+
+  .arrowBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Puncte mai mari și mai rare: la 10px și gap 8px erau greu de nimerit
+     cu degetul. Nu le distanțăm mai mult, ca zonele de apăsare să nu ajungă
+     să se suprapună și să provoace apăsări greșite. */
+  .dotsContainer {
+    margin-top: 24px;
+    gap: 14px;
+    padding: 6px 0;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .activeDot {
+    width: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carouselContainer {
+    margin: 0 -7px;
+    padding: 0 7px;
+  }
+
+  .carouselSlide {
+    padding: 0 7px;
+  }
+
+  .productName {
+    font-size: 0.9rem;
+  }
+
+  .productPrice {
+    font-size: 1rem;
+  }
+
+  .productInfo {
+    padding: 0 8px 10px;
+  }
+
+  .addToCartBtn {
+    width: 34px;
+    height: 34px;
+  }
+}

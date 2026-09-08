@@ -1,0 +1,320 @@
+.pageBackground {
+  background-color: #ffffff;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.accountWrapper {
+  max-width: 1300px;
+  width: 100%;
+  margin: 60px auto 100px auto;
+  padding: 0 20px;
+  flex: 1;
+}
+
+.accountGrid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: start; /* Necesar pentru ca sticky să funcționeze corect */
+}
+
+@media (max-width: 992px) {
+  .accountGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Premium Sidebar */
+.sidebar {
+  background: #ffffff;
+  padding: 20px 16px;
+  border: 1.5px solid #c8d6cb;
+  border-radius: 16px;
+  align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.sidebarTitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  padding: 0 20px 20px 20px;
+  margin-bottom: 10px;
+}
+
+.sidebarMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menuLink {
+  padding: 14px 20px;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuLink:hover {
+  background-color: #e8f0e5;
+  color: var(--color-primary);
+  box-shadow: none;
+  transform: translateX(4px);
+}
+
+.menuLinkActive {
+  padding: 14px 20px;
+  background-color: #3a7d56;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(58, 125, 86, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoutLink {
+  padding: 14px 20px;
+  color: #e53935;
+  background-color: rgba(229, 57, 53, 0.05);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoutLink:hover {
+  background-color: #e53935;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.2);
+  transform: translateX(4px);
+}
+
+.sidebarDivider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.05), transparent);
+  margin: 15px 20px;
+}
+
+/* Content Area */
+.contentArea {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Banner */
+.heroBanner {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  border-radius: 24px;
+  padding: 50px 40px;
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(39, 79, 56, 0.15);
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background circle inside hero */
+.heroBanner::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.heroTitle {
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.heroTitle strong {
+  font-weight: 500;
+}
+
+.heroSubtitle {
+  font-size: 1.05rem;
+  opacity: 0.8;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 60%;
+}
+
+.heroImage {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  height: 90%;
+  width: auto;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dashboard Grid */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+  .heroBanner {
+    padding: 30px 20px;
+  }
+  .heroTitle {
+    font-size: 1.6rem;
+  }
+}
+
+.premiumCard {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+  border: 1.5px solid #c8d6cb;
+  display: flex;
+  flex-direction: column;
+}
+
+.iconWrapper {
+  width: 54px;
+  height: 54px;
+  background-color: #f4f8f1;
+  border: 1px solid #d6e4d9;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  margin-bottom: 25px;
+}
+
+.cardHeader {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.cardContent {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+.actionLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  border: 1px solid var(--color-primary);
+  padding: 10px 20px;
+  border-radius: 8px; /* Rama de buton */
+  width: fit-content;
+}
+
+.actionLink:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* =========================================
+   MOBIL
+   ========================================= */
+@media (max-width: 768px) {
+  .accountWrapper {
+    margin: 28px auto 56px auto;
+    padding: 0 16px;
+  }
+
+  .accountGrid {
+    gap: 24px;
+  }
+
+  .sidebar {
+    padding: 12px 8px;
+  }
+
+  .sidebarTitle {
+    font-size: 1.1rem;
+    padding: 8px 16px 14px 16px;
+    margin-bottom: 4px;
+  }
+
+  .menuLink,
+  .menuLinkActive,
+  .logoutLink {
+    padding: 13px 16px;
+  }
+
+  /* Ilustrația ocupa jumătate din banner și strivea salutul pe un ecran
+     îngust; textul primește toată lățimea. */
+  .heroImage {
+    display: none;
+  }
+
+  .heroContent {
+    max-width: 100%;
+  }
+
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+
+  .dashboardGrid {
+    gap: 20px;
+  }
+
+  .premiumCard {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .iconWrapper {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 18px;
+  }
+
+  .cardHeader {
+    font-size: 1.15rem;
+  }
+
+  .cardContent {
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,131 @@
+# Configurația Apache pentru găzduirea pe Hostico
+#
+# Fișierul stă în `public/`, deci Next.js îl copiază automat în rădăcina
+# exportului (`out/`), de unde ajunge în `public_html` pe server.
+#
+# Preia rolul funcției `headers()` din next.config.ts, care nu mai poate fi
+# folosită: la export static nu există niciun server Node care să adauge
+# anteturi la răspuns. Le adaugă Apache în locul lui, cu exact aceleași valori.
+
+# ---------------------------------------------------------------------------
+# Adrese fără .html
+# ---------------------------------------------------------------------------
+# Exportul produce, pentru fiecare pagină, DOUĂ lucruri cu același nume:
+#
+#   contact.html   pagina propriu-zisă
+#   contact/       un folder cu date interne, folosite la navigarea prin site
+#
+# Ordinea regulilor de mai jos este esențială, iar prima variantă a acestui
+# fișier o avea greșită. Dacă folderul e lăsat să treacă primul, Apache
+# redirecționează /contact către /contact/ și afișează lista fișierelor din
+# folder în locul paginii. Pagina trebuie deci verificată ÎNAINTEA folderului
+# cu același nume.
+
+# Nicio listare de fișiere, în niciun folder.
+# Dacă serverul răspunde cu eroare 500 după salvare, șterge linia asta: unele
+# configurații Apache nu permit directiva `Options` dintr-un fișier .htaccess.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Fișierele care există exact așa se servesc direct: CSS, JavaScript,
+  #    imagini, fonturi. Nu li se aplică nicio rescriere.
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # 2. /contact -> contact.html
+  #    Are prioritate față de folderul cu același nume. Fiindcă rescrierea se
+  #    face aici, Apache nu mai ajunge să vadă un folder și nu mai adaugă bara
+  #    finală la adresă.
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # 3. /contact/ -> contact.html
+  #    Pentru cine ajunge cu bară finală dintr-un link vechi sau din istoricul
+  #    browserului. Redirecționare permanentă, ca adresa să rămână una singură.
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+)/$ /$1.html [L,R=301]
+</IfModule>
+
+# Pagina de eroare generată de Next.js
+ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------------------
+# Anteturi de securitate
+# ---------------------------------------------------------------------------
+# Copiate identic din next.config.ts. Singura diferență: `unsafe-eval` lipsește
+# din script-src, pentru că era necesar doar pentru reîncărcarea la cald în
+# timpul dezvoltării, nu în producție.
+<IfModule mod_headers.c>
+  # Forțează HTTPS timp de 2 ani, inclusiv pe subdomenii
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+  # Împiedică încărcarea site-ului într-un iframe pe alt domeniu (clickjacking)
+  Header always set X-Frame-Options "DENY"
+
+  # Interzice browserului să „ghicească" tipul unui fișier (MIME sniffing)
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Nu trimite calea completă a paginii către site-uri externe
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Dezactivează API-uri de browser pe care site-ul nu le folosește
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  Header always set X-DNS-Prefetch-Control "on"
+
+  # Politica de conținut. Sursele sunt aceleași ca înainte:
+  #   googletagmanager.com   scriptul Google Analytics 4
+  #   *.supabase.co          imaginile din storage, apelurile REST și realtime
+  #   *.google-analytics.com colectarea datelor GA4
+  #   images.unsplash.com    imaginile decorative din jurnal
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://images.unsplash.com https://*.supabase.co https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.g.doubleclick.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+
+  # Ascunde tehnologia serverului, ca `poweredByHeader: false` din Next.js
+  Header always unset X-Powered-By
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Comprimare
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Cache
+# ---------------------------------------------------------------------------
+# Fișierele din `_next/static` au un hash în nume: la orice modificare se
+# schimbă numele, deci pot fi păstrate în cache la nesfârșit fără riscul de a
+# servi o versiune veche.
+#
+# Paginile HTML NU se pun în cache pe termen lung: altfel, după o reîncărcare a
+# site-ului, vizitatorii ar continua să vadă varianta veche.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Fișiere ascunse
+# ---------------------------------------------------------------------------
+# Nimeni nu are ce căuta în .env, .git sau în acest fișier.
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>

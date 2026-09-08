@@ -1,0 +1,361 @@
+/* ========== HERO ========== */
+
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: radial-gradient(circle at 70% 30%, rgba(39, 79, 56, 0.08) 0%, transparent 60%), linear-gradient(180deg, #f0f5e9 0%, #f8f9f6 100%);
+}
+
+.hero {
+  width: 100%;
+  max-width: 1080px; /* Reduced from var(--max-width) to bring content closer together */
+  margin: 0 auto;
+  /* Increased side padding to indent content and perfectly match the navbar alignment */
+  padding: clamp(30px, 4vh, 60px) clamp(20px, 4vw, 50px);
+}
+
+.heroContainer {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(30px, 4vw, 50px); /* Reduced gap to bring text and image closer */
+}
+
+/* ---- TEXT ---- */
+.textBlock {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.textBlockInner {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  padding: 5px 12px;
+  background: rgba(39, 79, 56, 0.08);
+  border-radius: 4px;
+  animation: fadeIn 0.4s ease-out both;
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-primary-dark);
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: clamp(0.92rem, 1.2vw, 1rem);
+  line-height: 1.75;
+  color: #5a6b5e;
+  margin-bottom: 30px;
+  max-width: 440px;
+  animation: fadeInUp 0.5s 0.08s ease-out both;
+}
+
+/* ---- ACTIONS ---- */
+.actions {
+  display: inline-flex; /* Important: inline-flex ensures the width perfectly matches the buttons, fixing the React measurement bug */
+  align-items: center;
+  gap: 20px;
+  animation: fadeInUp 0.5s 0.14s ease-out both;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(39, 79, 56, 0.15);
+}
+
+.ctaPrimary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(39, 79, 56, 0.25);
+}
+
+.ctaPrimary svg {
+  transition: transform 0.25s ease;
+}
+
+.ctaPrimary:hover svg {
+  transform: translateX(3px);
+}
+
+.ctaOutline {
+  padding: 13px 22px;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid rgba(39, 79, 56, 0.2);
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.ctaOutline:hover {
+  border-color: var(--color-primary);
+  background: rgba(39, 79, 56, 0.04);
+}
+
+/* ---- INDICATORS ---- */
+.indicatorsWrapper {
+  margin-top: auto;
+  padding-top: 35px; /* Ensures a minimum gap so dots are NEVER too close to the buttons */
+  display: flex;
+  justify-content: center;
+  margin-bottom: -6px;
+  animation: fadeInUp 0.5s 0.2s ease-out both;
+}
+
+.indicators {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(39, 79, 56, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dot:hover {
+  background: rgba(39, 79, 56, 0.4);
+}
+
+.dotActive {
+  background: var(--color-primary);
+  width: 22px;
+  border-radius: 4px;
+}
+
+/* ---- ARROWS ---- */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid rgba(39, 79, 56, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(39, 79, 56, 0.1);
+}
+
+.arrow:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 8px 16px rgba(44, 95, 68, 0.25);
+}
+
+.arrowLeft {
+  /* Half of 1080px is 540px. Arrow width is 50px. Add a 10px gap to the container edge = 600px */
+  left: max(16px, calc(50vw - 600px));
+}
+
+.arrowRight {
+  right: max(16px, calc(50vw - 600px));
+}
+
+/* ---- IMAGE ---- */
+.imageBlock {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end; /* This forces the image to stick to the right edge! */
+  align-items: center;
+}
+
+.imageContainer {
+  position: relative;
+  height: clamp(280px, 40vh, 380px);
+  aspect-ratio: 1 / 1;
+}
+
+.imageContainer::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(20px);
+  animation: pulseGlow 4s infinite alternate;
+}
+
+.imageInner {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.imageActive {
+  opacity: 1;
+}
+
+.image {
+  object-fit: contain;
+}
+
+/* ---- FLOATING BADGES ---- */
+.floatingBadges {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  background: #ffffff;
+  border: 1px solid rgba(39, 79, 56, 0.2); /* Subtila tenta de verde pe margini */
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary); /* Text verde asortat cu iconita */
+  box-shadow: 0 4px 12px rgba(39, 79, 56, 0.08); /* Umbra cu tenta verzuie */
+  white-space: nowrap;
+}
+
+.badge svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1400px) {
+  .arrow {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column;
+  }
+
+  .imageBlock {
+    width: 100%;
+    order: -1;
+    justify-content: center; /* Center image on mobile */
+  }
+
+  .imageInner {
+    aspect-ratio: 16 / 10;
+  }
+
+  .textBlockInner {
+    align-items: center;
+    margin: 0; /* Remove vertical centering on mobile */
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .indicatorsWrapper {
+    width: 100% !important; /* Full width on mobile */
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+
+  .floatingBadges {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .arrow {
+    display: none; /* Hide arrows on mobile to save space */
+  }
+}

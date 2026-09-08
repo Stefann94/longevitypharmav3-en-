@@ -1,0 +1,1187 @@
+.topBar {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-light);
+  padding: 8px 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.tickerContent {
+  display: flex;
+  width: max-content;
+  animation: scrollTicker 90s linear infinite;
+}
+
+.tickerContent:hover {
+  animation-play-state: paused;
+}
+
+.tickerGroup {
+  display: flex;
+  gap: 60px;
+  padding-right: 60px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.tickerItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.tickerItem strong {
+  color: var(--color-accent);
+}
+
+@keyframes scrollTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.headerWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.header {
+  background-color: var(--color-bg-main);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.leftActions, .rightActions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.rightActions {
+  justify-content: flex-end;
+}
+
+.logoCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.logoIcon {
+  color: var(--color-accent-dark);
+  flex-shrink: 0;
+}
+
+.logoTextWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoText {
+  display: flex;
+  align-items: center;
+}
+
+.logoTextLight {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+.logo span.premiumText {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #6a7b70;
+  margin-top: 4px;
+}
+
+.bottomMenu {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 15px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.menuLink {
+  color: #2a7245;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.menuLink::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-accent-dark);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.menuLink:hover {
+  color: var(--color-primary-dark);
+}
+
+.menuLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  transition: all 0.2s ease;
+  background: #f0f3f1;
+  border: none;
+  cursor: pointer;
+}
+
+.iconBtn:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.iconBtnActive {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.cartBtn {
+  display: flex;
+  align-items: center;
+  /* Spațiul dintre iconiță și sumă e mai mic decât înainte: rezerva de lățime
+     de pe `.cartTotal` adaugă oricum aer, iar cele două cumulate lăsau butonul
+     să pară gol la sume scurte. */
+  gap: 8px;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px 14px 8px 8px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.cartBtn:hover {
+  background: var(--color-primary-light);
+  box-shadow: 0 4px 12px rgba(39, 79, 56, 0.2);
+}
+
+.cartIconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+/* Suma se schimbă la fiecare adăugare, iar `.rightActions` este aliniat la
+   dreapta: dacă textul își schimbă lățimea, butonul crește spre stânga și
+   împinge toate celelalte iconițe.
+
+   `tabular-nums` face ca toate cifrele să aibă aceeași lățime, deci un total
+   nu mai tremură când trece de la 111 la 999. Face treaba grea, gratis.
+
+   Lățimea este fixă, nu minimă: la totaluri mari se micșorează scrisul, nu
+   crește butonul. Astfel bara din dreapta rămâne nemișcată la orice sumă, fără
+   să fie nevoie de o rezervă generoasă care ar lăsa un gol la coșul gol.
+   Treapta de mărime o alege componenta, după lungimea textului. */
+.cartTotal {
+  font-weight: 600;
+  font-size: 0.95rem;
+  width: 74px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* PROFILE DROPDOWN */
+.profileWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.profileDropdown {
+  position: absolute;
+  top: 100%;
+  right: -10px;
+  margin-top: 12px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Umbră mai pronunțată */
+  width: 290px;
+  /* Spațierea a fost mutată în blocurile interioare, ca antetul să poată fi
+     o bandă pe toată lățimea, la fel ca în panoul de favorite. */
+  padding: 0;
+  z-index: 101; /* Peste backdrop */
+  border: 2px solid #2E7D32; /* Ramă verde smarald */
+  
+  /* Starea închisă */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 0.25s;
+}
+
+.profileDropdownOpen {
+  /* Starea deschisă */
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FAVORITES DROPDOWN */
+.favWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.favBadge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #e53935;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.favDropdown {
+  position: absolute;
+  top: 100%;
+  right: -10px;
+  margin-top: 12px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  width: 320px;
+  padding: 0;
+  z-index: 101;
+  border: 2px solid #2E7D32;
+  
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 0.25s;
+}
+
+.favDropdownOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.favDropdown::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 18px;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-left: 2px solid #2E7D32;
+  border-top: 2px solid #2E7D32;
+  transform: rotate(45deg);
+}
+
+.favHeader {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #f0f5f1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.favList {
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.favList::-webkit-scrollbar {
+  width: 4px;
+}
+.favList::-webkit-scrollbar-track {
+  background: #f0f5f1;
+}
+.favList::-webkit-scrollbar-thumb {
+  background: var(--color-primary-dark);
+  border-radius: 4px;
+}
+.favList::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.favItem {
+  display: flex;
+  gap: 12px;
+  padding: 15px;
+  border-bottom: 1px solid #f0f5f1;
+  transition: background-color 0.2s;
+}
+
+.favItem:hover {
+  background-color: #fafafa;
+}
+
+.favItemImage {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.favItemInfo {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.favItemName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.favItemPrice {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: auto;
+}
+
+/* Rândul de jos al unui produs din coș: prețul unitar la stânga, butoanele de
+   cantitate la dreapta. Folosit doar în panoul coșului; panoul de favorite
+   păstrează prețul singur, cu `margin-top: auto`. */
+.favItemRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.favItemRow .favItemPrice {
+  margin-top: 0;
+}
+
+.favItemQty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.favQtyBtn {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: none;
+  color: var(--color-primary-dark);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.favQtyBtn:hover:not(:disabled) {
+  background: #f0f5f1;
+}
+
+.favQtyBtn:disabled {
+  color: #c5d0c8;
+  cursor: not-allowed;
+}
+
+.favQtyValue {
+  min-width: 28px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  line-height: 26px;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+.favFooter {
+  padding: 15px;
+}
+
+/* Starea pentru vizitatorii neautentificați, în locul listei de favorite */
+.favAuthPrompt {
+  padding: 26px 22px 6px 22px;
+  text-align: center;
+}
+
+.favAuthIcon {
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 14px auto;
+  border-radius: 50%;
+  background-color: #eaf3ed;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favAuthText {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #5c6f61;
+}
+
+/* Salutul din panoul de cont, pentru utilizatorii autentificați */
+.profileGreeting {
+  margin: 0 0 6px 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+/* Deconectarea este o acțiune secundară: același rol vizual ca linkul
+   discret din starea de vizitator, dar pe un element <button>. */
+.profileLogout {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 6px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #8a9a8f;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.profileLogout:hover {
+  color: #b3261e;
+}
+
+.favSignupLink {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: #8a9a8f;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.favSignupLink:hover {
+  color: var(--color-primary);
+}
+
+.btnViewAllFavs {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  color: #2E7D32;
+  border: 2px solid #2E7D32;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btnViewAllFavs:hover {
+  background-color: #f4f8f1;
+}
+
+.profileBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  cursor: default;
+}
+
+/* Mica săgeată orientată în sus pentru dropdown */
+.profileDropdown::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 18px;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-left: 2px solid #2E7D32; /* Sincronizat cu rama verde */
+  border-top: 2px solid #2E7D32;
+  transform: rotate(45deg);
+}
+
+.profileDropdownHeader {
+  margin-bottom: 0;
+  text-align: center;
+  border-bottom: 1px solid #f0f5f1;
+  padding: 15px;
+}
+
+.profileDropdownHeader p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #222;
+  font-weight: 700; /* Titlu mai îngroșat */
+}
+
+.profileDropdownActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+
+.btnLogin, .btnSignup {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btnLogin {
+  background-color: #2E7D32; /* Verde vibrant */
+  color: #fff;
+  border: 2px solid transparent;
+}
+
+.btnLogin:hover {
+  background-color: #1B5E20;
+}
+
+.btnSignup {
+  background-color: #fff; /* Fundal alb */
+  color: #2E7D32; /* Text verde aprins */
+  border: 2px solid #2E7D32; /* Ramă verde aprins */
+}
+
+.btnSignup:hover {
+  background-color: #f0f8f1;
+  border-color: #1B5E20;
+  color: #1B5E20;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--color-accent);
+  color: var(--color-primary-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* OVERLAY BACKDROP */
+.menuBackdrop {
+  position: absolute;
+  top: 100%; /* Incepe exact sub topRow/header */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 100%); /* Acopera doar restul ecranului de sub header, fara a depasi 100vh */
+  background: rgba(39, 79, 56, 0.15);
+  backdrop-filter: blur(5px);
+  z-index: 80;
+  animation: fadeIn 0.3s ease-out forwards;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* DROPDOWN MENU */
+.dropdownMenu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 15px 30px rgba(39, 79, 56, 0.08);
+  padding: 40px 0;
+  z-index: 90;
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownContent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.dropdownColumn h3 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-dark);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--color-accent);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.dropdownColumn ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dropdownColumn a {
+  color: #555;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s, transform 0.2s;
+  display: block;
+}
+
+.dropdownColumn a:hover {
+  color: var(--color-primary);
+  transform: translateX(5px);
+}
+
+/* Promoția din meniu poate fi acum un link către produsul ei.
+   Regulile generice `.dropdownColumn a` de mai sus sunt mai specifice decât
+   `.dropdownPromo` și i-ar suprascrie layoutul (display) și efectul de hover,
+   așa că le restaurăm aici pentru acest caz. */
+.dropdownColumn a.dropdownPromo {
+  display: flex;
+}
+
+.dropdownColumn a.dropdownPromo:hover {
+  transform: translateY(-5px);
+}
+
+.dropdownPromo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  background: #f8f9f6;
+  padding: 15px;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.dropdownPromo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.promoImage {
+  width: 100%;
+  height: 120px;
+  background: url('/product-1-tr.png') no-repeat center;
+  background-size: contain;
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+}
+
+.promoTag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.dropdownPromo h4 {
+  color: var(--color-primary-dark);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.dropdownPromo p {
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .logo { font-size: 1.8rem; }
+}
+
+@media (max-width: 768px) {
+  .bottomMenu { display: none; }
+  .tickerGroup { gap: 40px; padding-right: 40px; }
+  .topRow { padding: 15px 0; }
+  .dropdownContent { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   SEARCH DROPDOWN
+   ========================================= */
+.searchDropdown {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 15px 30px rgba(39, 79, 56, 0.08);
+  padding: 30px 0;
+  z-index: 90;
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.searchForm {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.searchInputWrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 10px;
+}
+
+.searchIcon {
+  color: var(--color-primary);
+  margin-right: 15px;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  font-family: var(--font-body);
+  color: var(--color-primary-dark);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: rgba(39, 79, 56, 0.4);
+}
+
+.searchSubmitBtn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+}
+
+.searchSubmitBtn:hover {
+  background-color: var(--color-accent-dark);
+}
+
+.searchQuickLinks {
+  margin: 20px auto 0;
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.searchQuickLinks span {
+  font-family: var(--font-body);
+  color: #666;
+  font-size: 0.9rem;
+  margin-right: 10px;
+}
+
+.searchQuickLinks .quickLinkBtn {
+  background: rgba(39, 79, 56, 0.05);
+  border: 1px solid rgba(39, 79, 56, 0.1);
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.searchQuickLinks .quickLinkBtn:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* =========================================
+   SEARCH RESULTS (LIVE SEARCH)
+   ========================================= */
+.searchResults {
+  margin: 20px auto 0;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.searchResultItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9fbf9;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.searchResultItem:hover {
+  background-color: #f0f5f1;
+  border-color: #dcebdf;
+}
+
+.searchResultImage {
+  border-radius: 6px;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+.searchResultInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.searchResultName {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  font-size: 1rem;
+}
+
+.searchResultPrice {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.searchEmpty {
+  text-align: center;
+  padding: 30px;
+  color: #666;
+  font-size: 1rem;
+  background: #f9fbf9;
+  border-radius: 8px;
+}
+
+/* =========================================
+   MOBIL
+   Tot ce urmează stă în @media (max-width: ...), deci desktopul
+   (peste 768px) nu vede nicio regulă de aici. Blocul e ultimul din
+   fișier ca să câștige în fața regulilor de mai sus la egalitate de
+   specificitate.
+   ========================================= */
+
+/* Linkurile din bara de jos, replicate în meniul hamburger.
+   Sub 768px bara `.bottomMenu` este ascunsă, iar fără asta cele șase
+   destinații (Bestsellers, Pachete, Abonamente, Calitate, Jurnal,
+   Contact) nu mai erau accesibile de nicăieri pe telefon. */
+.mobileNavColumn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileNavColumn {
+    display: block;
+    order: -1; /* înaintea categoriilor, ca prima secțiune din meniu */
+  }
+
+  .mobileNavTitle {
+    font-family: var(--font-heading);
+    color: var(--color-primary-dark);
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+
+  .mobileNavList {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileNavList a {
+    display: block;
+    padding: 14px 2px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobileNavList a:last-child {
+    border-bottom: none;
+  }
+
+  /* Antetul trebuie să încapă pe un rând de telefon.
+     Logoul scalează cu viewportul, deci rândul rămâne întreg și la 320px. */
+  .topRow {
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .leftActions,
+  .rightActions {
+    flex: 0 0 auto;
+    gap: 8px;
+  }
+
+  .logoCenter {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .logo {
+    font-size: clamp(1rem, 4.4vw, 1.5rem);
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .logoIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logo span.premiumText {
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+  }
+
+  .iconBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Coșul păstrează iconița și badge-ul; suma se vede oricum în panou. */
+  .cartTotal {
+    display: none;
+  }
+
+  .cartBtn {
+    padding: 3px;
+  }
+
+  /* Meniul este copil al antetului sticky, deci nu se poate derula odată cu
+     pagina: fără o înălțime maximă proprie, tot ce depășește ecranul devine
+     inaccesibil pe telefon. `100%` se raportează la înălțimea antetului, ca
+     la `.menuBackdrop`. */
+  .dropdownMenu {
+    padding: 24px 0;
+    max-height: calc(100dvh - 100%);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .dropdownContent {
+    gap: 28px;
+  }
+
+  .searchDropdown {
+    padding: 20px 0;
+    max-height: calc(100dvh - 100%);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .searchInput {
+    font-size: 1.05rem;
+    min-width: 0;
+  }
+
+  .searchSubmitBtn {
+    padding: 9px 16px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .searchIcon {
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .searchResults {
+    max-height: 55vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .leftActions,
+  .rightActions {
+    gap: 6px;
+  }
+
+  .iconBtn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .cartIconWrapper {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Contul iese din antet ca să încapă restul; îl regăsim în meniu. */
+  .accountWrapper {
+    display: none;
+  }
+
+  /* Panourile ancorate la un buton de 34px ar ieși din ecran la 320px
+     lățime. Le desprindem de buton și le prindem de antet: `.headerWrapper`
+     este `position: sticky`, deci devine blocul de referință de îndată ce
+     wrapperul butonului nu mai este poziționat. */
+  .favWrapper,
+  .profileWrapper {
+    position: static;
+  }
+
+  .favDropdown,
+  .profileDropdown {
+    top: 100%;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    margin-top: 8px;
+  }
+
+  /* Săgeata rămâne sub iconița care a deschis panoul. Coșul folosește
+     aceeași clasă de panou ca favoritele, dar e ultimul buton din rând,
+     deci are nevoie de propria poziție. */
+  .favDropdown::before {
+    right: 58px;
+  }
+
+  .favDropdown.cartDropdown::before,
+  .profileDropdown::before {
+    right: 24px;
+  }
+
+  .favList {
+    max-height: 50vh;
+  }
+}
+
+/* Telefoane foarte înguste (320px): frunza și subtitlul logoului sunt
+   primele care cedează, ca numele mărcii să rămână întreg pe un rând. */
+@media (max-width: 380px) {
+  .logoIcon {
+    display: none;
+  }
+
+  .logo span.premiumText {
+    display: none;
+  }
+}

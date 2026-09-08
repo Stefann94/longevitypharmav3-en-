@@ -1,0 +1,528 @@
+.cartWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.cartTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a2b22;
+  margin-bottom: 30px;
+}
+
+.cartGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 30px;
+  align-items: start;
+}
+
+/* LEFT COLUMN */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* FREE SHIPPING BANNER */
+.freeShippingBanner {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid #c8d6cb;
+}
+
+.freeShippingText {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.freeShippingText span {
+  font-weight: 700;
+  color: #2e8b57;
+}
+
+.progressBarContainer {
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: #2e8b57;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.deliveryCostText {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.deliveryCostText span {
+  color: #2e8b57;
+  font-weight: 700;
+}
+
+/* CART ITEMS */
+.cartItemsList {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid #c8d6cb;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cartItem {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cartItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.itemImageContainer {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f9f9f9;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemImage {
+  object-fit: contain;
+}
+
+.itemDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a2b22;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.itemTitle:hover {
+  color: #2e8b57;
+}
+
+.itemStock {
+  font-size: 0.85rem;
+  color: #2e8b57;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.itemStock::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2e8b57;
+}
+
+.itemActions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.actionButton:hover {
+  color: #e53935;
+}
+
+.actionButton.favorite:hover {
+  color: #2e8b57;
+}
+
+.itemPriceSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.itemPrice {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a2b22;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.qtyButton {
+  width: 32px;
+  height: 32px;
+  background: white;
+  border: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.qtyButton:hover {
+  background: #f5f5f5;
+}
+
+.qtyButton:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.qtyValue {
+  width: 40px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+}
+
+/* RIGHT COLUMN - SUMMARY */
+.summaryContainer {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid #c8d6cb;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.summaryTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a2b22;
+  margin-bottom: 5px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.summaryRow.total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a2b22;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.totalRowInner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.freeText {
+  color: #2e8b57;
+  font-weight: 700;
+}
+
+.checkoutButton {
+  width: 100%;
+  background: #2e8b57;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.checkoutButton:hover {
+  background: #257045;
+}
+
+.checkoutButton:active {
+  transform: scale(0.98);
+}
+
+.checkoutIcon {
+  font-size: 1.2rem;
+}
+
+/* VOUCHER SECTION */
+.voucherSection {
+  margin-top: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.voucherHeader {
+  padding: 15px;
+  background: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: 600;
+  color: #333;
+}
+
+.voucherContent {
+  padding: 15px;
+  background: white;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.voucherInputGroup {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.voucherInput {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+}
+
+.voucherInput:focus {
+  border-color: #2e8b57;
+}
+
+.voucherApply {
+  padding: 0 15px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.voucherApply:hover {
+  background: #111;
+}
+
+/* EMPTY STATE */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid #c8d6cb;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.emptyTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a2b22;
+  margin-bottom: 10px;
+}
+
+.emptyDesc {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.shopButton {
+  display: inline-block;
+  background: #2e8b57;
+  color: white;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.shopButton:hover {
+  background: #257045;
+}
+
+/* CAROUSEL SECTION */
+.recommendedSection {
+  margin-top: 60px;
+}
+
+.recommendedTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a2b22;
+  margin-bottom: 25px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .cartGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .summaryContainer {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .cartItem {
+    grid-template-columns: 80px 1fr;
+    grid-template-areas: 
+      "image details"
+      "image price";
+    gap: 15px;
+  }
+  
+  .itemImageContainer {
+    grid-area: image;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .itemDetails {
+    grid-area: details;
+  }
+  
+  .itemPriceSection {
+    grid-area: price;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* "Șterge" și "Adaugă la favorite" nu încăpeau pe un rând sub imagine. */
+  .itemActions {
+    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .cartWrapper {
+    padding: 24px 16px;
+  }
+
+  .cartTitle {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .cartItemsList,
+  .summaryContainer {
+    padding: 16px;
+  }
+
+  .itemTitle {
+    font-size: 1rem;
+  }
+
+  .itemPrice {
+    font-size: 1.2rem;
+  }
+
+  .actionButton {
+    font-size: 0.85rem;
+  }
+
+  /* Ținte de atins mai generoase pentru degete. */
+  .qtyButton {
+    width: 38px;
+    height: 38px;
+  }
+
+  .summaryRow.total {
+    font-size: 1.3rem;
+  }
+
+  .recommendedSection {
+    margin-top: 40px;
+  }
+
+  .recommendedTitle {
+    font-size: 1.3rem;
+  }
+
+  .emptyState {
+    padding: 40px 16px;
+  }
+
+  .emptyTitle {
+    font-size: 1.4rem;
+  }
+}

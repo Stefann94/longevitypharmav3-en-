@@ -1,0 +1,571 @@
+/* =========================================
+   CATEGORY PAGE — Premium E-Commerce Layout
+   ========================================= */
+
+/* BREADCRUMBS */
+.breadcrumbs {
+  padding: 24px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #8a9b8e;
+}
+
+.breadcrumbs a {
+  color: #8a9b8e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumbSep {
+  margin: 0 10px;
+  color: #c5d0c8;
+}
+
+.breadcrumbCurrent {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+/* CATEGORY HEADER */
+.categoryHeader {
+  padding: 16px 0 24px;
+}
+
+.categoryTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.categoryDescription {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: #5a6b5e;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+/* SIDEBAR CATEGORIES */
+.sidebarCategoryLink {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #4a5a4e;
+  text-decoration: none;
+  padding: 6px 0;
+  display: block;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sidebarCategoryLink:hover {
+  color: var(--color-primary);
+  padding-left: 6px;
+}
+
+.sidebarCategoryActive {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.sidebarCategoryActive::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background-color: var(--color-accent);
+  border-radius: 4px;
+}
+
+/* MAIN LAYOUT */
+.mainLayout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  padding: 16px 0 80px;
+}
+
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.productCount {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: #8a9b8e;
+}
+
+.productCount strong {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.sortOptions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sortLabel {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #8a9b8e;
+  margin-right: 4px;
+}
+
+.sortBtn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #8a9b8e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.sortBtn:hover {
+  color: var(--color-primary);
+  background: rgba(39, 79, 56, 0.05);
+}
+
+.sortBtnActive {
+  color: var(--color-primary);
+  font-weight: 700;
+  background: rgba(39, 79, 56, 0.08);
+}
+
+/* SIDEBAR */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-self: start;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.filterSection {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.filterTitle {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filterToggle {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8a9b8e;
+  transition: transform 0.3s ease;
+}
+
+.filterToggleOpen {
+  transform: rotate(180deg);
+}
+
+/* CHECKBOXES */
+.filterList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #4a5a4e;
+  transition: color 0.2s ease;
+}
+
+.filterItem:hover {
+  color: var(--color-primary-dark);
+}
+
+.customCheckbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c5d0c8;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.customCheckbox:hover {
+  border-color: var(--color-primary);
+}
+
+.customCheckboxChecked {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.customCheckboxChecked::after {
+  content: '';
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+
+.filterItemCount {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: #aab8ae;
+  font-weight: 500;
+}
+
+/* BRAND SEARCH */
+.brandSearchWrapper {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.brandSearchInput {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-primary-dark);
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.brandSearchInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(39, 79, 56, 0.08);
+  background: #ffffff;
+}
+
+.brandSearchInput::placeholder {
+  color: #aab8ae;
+}
+
+.brandSearchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aab8ae;
+  pointer-events: none;
+}
+
+.brandList {
+  max-height: 180px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+}
+
+.brandList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.brandList::-webkit-scrollbar-thumb {
+  background: #c5d0c8;
+  border-radius: 4px;
+}
+
+/* PRICE RANGE */
+.priceRangeWrapper {
+  padding-top: 4px;
+}
+
+.priceInputRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.priceInput {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-primary-dark);
+  background: #ffffff;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.priceInput:focus {
+  border-color: var(--color-primary);
+  background: #ffffff;
+}
+
+.priceSeparator {
+  color: #c5d0c8;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.priceSlider {
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(to right, var(--color-border) 0%, var(--color-primary) 30%, var(--color-primary) 70%, var(--color-border) 100%);
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.priceSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(39, 79, 56, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.priceSlider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* PRODUCT GRID */
+.productsArea {
+  min-width: 0;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* EMPTY STATE */
+.emptyState {
+  text-align: center;
+  padding: 80px 30px;
+  font-family: var(--font-body);
+  color: #8a9b8e;
+  font-size: 1.1rem;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px dashed var(--color-border);
+  grid-column: 1 / -1;
+}
+
+.emptyStateIcon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* MOBILE FILTER BUTTON */
+.mobileFilterBtn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobileFilterBtn:hover {
+  background: var(--color-primary-dark);
+}
+
+/* MOBILE OVERLAY */
+.sidebarOverlay {
+  display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* Nu depășim lățimea ecranului pe telefoanele înguste. */
+    width: min(320px, 88vw);
+    /* `dvh` urmărește bara de adrese a browserului mobil; cu `100vh`
+       partea de jos a filtrelor rămânea tăiată sub ea. */
+    height: 100dvh;
+    z-index: 1000;
+    background: #ffffff;
+    padding: 24px;
+    overflow-y: auto;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  .sidebarOpen {
+    display: flex;
+  }
+
+  .sidebarOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+  }
+
+  .sidebarOverlayOpen {
+    display: block;
+  }
+
+  .mobileFilterBtn {
+    display: inline-flex;
+  }
+
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sidebarCloseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(39, 79, 56, 0.08);
+    border: none;
+    cursor: pointer;
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+    margin-left: auto;
+    transition: background 0.2s ease;
+  }
+
+  .sidebarCloseBtn:hover {
+    background: rgba(39, 79, 56, 0.15);
+  }
+}
+
+@media (min-width: 1025px) {
+  .sidebarCloseBtn {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Două coloane, ca pe restul site-ului (/bestsellers, /pachete, home). */
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+  }
+
+  /* Butoanele de sortare depășeau lățimea ecranului pe un singur rând. */
+  .sortOptions {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .categoryTitle {
+    font-size: 1.8rem;
+  }
+
+  .categoryHeader {
+    padding: 12px 0 16px;
+  }
+
+  .categoryDescription {
+    font-size: 0.95rem;
+  }
+
+  .mainLayout {
+    padding: 12px 0 48px;
+  }
+
+  .breadcrumbs {
+    padding: 16px 0 0;
+    font-size: 0.8rem;
+  }
+
+  .emptyState {
+    padding: 48px 20px;
+    font-size: 1rem;
+  }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}

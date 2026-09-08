@@ -1,0 +1,148 @@
+.pageWrapper {
+  max-width: 1200px;
+  margin: 60px auto 80px auto;
+  padding: 40px; /* Mai mult spațiu interior ca să nu fie la limită */
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Container special pentru login */
+.loginPageWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 80px auto 120px auto; /* 80px de la navbar, 120px de la footer. Fără min-height 100vh! */
+  background-color: transparent; /* Lasă fundalul verde al site-ului vizibil în spate */
+}
+
+/* Login specific layout */
+.loginContainer {
+  background-color: #ffffff;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Umbră fină pentru a ieși în evidență */
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.errorAlert {
+  background-color: #fde8e8;
+  border: 1px solid #f8b4b4;
+  color: #c81e1e;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Classic Form Structure */
+.classicForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .formColumns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formSection {
+  border: 1px solid #e0e0e0;
+  padding: 30px;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.formSection h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+/* Inputs */
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.formGroup label span {
+  color: #d32f2f; /* Red star for required */
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  background-color: #fff;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #2E7D32;
+}
+
+/* Actions */
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.backLink {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.submitBtn {
+  background-color: #2E7D32;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitBtn:hover {
+  background-color: #1B5E20;
+}
+
