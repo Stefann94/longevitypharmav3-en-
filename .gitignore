@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Claude Code (configurare locala, nu tine de proiect)
 .claude/
+
+# dumpuri temporare din baza de date (se regenereaza cu dump-en.mjs)
+tmp-en-*.json

@@ -396,7 +396,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
         {/* SIMILAR PRODUCTS */}
         <ProductCarousel 
-          title={<>Produse <span>Similare</span></>}
+          title={<>Similar <span>Products</span></>}
           products={similarProducts || []}
         />
       </div>

@@ -34,7 +34,7 @@ export default async function CartPage() {
         <div className={styles.cartWrapper} style={{ paddingTop: 0 }}>
           <div className={styles.recommendedSection}>
             <ProductCarousel 
-              title={<span className={styles.recommendedTitle}>Produse alese pentru tine</span>} 
+              title={<span className={styles.recommendedTitle}>Picked for you</span>}
               products={recommendedProducts} 
             />
           </div>
