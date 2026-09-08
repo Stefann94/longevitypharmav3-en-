@@ -32,8 +32,10 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
   const [errorMsg, setErrorMsg] = useState('')
 
   const itemsTotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)
-  const FREE_SHIPPING_THRESHOLD = 200
-  const STANDARD_SHIPPING_COST = 19.99
+  // Aceleasi valori ca in cos, convertite din RON la 1 EUR = 5.25 RON:
+  // pragul de 200 RON devine 40 EUR, transportul de 19.99 RON devine 3.90 EUR.
+  const FREE_SHIPPING_THRESHOLD = 40
+  const STANDARD_SHIPPING_COST = 3.90
   const shippingCost = itemsTotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_COST
   const finalTotal = itemsTotal + shippingCost
 
@@ -59,9 +61,9 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
     return (
       <div className={styles.checkoutWrapper}>
         <div style={{ textAlign: 'center', padding: '100px 0' }}>
-          <h2>Coșul tău este gol.</h2>
+          <h2>Your cart is empty.</h2>
           <button onClick={() => router.push('/cart')} className={styles.confirmButton} style={{ marginTop: '20px', maxWidth: '200px' }}>
-            Mergi la coș
+            Go to cart
           </button>
         </div>
       </div>
@@ -70,7 +72,7 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
 
   return (
     <div className={styles.checkoutWrapper}>
-      <h1 className={styles.checkoutTitle}>Finalizare Comandă</h1>
+      <h1 className={styles.checkoutTitle}>Checkout</h1>
 
       <form onSubmit={handleSubmit} className={styles.checkoutGrid}>
         {/* Hidden field for guest cart items */}
@@ -78,21 +80,21 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
 
         {/* Left Form */}
         <div className={styles.formSection}>
-          <h2 className={styles.sectionTitle}>Date de Livrare</h2>
-          
+          <h2 className={styles.sectionTitle}>Shipping details</h2>
+
           <div className={styles.formGrid}>
             <div className={styles.formGroup}>
-              <label className={styles.label}>Prenume</label>
+              <label className={styles.label}>First name</label>
               <input type="text" name="first_name" defaultValue={profile.first_name} required className={styles.input} />
             </div>
-            
+
             <div className={styles.formGroup}>
-              <label className={styles.label}>Nume</label>
+              <label className={styles.label}>Last name</label>
               <input type="text" name="last_name" defaultValue={profile.last_name} required className={styles.input} />
             </div>
 
             <div className={styles.formGroup}>
-              <label className={styles.label}>Telefon</label>
+              <label className={styles.label}>Phone</label>
               <input type="tel" name="phone" defaultValue={profile.phone} required className={styles.input} />
             </div>
 
@@ -102,22 +104,24 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
             </div>
 
             <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-              <label className={styles.label}>Adresă (Stradă, număr, bloc, apartament)</label>
+              <label className={styles.label}>Address (street, number, building, flat)</label>
               <input type="text" name="street" defaultValue={address?.street || ''} required className={styles.input} />
             </div>
 
             <div className={styles.formGroup}>
-              <label className={styles.label}>Oraș</label>
+              <label className={styles.label}>City</label>
               <input type="text" name="city" defaultValue={address?.city || ''} required className={styles.input} />
             </div>
 
             <div className={styles.formGroup}>
-              <label className={styles.label}>Județ</label>
+              {/* „County" acopera si judetul romanesc, si diviziunile
+                  administrative din alte tari europene. */}
+              <label className={styles.label}>County / Region</label>
               <input type="text" name="county" defaultValue={address?.county || ''} required className={styles.input} />
             </div>
 
             <div className={styles.formGroup}>
-              <label className={styles.label}>Cod Poștal</label>
+              <label className={styles.label}>Postal code</label>
               <input type="text" name="zip" defaultValue={address?.postal_code || ''} required className={styles.input} />
             </div>
           </div>
@@ -125,13 +129,13 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
 
         {/* Right Summary */}
         <div className={styles.summarySection}>
-          <h2 className={styles.sectionTitle}>Sumar Comandă</h2>
-          
+          <h2 className={styles.sectionTitle}>Order summary</h2>
+
           <div className={styles.summaryList}>
             {cartItems.map(item => (
               <div key={item.id} className={styles.summaryItem}>
-                <span className={styles.itemName}>{item.quantity}x {item.name || 'Produs'}</span>
-                <span className={styles.itemPrice}>{(item.price * item.quantity).toFixed(2)} Lei</span>
+                <span className={styles.itemName}>{item.quantity}x {item.name || 'Product'}</span>
+                <span className={styles.itemPrice}>{(item.price * item.quantity).toFixed(2)} €</span>
               </div>
             ))}
           </div>
@@ -140,17 +144,17 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
 
           <div className={styles.totalsRow}>
             <span>Subtotal:</span>
-            <span>{itemsTotal.toFixed(2)} Lei</span>
+            <span>{itemsTotal.toFixed(2)} €</span>
           </div>
-          
+
           <div className={styles.totalsRow}>
-            <span>Transport:</span>
-            <span>{shippingCost === 0 ? <span className={styles.freeText}>GRATUIT</span> : `${shippingCost} Lei`}</span>
+            <span>Shipping:</span>
+            <span>{shippingCost === 0 ? <span className={styles.freeText}>FREE</span> : `${shippingCost} €`}</span>
           </div>
 
           <div className={`${styles.totalsRow} ${styles.grandTotal}`}>
-            <span>Total de plată:</span>
-            <span>{finalTotal.toFixed(2)} Lei</span>
+            <span>Total to pay:</span>
+            <span>{finalTotal.toFixed(2)} €</span>
           </div>
 
           {errorMsg && (
@@ -158,7 +162,7 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
           )}
 
           <button type="submit" disabled={isSubmitting} className={styles.confirmButton}>
-            {isSubmitting ? 'Se procesează...' : 'Confirmă Comanda'}
+            {isSubmitting ? 'Processing…' : 'Place order'}
           </button>
         </div>
       </form>

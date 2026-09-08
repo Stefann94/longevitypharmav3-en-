@@ -84,15 +84,15 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            Editează datele
+            Edit details
           </button>
         )}
       </div>
-      
+
       <p className={styles.cardContent} style={{ marginBottom: '30px' }}>
-        {isEditing 
-          ? "Actualizează informațiile tale personale mai jos." 
-          : "Gestionează informațiile tale personale folosite pentru completarea rapidă a detaliilor la checkout."}
+        {isEditing
+          ? "Update your personal details below."
+          : "Manage the personal details used to fill in your information quickly at checkout."}
       </p>
 
       {error && <div style={{ color: '#e53935', marginBottom: '20px', fontSize: '0.9rem' }}>{error}</div>}
@@ -100,11 +100,11 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
       <form action={handleAction} style={{ display: 'grid', gap: '20px', maxWidth: '600px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
-            <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Prenume</label>
-            <input 
-              type="text" 
+            <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>First name</label>
+            <input
+              type="text"
               name="first_name"
-              placeholder="Ex: Ștefan" 
+              placeholder="e.g. Stefan"
               style={inputStyle}
               value={formData.first_name}
               onChange={handleChange}
@@ -112,11 +112,11 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
             />
           </div>
           <div>
-            <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Nume</label>
-            <input 
-              type="text" 
+            <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Last name</label>
+            <input
+              type="text"
               name="last_name"
-              placeholder="Ex: Cozma" 
+              placeholder="e.g. Cozma"
               style={inputStyle} 
               value={formData.last_name}
               onChange={handleChange}
@@ -136,7 +136,7 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Număr de telefon</label>
+          <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Phone number</label>
           <input 
             type="tel" 
             name="phone"
@@ -151,7 +151,7 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
         {isEditing && (
           <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
             <button type="submit" className={styles.actionLink} disabled={loading}>
-              {loading ? 'Se salvează...' : 'Salvează modificările'}
+              {loading ? 'Saving…' : 'Save changes'}
             </button>
             <button 
               type="button" 
@@ -167,7 +167,7 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
               }} 
               style={{ padding: '10px 20px', background: 'transparent', border: '1px solid #ccc', borderRadius: '8px', cursor: 'pointer', color: '#666', fontWeight: 500 }}
             >
-              Anulează
+              Cancel
             </button>
           </div>
         )}

@@ -42,25 +42,26 @@ export default function OrdersClient() {
   const hasOrders = orders.length > 0;
   return (
     <div>
-      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Comenzile <strong>mele</strong></h2>
+      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>My <strong>orders</strong></h2>
       
       {!hasOrders ? (
         <div className={styles.premiumCard} style={{ textAlign: 'center', padding: '60px 20px', alignItems: 'center' }}>
           <div style={{ width: '80px', height: '80px', backgroundColor: '#f4f8f1', border: '1px solid #d6e4d9', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px auto', color: 'var(--color-primary)' }}>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
           </div>
-          <div className={styles.cardHeader}>Nu ai nicio comandă plasată încă</div>
+          <div className={styles.cardHeader}>You have not placed any orders yet</div>
           <p className={styles.cardContent} style={{ maxWidth: '400px', margin: '0 auto 25px auto' }}>
-            Când vei plasa prima ta comandă pe LongevityPharma, istoricul și detaliile de urmărire vor apărea aici.
+            Once you place your first order with LongevityPharma, its history and tracking details will appear here.
           </p>
           <Link href="/" className={styles.actionLink}>
-            Începe cumpărăturile
+            Start shopping
           </Link>
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {orders.map((order) => {
-            const date = new Date(order.created_at).toLocaleDateString('ro-RO', {
+            // Data se scrie in engleza: „8 September 2026", nu „8 septembrie 2026".
+            const date = new Date(order.created_at).toLocaleDateString('en-GB', {
               day: 'numeric', month: 'long', year: 'numeric'
             });
             const orderIdShort = order.id.split('-')[0].toUpperCase();
@@ -73,10 +74,10 @@ export default function OrdersClient() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f0f0f0', paddingBottom: '15px', marginBottom: '15px' }}>
                   <div>
                     <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1a2b22' }}>
-                      Comanda #{orderIdShort}
+                      Order #{orderIdShort}
                     </div>
                     <div style={{ fontSize: '0.9rem', color: '#666', marginTop: '4px' }}>
-                      Plasată pe {date}
+                      Placed on {date}
                     </div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -85,8 +86,11 @@ export default function OrdersClient() {
                       borderRadius: '20px', 
                       fontSize: '0.85rem', 
                       fontWeight: 600,
-                      backgroundColor: order.status === 'În procesare' ? '#fff3cd' : '#e6f4ea',
-                      color: order.status === 'În procesare' ? '#856404' : '#1e7e34'
+                      // Valoarea vine din app/checkout/actions.ts. Cele doua
+                      // trebuie sa ramana identice, altfel insigna ramane mereu
+                      // pe varianta „livrata".
+                      backgroundColor: order.status === 'Processing' ? '#fff3cd' : '#e6f4ea',
+                      color: order.status === 'Processing' ? '#856404' : '#1e7e34'
                     }}>
                       {order.status}
                     </span>
@@ -95,7 +99,7 @@ export default function OrdersClient() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                   {items.length === 0 && (
-                    <div style={{ fontSize: '0.9rem', color: '#888', fontStyle: 'italic' }}>Produsele nu pot fi afișate momentan.</div>
+                    <div style={{ fontSize: '0.9rem', color: '#888', fontStyle: 'italic' }}>The items in this order cannot be displayed right now.</div>
                   )}
                   {items.map((item: any) => {
                     const imageUrl = productImages[item.product_slug] || '/placeholder.png'; // Fallback la un placeholder
@@ -153,7 +157,7 @@ export default function OrdersClient() {
                           </Link>
                         </div>
                         <div style={{ fontWeight: 600, color: '#1a2b22' }}>
-                          {(item.price_at_time * item.quantity).toFixed(2)} Lei
+                          {(item.price_at_time * item.quantity).toFixed(2)} €
                         </div>
                       </div>
                     )
@@ -162,12 +166,12 @@ export default function OrdersClient() {
 
                 <div style={{ marginTop: '20px', paddingTop: '15px', borderTop: '1px dashed #e0e0e0', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                   <div style={{ fontSize: '0.9rem', color: '#666' }}>
-                    Transport: {order.shipping_cost === 0 ? 'Gratuit' : `${order.shipping_cost} Lei`}
+                    Shipping: {order.shipping_cost === 0 ? 'Free' : `${order.shipping_cost} €`}
                   </div>
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '2px' }}>Total de plată</div>
+                    <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '2px' }}>Total paid</div>
                     <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1a2b22' }}>
-                      {order.total_amount.toFixed(2)} Lei
+                      {order.total_amount.toFixed(2)} €
                     </div>
                   </div>
                 </div>

@@ -30,21 +30,21 @@ export default function PaymentPage() {
   const hasMethods = methods.length > 0;
   return (
     <div>
-      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Metode de plată <strong>memorate</strong></h2>
+      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Saved <strong>payment methods</strong></h2>
       
       {!hasMethods ? (
         <div className={styles.premiumCard} style={{ textAlign: 'center', padding: '60px 20px', alignItems: 'center' }}>
           <div style={{ width: '80px', height: '80px', backgroundColor: '#f4f8f1', border: '1px solid #d6e4d9', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', color: 'var(--color-primary)' }}>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
           </div>
-          <div className={styles.cardHeader}>Niciun card salvat</div>
+          <div className={styles.cardHeader}>No card saved</div>
           <p className={styles.cardContent} style={{ maxWidth: '400px', margin: '0 auto 25px auto' }}>
-            Plata la checkout se face rapid și sigur. Poți memora cardul tău la prima comandă pentru viitoare achiziții.
+            Checkout is quick and secure. You can save your card with your first order, for future purchases.
           </p>
         </div>
       ) : (
         <div className={styles.premiumCard}>
-          <div className={styles.cardHeader}>Ai {methods.length} metode de plată salvate</div>
+          <div className={styles.cardHeader}>You have {methods.length} saved payment methods</div>
         </div>
       )}
     </div>

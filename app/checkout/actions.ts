@@ -34,7 +34,7 @@ export async function processCheckout(formData: FormData) {
   }
 
   if (!clientCartItems || clientCartItems.length === 0) {
-    return { error: 'Coșul este gol sau a apărut o eroare.' }
+    return { error: 'Your cart is empty, or something went wrong.' }
   }
 
   // 2. Fetch product details from DB to ensure prices are secure (not tampered)
@@ -57,8 +57,11 @@ export async function processCheckout(formData: FormData) {
   })
 
   // 3. Calculate Total
-  const FREE_SHIPPING_THRESHOLD = 200
-  const STANDARD_SHIPPING_COST = 19.99
+  // Aceleasi valori ca in cos si in formularul de checkout, convertite din RON
+  // la 1 EUR = 5.25 RON. Cele trei locuri trebuie sa ramana identice: aici se
+  // calculeaza suma care ajunge efectiv in comanda.
+  const FREE_SHIPPING_THRESHOLD = 40
+  const STANDARD_SHIPPING_COST = 3.90
 
   const itemsTotal = secureCartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)
   const shippingCost = itemsTotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_COST
@@ -100,7 +103,10 @@ export async function processCheckout(formData: FormData) {
     shipping_name: fullName,
     shipping_phone: phone,
     shipping_address: fullAddress,
-    status: 'În procesare'
+    // Valoarea se salveaza in baza si e comparata in app/account/comenzi/
+    // OrdersClient.tsx, care alege culoarea insignei dupa ea. Cele doua trebuie
+    // schimbate impreuna, altfel insigna ramane mereu pe varianta „livrata".
+    status: 'Processing'
   }
 
   // Comanda unui vizitator nu are user_id, deci fără email nu ar exista nimic
@@ -131,9 +137,9 @@ export async function processCheckout(formData: FormData) {
   if (orderError) {
     console.error('Order creation error:', orderError)
     if (orderError.message.includes('foreign key constraint') || orderError.message.includes('null value in column "user_id"')) {
-       return { error: 'Pentru a permite comenzi fara cont, trebuie eliminata restrictia NOT NULL pentru coloana user_id din tabelul orders in Supabase.' }
+       return { error: 'To allow guest orders, the NOT NULL constraint on the user_id column of the orders table must be removed in Supabase.' }
     }
-    return { error: `Eroare Supabase: ${orderError.message}` }
+    return { error: `Supabase error: ${orderError.message}` }
   }
 
   const orderItemsData = secureCartItems.map(item => ({
@@ -151,7 +157,7 @@ export async function processCheckout(formData: FormData) {
 
   if (itemsError) {
     console.error('Order items error:', itemsError)
-    return { error: `Eroare salvare produse: ${itemsError.message}` }
+    return { error: `Could not save order items: ${itemsError.message}` }
   }
 
   // 6. Clear DB Cart if authenticated

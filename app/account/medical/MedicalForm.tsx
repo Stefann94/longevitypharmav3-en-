@@ -56,7 +56,7 @@ export default function MedicalForm({ initialData }: MedicalFormProps) {
   return (
     <div className={styles.premiumCard}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-        <div className={styles.cardHeader} style={{ marginBottom: 0 }}>Profil de sănătate și alergii</div>
+        <div className={styles.cardHeader} style={{ marginBottom: 0 }}>Health profile and allergies</div>
         {!isEditing && (
           <button 
             onClick={() => setIsEditing(true)} 
@@ -81,26 +81,26 @@ export default function MedicalForm({ initialData }: MedicalFormProps) {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            Editează informațiile
+            Edit details
           </button>
         )}
       </div>
-      
+
       <p className={styles.cardContent} style={{ marginBottom: '30px' }}>
-        {isEditing 
-          ? "Actualizează profilul tău medical mai jos." 
-          : "Aceste informații ne ajută să ne asigurăm că suplimentele recomandate sunt 100% sigure pentru tine."}
+        {isEditing
+          ? "Update your medical profile below."
+          : "These details help us make sure the supplements we recommend are completely safe for you."}
       </p>
 
       {error && <div style={{ color: '#e53935', marginBottom: '20px', fontSize: '0.9rem' }}>{error}</div>}
 
       <form action={handleAction} style={{ display: 'grid', gap: '20px', maxWidth: '600px' }}>
         <div>
-          <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Alergii cunoscute (ex: gluten, soia, nuci)</label>
-          <textarea 
-            rows={3} 
+          <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Known allergies (e.g. gluten, soy, nuts)</label>
+          <textarea
+            rows={3}
             name="allergies"
-            placeholder={isEditing ? "Enumeră alergiile tale aici..." : "Nu ai specificat alergii"} 
+            placeholder={isEditing ? "List your allergies here…" : "No allergies specified"}
             style={inputStyle}
             value={formData.allergies}
             onChange={handleChange}
@@ -109,11 +109,11 @@ export default function MedicalForm({ initialData }: MedicalFormProps) {
         </div>
         
         <div>
-          <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Tratamente curente (interacțiuni posibile)</label>
-          <textarea 
-            rows={3} 
+          <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Current medication (possible interactions)</label>
+          <textarea
+            rows={3}
             name="current_treatments"
-            placeholder={isEditing ? "Ex: medicamente pentru tensiune..." : "Nu ai specificat tratamente"} 
+            placeholder={isEditing ? "e.g. blood pressure medication…" : "No medication specified"}
             style={inputStyle}
             value={formData.current_treatments}
             onChange={handleChange}
@@ -124,7 +124,7 @@ export default function MedicalForm({ initialData }: MedicalFormProps) {
         {isEditing && (
           <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
             <button type="submit" className={styles.actionLink} disabled={loading}>
-              {loading ? 'Se salvează...' : 'Salvează profilul'}
+              {loading ? 'Saving…' : 'Save profile'}
             </button>
             <button 
               type="button" 
@@ -138,7 +138,7 @@ export default function MedicalForm({ initialData }: MedicalFormProps) {
               }} 
               style={{ padding: '10px 20px', background: 'transparent', border: '1px solid #ccc', borderRadius: '8px', cursor: 'pointer', color: '#666', fontWeight: 500 }}
             >
-              Anulează
+              Cancel
             </button>
           </div>
         )}

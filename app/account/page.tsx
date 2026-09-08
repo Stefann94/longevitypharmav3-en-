@@ -62,8 +62,8 @@ export default function AccountPage() {
       {/* Hero Banner */}
       <div className={styles.heroBanner}>
         <div className={styles.heroContent}>
-          <h2 className={styles.heroTitle}>Bine ai venit, <strong>{firstName || 'în contul tău'}</strong>!</h2>
-          <p className={styles.heroSubtitle}>Gestionează-ți datele personale, urmărește comenzile și descoperă noutățile.</p>
+          <h2 className={styles.heroTitle}>Welcome, <strong>{firstName || 'to your account'}</strong>!</h2>
+          <p className={styles.heroSubtitle}>Manage your details, follow your orders and discover what is new.</p>
         </div>
         <img src="/images/zen_stones.png" alt="Zen Stones" className={styles.heroImage} />
       </div>
@@ -75,13 +75,13 @@ export default function AccountPage() {
           <div className={styles.iconWrapper}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
           </div>
-          <div className={styles.cardHeader}>Date de Contact</div>
+          <div className={styles.cardHeader}>Contact details</div>
           <div className={styles.cardContent}>
-            <strong>{fullName || 'Nume Nesetat'}</strong><br/>
+            <strong>{fullName || 'Name not set'}</strong><br/>
             {email}
           </div>
           <a href="/account/informatii" className={styles.actionLink}>
-            Modifică datele
+            Edit details
           </a>
         </div>
 
@@ -92,12 +92,12 @@ export default function AccountPage() {
           </div>
           <div className={styles.cardHeader}>Newsletter</div>
           <div className={styles.cardContent}>
-            {isSubscribed 
-              ? 'Ești abonat la newsletter-ul nostru.' 
-              : 'Nu ești abonat la newsletter-ul nostru.'}
+            {isSubscribed
+              ? 'You are subscribed to our newsletter.'
+              : 'You are not subscribed to our newsletter.'}
           </div>
           <a href="/account/newsletter" className={styles.actionLink}>
-            Gestionează abonarea
+            Manage subscription
           </a>
         </div>
 
@@ -106,14 +106,14 @@ export default function AccountPage() {
           <div className={styles.iconWrapper}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
-          <div className={styles.cardHeader}>Adresă Principală</div>
+          <div className={styles.cardHeader}>Main address</div>
           <div className={styles.cardContent}>
-            {defaultShipping 
+            {defaultShipping
               ? `${defaultShipping.street}, ${defaultShipping.city}, ${defaultShipping.country}`
-              : 'Nu ai configurat încă o adresă implicită pentru livrare.'}
+              : 'You have not set a default shipping address yet.'}
           </div>
           <a href="/account/adrese" className={styles.actionLink}>
-            {defaultShipping ? 'Modifică adresa' : 'Adaugă adresă'}
+            {defaultShipping ? 'Edit address' : 'Add address'}
           </a>
         </div>
 

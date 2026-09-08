@@ -6,17 +6,20 @@ import { usePathname } from 'next/navigation';
 import styles from './Account.module.css';
 import { logout } from '@/app/auth/actions';
 
+// Etichetele sunt traduse, adresele raman cele romanesti: sunt cai de fisiere
+// din exportul static, iar redenumirea lor ar insemna mutarea folderelor si
+// actualizarea fiecarui link din site.
 const MENU_ITEMS = [
-  { label: 'Tablou de bord', href: '/account' },
-  { label: 'Informații cont', href: '/account/informatii' },
-  { label: 'Agenda de adrese', href: '/account/adrese' },
-  { label: 'Comenzile mele', href: '/account/comenzi' },
-  { label: 'Produse favorite', href: '/account/favorite' },
-  { label: 'Metode de plată memorate', href: '/account/plata' },
-  { label: 'Recenziile mele', href: '/account/recenzii' },
-  { label: 'Abonare la newsletter', href: '/account/newsletter' },
-  { label: 'Informații medicale', href: '/account/medical' },
-  { label: 'Facturi', href: '/account/facturi' },
+  { label: 'Dashboard', href: '/account' },
+  { label: 'Account details', href: '/account/informatii' },
+  { label: 'Address book', href: '/account/adrese' },
+  { label: 'My orders', href: '/account/comenzi' },
+  { label: 'Favorite products', href: '/account/favorite' },
+  { label: 'Saved payment methods', href: '/account/plata' },
+  { label: 'My reviews', href: '/account/recenzii' },
+  { label: 'Newsletter subscription', href: '/account/newsletter' },
+  { label: 'Medical details', href: '/account/medical' },
+  { label: 'Invoices', href: '/account/facturi' },
 ];
 
 export default function SidebarClient() {
