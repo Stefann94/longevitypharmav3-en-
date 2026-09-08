@@ -7,7 +7,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 import { logout } from '@/app/auth/actions';
 import { useCart } from '@/app/context/CartContext';
-import { useFavoritess } from '@/app/context/FavoritessContext';
+import { useFavorites } from '@/app/context/FavoritesContext';
 import { createBrowserClient } from '@supabase/ssr';
 
 type Category = { id: string; name: string; slug: string; sort_order: number; group_name?: string };
@@ -101,7 +101,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
   const router = useRouter();
   const pathname = usePathname();
   const { cartItems, cartCount, cartTotal, isLoading, clearCart, removeFromCart, updateQuantity } = useCart();
-  const { favoriteItems, favoriteCount, toggleFavorites, clearFavoritess } = useFavoritess();
+  const { favoriteItems, favoriteCount, toggleFavorite, clearFavorites } = useFavorites();
 
   const favListRef = useRef<HTMLDivElement>(null);
   const cartListRef = useRef<HTMLDivElement>(null);
@@ -159,7 +159,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
   const handleLogout = async () => {
     setIsProfileOpen(false);
     clearCart();
-    clearFavoritess();
+    clearFavorites();
     await logout();
   };
 
@@ -374,7 +374,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                               <div className={styles.favItemName}>{item.name}</div>
                               <div className={styles.favItemPrice}>{item.price} Lei</div>
                             </div>
-                            <button aria-label="Remove from favorites" onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorites(item.product_slug) }} style={{ alignSelf: 'center', background: 'none', border: 'none', cursor: 'pointer', color: '#999', zIndex: 2 }}>
+                            <button aria-label="Remove from favorites" onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(item.product_slug) }} style={{ alignSelf: 'center', background: 'none', border: 'none', cursor: 'pointer', color: '#999', zIndex: 2 }}>
                               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                             </button>
                           </Link>
