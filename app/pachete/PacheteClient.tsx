@@ -48,9 +48,9 @@ export default function PacheteClient({ products }: PacheteClientProps) {
       <div className="container">
         {/* BREADCRUMBS */}
         <nav className={styles.breadcrumbs} style={{ paddingBottom: '16px' }}>
-          <Link href="/">Acasă</Link>
+          <Link href="/">Home</Link>
           <span className={styles.breadcrumbSep}>›</span>
-          <span className={styles.breadcrumbCurrent}>Pachete & Oferte</span>
+          <span className={styles.breadcrumbCurrent}>Bundles & Offers</span>
         </nav>
 
         {/* PROMO BANNER AS HEADER */}
@@ -58,16 +58,16 @@ export default function PacheteClient({ products }: PacheteClientProps) {
             <div className={pageStyles.promoBannerLink} style={{ cursor: 'default' }}>
               <Image 
                 src="/images/banners/banner_pachete.png" 
-                alt="Protocoale & Pachete"
+                alt="Protocols & Bundles"
                 fill 
                 className={pageStyles.promoBannerImage}
               />
               <div className={pageStyles.promoBannerOverlay} style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)', textShadow: '0 2px 15px rgba(0,0,0,0.8)' }}>
                 <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 8px 0' }}>
-                  Protocoale & Pachete
+                  Protocols & Bundles
                 </h1>
-                <p style={{ margin: '0 0 8px 0', fontSize: '1.1rem' }}>Alege formulele complete concepute special pentru susținerea vitalității tale zilnice.</p>
-                <span style={{ fontSize: '0.95rem', fontWeight: 500, opacity: 0.8 }}>({products.length} pachete)</span>
+                <p style={{ margin: '0 0 8px 0', fontSize: '1.1rem' }}>Choose the complete formulas designed to support your daily vitality.</p>
+                <span style={{ fontSize: '0.95rem', fontWeight: 500, opacity: 0.8 }}>({products.length} bundles)</span>
               </div>
             </div>
         </section>
@@ -76,21 +76,21 @@ export default function PacheteClient({ products }: PacheteClientProps) {
         {products.length > 0 && (
           <div className={styles.toolbar}>
             <div className={styles.productCount}>
-              Afișăm <strong>{products.length}</strong> pachete
+              Showing <strong>{products.length}</strong> bundles
             </div>
             <div className={styles.sortOptions}>
-              <span className={styles.sortLabel}>Sortează:</span>
+              <span className={styles.sortLabel}>Sort by:</span>
               <button
                 className={`${styles.sortBtn} ${sortOption === 'price-desc' ? styles.sortBtnActive : ''}`}
                 onClick={() => setSortOption('price-desc')}
               >
-                Preț ↓
+                Price ↓
               </button>
               <button
                 className={`${styles.sortBtn} ${sortOption === 'price-asc' ? styles.sortBtnActive : ''}`}
                 onClick={() => setSortOption('price-asc')}
               >
-                Preț ↑
+                Price ↑
               </button>
               <button
                 className={`${styles.sortBtn} ${sortOption === 'name-asc' ? styles.sortBtnActive : ''}`}
@@ -111,7 +111,7 @@ export default function PacheteClient({ products }: PacheteClientProps) {
         {/* PRODUCTS GRID */}
         {sortedProducts.length === 0 ? (
           <div className={styles.emptyState}>
-            <p>Momentan nu avem pachete promoționale disponibile.</p>
+            <p>We have no promotional bundles available right now.</p>
           </div>
         ) : (
           <div className={styles.productsGrid}>

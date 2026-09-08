@@ -2,7 +2,7 @@ import React from 'react'
 import CheckoutLoader from './CheckoutLoader'
 
 export const metadata = {
-  title: 'Finalizare Comandă | Longevity Pharma',
+  title: 'Checkout | Longevity Pharma',
 }
 
 // Învelișul rămâne componentă de server doar ca să poată exporta `metadata`.

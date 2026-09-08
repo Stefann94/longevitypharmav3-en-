@@ -63,7 +63,7 @@ export async function toggleFavoriteDB(productSlug: string) {
   
   // Indicatorul explicit evită verificarea după textul erorii — același
   // tipar folosit deja de acțiunile coșului.
-  if (!user) return { error: 'Trebuie să fii autentificat pentru a adăuga la favorite.', notAuthenticated: true }
+  if (!user) return { error: 'You need to be signed in to add favorites.', notAuthenticated: true }
 
   // Check if item already exists
   const { data: existing } = await supabase
@@ -81,7 +81,7 @@ export async function toggleFavoriteDB(productSlug: string) {
       .eq('id', existing.id)
       
     if (removeError) {
-      return { error: `Eroare ștergere: ${removeError.message}` }
+      return { error: `Could not remove: ${removeError.message}` }
     }
     // Fără revalidatePath: starea favoritelor este ținută în context, pe client.
     // Nicio pagină randată pe server nu depinde de ea, iar pagina principală
@@ -98,7 +98,7 @@ export async function toggleFavoriteDB(productSlug: string) {
       })
       
     if (insertError) {
-      return { error: `Eroare adăugare: ${insertError.message}` }
+      return { error: `Could not add: ${insertError.message}` }
     }
     // Fără revalidatePath: starea favoritelor este ținută în context, pe client.
     // Nicio pagină randată pe server nu depinde de ea, iar pagina principală

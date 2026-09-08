@@ -68,7 +68,7 @@ export async function addToCartDB(productSlug: string, price: number, quantity: 
   const supabase = createClient()
   const { data: { user } } = await supabase.auth.getUser()
   
-  if (!user) return { error: 'Trebuie să fii autentificat pentru a adăuga în coș.', notAuthenticated: true }
+  if (!user) return { error: 'You need to be signed in to add items to your cart.', notAuthenticated: true }
 
   // Check if item already exists
   const { data: existing } = await supabase

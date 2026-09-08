@@ -35,8 +35,8 @@ export default function BackToTopButton() {
       type="button"
       onClick={scrollToTop}
       className={`${styles.button} ${isVisible ? styles.visible : ''}`}
-      aria-label="Înapoi sus"
-      title="Înapoi sus"
+      aria-label="Back to top"
+      title="Back to top"
       // Scos din ordinea de tabulare cât timp e ascuns
       tabIndex={isVisible ? 0 : -1}
       aria-hidden={!isVisible}

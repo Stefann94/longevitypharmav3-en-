@@ -19,10 +19,10 @@ export default function NewsletterForm() {
     if (result.error) {
       setStatus({ type: 'err', text: result.error });
     } else if (result.alreadySubscribed) {
-      setStatus({ type: 'ok', text: 'Ești deja abonat/ă. Îți mulțumim!' });
+      setStatus({ type: 'ok', text: 'You are already subscribed. Thank you!' });
       (e.target as HTMLFormElement).reset();
     } else {
-      setStatus({ type: 'ok', text: 'Te-ai abonat cu succes. Îți mulțumim!' });
+      setStatus({ type: 'ok', text: 'You have been subscribed. Thank you!' });
       (e.target as HTMLFormElement).reset();
     }
 
@@ -35,13 +35,13 @@ export default function NewsletterForm() {
         <input
           type="email"
           name="email"
-          placeholder="Adresa ta de email"
+          placeholder="Your email address"
           className={styles.newsInput}
           required
           disabled={isPending}
-          aria-label="Adresa ta de email"
+          aria-label="Your email address"
         />
-        <button className={styles.newsBtn} type="submit" disabled={isPending} aria-label="Abonează-te">
+        <button className={styles.newsBtn} type="submit" disabled={isPending} aria-label="Subscribe">
           {isPending ? (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>

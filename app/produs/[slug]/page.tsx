@@ -32,12 +32,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { data: product } = await supabase.from('products').select('*').eq('slug', decodedSlug).single();
 
   if (!product) {
-    return { title: 'Produs Neregasit | Longevity Pharma' };
+    return { title: 'Product not found | Longevity Pharma' };
   }
 
   return {
     title: `${product.name} | Longevity Pharma`,
-    description: product.description || `Order ${product.name} for only ${product.price} RON. Fast delivery.`,
+    description: product.description || `Order ${product.name} for only ${product.price} €. Fast delivery.`,
     // URL-ul canonic: spune motoarelor de căutare care este adresa "oficială" a paginii.
     // Fără el, o vizită venită din reclamă (/produs/x?utm_source=google) ar putea fi
     // indexată ca pagină separată, ceea ce înseamnă conținut duplicat.
@@ -100,7 +100,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     "offers": {
       "@type": "Offer",
       "url": productUrl,
-      "priceCurrency": "RON",
+      "priceCurrency": "EUR",
       "price": product.price,
       "itemCondition": "https://schema.org/NewCondition",
       // Disponibilitatea reală, nu "InStock" fix: datele structurate false
@@ -213,14 +213,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             <div className={styles.priceBlock}>
               <span className={styles.price}>{product.price}</span>
-              <span className={styles.currency}> Lei</span>
+              <span className={styles.currency}> €</span>
             </div>
 
             {/* INSTALLMENT BOX */}
             <div className={styles.installmentBox}>
               <div className={styles.installmentText}>
                 <span className={styles.installmentTitle}>Pay in 4 equal installments</span>
-                <span className={styles.installmentSub}>from {(product.price / 4).toFixed(2)} Lei / month</span>
+                <span className={styles.installmentSub}>from {(product.price / 4).toFixed(2)} € / month</span>
               </div>
               <span className={styles.installmentBadge}>0% Interest</span>
             </div>

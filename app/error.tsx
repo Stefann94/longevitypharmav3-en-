@@ -13,7 +13,7 @@ export default function Error({
 }) {
   useEffect(() => {
     // În producție, aici s-ar conecta un serviciu de monitorizare (ex. Sentry).
-    console.error('Eroare de aplicație:', error);
+    console.error('Application error:', error);
   }, [error]);
 
   return (

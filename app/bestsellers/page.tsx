@@ -4,7 +4,7 @@ import BestsellersClient from "./BestsellersClient";
 
 export const metadata = {
   title: 'Bestsellers | Longevity Pharma',
-  description: 'Descoperă cele mai vândute suplimente premium din magazinul nostru. Produse testate și apreciate de mii de clienți.',
+  description: 'Discover the best-selling premium supplements in our shop. Products tested and loved by thousands of customers.',
 };
 
 export default async function BestsellersPage() {

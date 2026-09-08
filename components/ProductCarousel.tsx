@@ -92,10 +92,10 @@ export default function ProductCarousel({ title, products }: ProductCarouselProp
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
           <div className={styles.navArrows}>
-            <button className={styles.arrowBtn} onClick={prevSlide} aria-label="Înapoi">
+            <button className={styles.arrowBtn} onClick={prevSlide} aria-label="Previous">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
-            <button className={styles.arrowBtn} onClick={nextSlide} aria-label="Înainte">
+            <button className={styles.arrowBtn} onClick={nextSlide} aria-label="Next">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>

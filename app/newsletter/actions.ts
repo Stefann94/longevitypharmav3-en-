@@ -18,11 +18,11 @@ export async function subscribeToNewsletter(formData: FormData) {
   const email = formData.get('email')?.toString().trim()
 
   if (!email) {
-    return { error: 'Te rugăm să introduci o adresă de e-mail.' }
+    return { error: 'Please enter an e-mail address.' }
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { error: 'Adresa de e-mail nu pare validă.' }
+    return { error: 'That e-mail address does not look valid.' }
   }
 
   const supabase = createClient()
@@ -46,7 +46,7 @@ export async function subscribeToNewsletter(formData: FormData) {
         return { success: true, alreadySubscribed: true }
       }
       console.error('Eroare abonare newsletter (utilizator autentificat):', error)
-      return { error: 'Nu am putut salva abonarea. Te rugăm să încerci din nou.' }
+      return { error: 'We could not save your subscription. Please try again.' }
     }
 
     return { success: true }
@@ -68,7 +68,7 @@ export async function subscribeToNewsletter(formData: FormData) {
       return { success: true, alreadySubscribed: true }
     }
     console.error('Eroare abonare newsletter (vizitator):', error)
-    return { error: 'Nu am putut salva abonarea. Te rugăm să încerci din nou.' }
+    return { error: 'We could not save your subscription. Please try again.' }
   }
 
   return { success: true }

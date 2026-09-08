@@ -55,7 +55,7 @@ export async function login(formData: FormData) {
   const password = formData.get('password') as string
 
   if (!email || !password) {
-    return { error: 'E-mail și parolă sunt obligatorii.' }
+    return { error: 'E-mail and password are required.' }
   }
 
   // Acelasi motiv ca la inregistrare: o excepție neașteptată trebuie să devină
@@ -69,13 +69,13 @@ export async function login(formData: FormData) {
     if (error) {
       // Return friendly error messages
       if (error.message.includes('Invalid login credentials')) {
-        return { error: 'Date de conectare incorecte. Verifică e-mailul și parola.' }
+        return { error: 'Incorrect sign-in details. Check your e-mail and password.' }
       }
       return { error: error.message }
     }
   } catch (err) {
     console.error('Eroare neasteptata la autentificare:', err)
-    return { error: 'A apărut o problemă la autentificare. Te rugăm să încerci din nou.' }
+    return { error: 'There was a problem signing you in. Please try again.' }
   }
 
   // Sesiunea există de aici încolo, deci comenzile plasate anterior fără cont
@@ -96,15 +96,15 @@ export async function signup(formData: FormData) {
   const phone = formData.get('phone') as string
 
   if (!email || !password || !firstName || !lastName) {
-    return { error: 'Toate câmpurile obligatorii trebuie completate.' }
+    return { error: 'All required fields must be filled in.' }
   }
 
   if (password !== confirmPassword) {
-    return { error: 'Parolele nu coincid.' }
+    return { error: 'The passwords do not match.' }
   }
 
   if (password.length < 6) {
-    return { error: 'Parola trebuie să aibă cel puțin 6 caractere.' }
+    return { error: 'The password must be at least 6 characters long.' }
   }
 
   // Sign up with user metadata.
@@ -127,7 +127,7 @@ export async function signup(formData: FormData) {
 
     if (error) {
       if (error.message.includes('User already registered')) {
-        return { error: 'Acest e-mail este deja înregistrat.' }
+        return { error: 'This e-mail address is already registered.' }
       }
       return { error: error.message }
     }
@@ -135,7 +135,7 @@ export async function signup(formData: FormData) {
     signUpData = data
   } catch (err) {
     console.error('Eroare neasteptata la inregistrare:', err)
-    return { error: 'A apărut o problemă la crearea contului. Te rugăm să încerci din nou.' }
+    return { error: 'There was a problem creating your account. Please try again.' }
   }
 
   // Când confirmarea pe email este activă, Supabase nu spune că adresa există
@@ -143,7 +143,7 @@ export async function signup(formData: FormData) {
   // aflat cine are cont. Fără verificarea asta, cineva care se reînregistrează
   // ar fi trimis pe pagina principală ca și cum contul tocmai s-ar fi creat.
   if (signUpData?.user && signUpData.user.identities?.length === 0) {
-    return { error: 'Acest e-mail este deja înregistrat.' }
+    return { error: 'This e-mail address is already registered.' }
   }
 
   // Contul tocmai creat poate prelua comenzile plasate anterior cu același

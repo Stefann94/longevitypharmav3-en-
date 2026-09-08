@@ -72,10 +72,10 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Navigation Arrows (Positioned relative to the full viewport width) */}
-      <button className={`${styles.arrow} ${styles.arrowLeft}`} onClick={prevSlide} aria-label="Slide anterior">
+      <button className={`${styles.arrow} ${styles.arrowLeft}`} onClick={prevSlide} aria-label="Previous slide">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
-      <button className={`${styles.arrow} ${styles.arrowRight}`} onClick={nextSlide} aria-label="Următorul slide">
+      <button className={`${styles.arrow} ${styles.arrowRight}`} onClick={nextSlide} aria-label="Next slide">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
 
@@ -96,9 +96,9 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
 
             <div className={styles.actions} ref={actionsRef}>
               <Link href="/bestsellers" className={styles.ctaPrimary}>
-                Descoperă Produsele
+                Discover the Products
               </Link>
-              <Link href="/calitate" className={styles.ctaOutline}>Calitate & Ingrediente</Link>
+              <Link href="/calitate" className={styles.ctaOutline}>Quality & Ingredients</Link>
             </div>
           </div>
 
@@ -141,15 +141,15 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             <div className={styles.floatingBadges}>
               <div className={styles.badge}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                Formule curate
+                Clean formulas
               </div>
               <div className={styles.badge}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                Fără alergeni
+                Allergen free
               </div>
               <div className={styles.badge}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                Validat științific
+                Scientifically validated
               </div>
             </div>
           </div>

@@ -65,7 +65,7 @@ async function trimitePrinResend(mesaj: {
     return { trimis: false, motiv: 'lipseste RESEND_API_KEY' };
   }
 
-  const expeditor = Deno.env.get('EMAIL_EXPEDITOR') ?? 'Longevity Farma <onboarding@resend.dev>';
+  const expeditor = Deno.env.get('EMAIL_EXPEDITOR') ?? 'Longevity Pharma <onboarding@resend.dev>';
 
   const raspunsResend = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -131,7 +131,7 @@ Deno.serve(async (req) => {
       const safe = {
         name: escapeHtml(mesaj.name),
         email: escapeHtml(mesaj.email),
-        subject: escapeHtml(mesaj.subject || 'Fără subiect'),
+        subject: escapeHtml(mesaj.subject || 'No subject'),
         // Mesajul e scris pe mai multe rânduri într-un textarea; fără asta ar
         // ajunge un bloc compact în email.
         message: escapeHtml(mesaj.message).replace(/\r?\n/g, '<br />'),
@@ -145,12 +145,12 @@ Deno.serve(async (req) => {
 
       const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1a2b22;">
-      <h2 style="color: #2e8b57; margin-bottom: 4px;">Mesaj nou din formularul de contact</h2>
-      <p style="color: #777; font-size: 13px; margin-top: 0;">Primit pe ${primitLa}</p>
+      <h2 style="color: #2e8b57; margin-bottom: 4px;">New message from the contact form</h2>
+      <p style="color: #777; font-size: 13px; margin-top: 0;">Received on ${primitLa}</p>
 
       <table style="width: 100%; border-collapse: collapse; margin: 24px 0;">
         <tr>
-          <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #777; width: 110px;">Nume</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #777; width: 110px;">Name</td>
           <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600;">${safe.name}</td>
         </tr>
         <tr>
@@ -160,18 +160,18 @@ Deno.serve(async (req) => {
           </td>
         </tr>
         <tr>
-          <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #777;">Subiect</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #777;">Subject</td>
           <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600;">${safe.subject}</td>
         </tr>
       </table>
 
       <div style="background-color: #f4f8f1; border: 1px solid #d6e4d9; border-radius: 8px; padding: 18px;">
-        <div style="color: #777; font-size: 13px; margin-bottom: 10px;">Mesaj</div>
+        <div style="color: #777; font-size: 13px; margin-bottom: 10px;">Message</div>
         <div style="line-height: 1.6;">${safe.message}</div>
       </div>
 
       <p style="color: #777; font-size: 13px; margin-top: 24px;">
-        Poți răspunde direct la acest email: destinatarul va fi ${safe.name}.
+        You can reply directly to this email: it will go to ${safe.name}.
       </p>
     </div>
   `;
@@ -180,7 +180,7 @@ Deno.serve(async (req) => {
         to: destinatar,
         // Un simplu Reply în clientul de email răspunde persoanei, nu ție.
         replyTo: mesaj.email,
-        subject: `[Contact] ${mesaj.subject || 'Fără subiect'} — ${mesaj.name}`,
+        subject: `[Contact] ${mesaj.subject || 'No subject'} — ${mesaj.name}`,
         html,
       });
 
@@ -223,27 +223,27 @@ Deno.serve(async (req) => {
       <tr>
         <td style="padding: 10px; border-bottom: 1px solid #ddd;">${escapeHtml(item.product_name)}</td>
         <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">${item.quantity}</td>
-        <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">${item.price_at_time} Lei</td>
+        <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">${item.price_at_time} €</td>
       </tr>
     `
       )
       .join('');
 
     const prenume = escapeHtml(String(comanda.shipping_name ?? '').split(' ')[0]);
-    const transport = Number(comanda.shipping_cost) === 0 ? 'GRATUIT' : `${comanda.shipping_cost} Lei`;
+    const transport = Number(comanda.shipping_cost) === 0 ? 'FREE' : `${comanda.shipping_cost} €`;
 
     const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2e8b57;">Confirmare Comandă Longevity Farma</h2>
-        <p>Salut, <strong>${prenume}</strong>!</p>
-        <p>Îți mulțumim pentru comandă. Mai jos regăsești detaliile cumpărăturilor tale:</p>
+        <h2 style="color: #2e8b57;">Longevity Pharma Order Confirmation</h2>
+        <p>Hello, <strong>${prenume}</strong>!</p>
+        <p>Thank you for your order. Below are the details of your purchase:</p>
 
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
           <thead>
             <tr style="background-color: #f8f9fa;">
-              <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Produs</th>
-              <th style="padding: 10px; text-align: center; border-bottom: 2px solid #ddd;">Cantitate</th>
-              <th style="padding: 10px; text-align: right; border-bottom: 2px solid #ddd;">Preț/buc</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Product</th>
+              <th style="padding: 10px; text-align: center; border-bottom: 2px solid #ddd;">Quantity</th>
+              <th style="padding: 10px; text-align: right; border-bottom: 2px solid #ddd;">Unit price</th>
             </tr>
           </thead>
           <tbody>
@@ -251,20 +251,20 @@ Deno.serve(async (req) => {
           </tbody>
         </table>
 
-        <p style="text-align: right; font-size: 16px;">Transport: <strong>${transport}</strong></p>
-        <h3 style="text-align: right; color: #1a2b22;">Total: ${Number(comanda.total_amount).toFixed(2)} Lei</h3>
+        <p style="text-align: right; font-size: 16px;">Shipping: <strong>${transport}</strong></p>
+        <h3 style="text-align: right; color: #1a2b22;">Total: ${Number(comanda.total_amount).toFixed(2)} €</h3>
 
         <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 30px;">
-          <h4 style="margin-top: 0; color: #333;">Adresa de livrare:</h4>
+          <h4 style="margin-top: 0; color: #333;">Shipping address:</h4>
           <p style="margin: 0; color: #555;">${escapeHtml(comanda.shipping_address)}</p>
-          <p style="margin: 5px 0 0 0; color: #555;">Telefon: ${escapeHtml(comanda.shipping_phone)}</p>
+          <p style="margin: 5px 0 0 0; color: #555;">Phone: ${escapeHtml(comanda.shipping_phone)}</p>
         </div>
       </div>
     `;
 
     const rezultat = await trimitePrinResend({
       to: destinatar,
-      subject: `Confirmare Comandă #${String(comanda.id).split('-')[0]} - Longevity Farma`,
+      subject: `Order confirmation #${String(comanda.id).split('-')[0]} - Longevity Pharma`,
       html,
     });
 

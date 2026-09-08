@@ -60,7 +60,7 @@ export default function BestsellersClient({ products }: BestsellersClientProps) 
       <div className="container">
         {/* BREADCRUMBS */}
         <nav className={styles.breadcrumbs} style={{ paddingBottom: '16px' }}>
-          <Link href="/">Acasă</Link>
+          <Link href="/">Home</Link>
           <span className={styles.breadcrumbSep}>›</span>
           <span className={styles.breadcrumbCurrent}>Bestsellers</span>
         </nav>
@@ -78,8 +78,8 @@ export default function BestsellersClient({ products }: BestsellersClientProps) 
                 <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 8px 0' }}>
                   Bestsellers
                 </h1>
-                <p style={{ margin: '0 0 8px 0', fontSize: '1.1rem' }}>Descoperă calitatea supremă în fiecare supliment și atinge-ți potențialul maxim.</p>
-                <span style={{ fontSize: '0.95rem', fontWeight: 500, opacity: 0.8 }}>({products.length} produse)</span>
+                <p style={{ margin: '0 0 8px 0', fontSize: '1.1rem' }}>Discover supreme quality in every supplement and reach your full potential.</p>
+                <span style={{ fontSize: '0.95rem', fontWeight: 500, opacity: 0.8 }}>({products.length} products)</span>
               </div>
             </div>
         </section>
@@ -88,27 +88,27 @@ export default function BestsellersClient({ products }: BestsellersClientProps) 
         {products.length > 0 && (
           <div className={styles.toolbar}>
             <div className={styles.productCount}>
-              Afișăm <strong>{products.length}</strong> produse
+              Showing <strong>{products.length}</strong> products
             </div>
             <div className={styles.sortOptions}>
-              <span className={styles.sortLabel}>Sortează:</span>
+              <span className={styles.sortLabel}>Sort by:</span>
               <button
                 className={`${styles.sortBtn} ${sortOption === 'rank' ? styles.sortBtnActive : ''}`}
                 onClick={() => setSortOption('rank')}
               >
-                Top Recomandate
+                Top Rated
               </button>
               <button
                 className={`${styles.sortBtn} ${sortOption === 'price-asc' ? styles.sortBtnActive : ''}`}
                 onClick={() => setSortOption('price-asc')}
               >
-                Preț ↑
+                Price ↑
               </button>
               <button
                 className={`${styles.sortBtn} ${sortOption === 'price-desc' ? styles.sortBtnActive : ''}`}
                 onClick={() => setSortOption('price-desc')}
               >
-                Preț ↓
+                Price ↓
               </button>
               <button
                 className={`${styles.sortBtn} ${sortOption === 'name-asc' ? styles.sortBtnActive : ''}`}

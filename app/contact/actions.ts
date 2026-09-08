@@ -24,13 +24,13 @@ export async function submitContactMessage(formData: FormData) {
   const message = formData.get('message')?.toString().trim();
 
   if (!name || !email || !message) {
-    return { success: false, error: 'Te rugăm să completezi toate câmpurile obligatorii.' };
+    return { success: false, error: 'Please fill in all required fields.' };
   }
 
   // Validarea din formular este doar în browser. Emailul ajunge în antetul
   // Reply-To, deci o valoare stricată ar face ca trimiterea să fie respinsă.
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { success: false, error: 'Adresa de e-mail nu pare validă.' };
+    return { success: false, error: 'That e-mail address does not look valid.' };
   }
 
   const supabase = createClient();
@@ -42,7 +42,7 @@ export async function submitContactMessage(formData: FormData) {
 
   if (error) {
     console.error('Failed to submit contact message:', error);
-    return { success: false, error: 'A apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou.' };
+    return { success: false, error: 'There was a problem sending your message. Please try again.' };
   }
 
   // Abia după ce mesajul e salvat în siguranță. Eșecul notificării este

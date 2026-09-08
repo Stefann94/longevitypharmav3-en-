@@ -3,8 +3,8 @@ import PacheteClient from "./PacheteClient";
 
 
 export const metadata = {
-  title: 'Pachete & Oferte | Longevity Pharma',
-  description: 'Descoperă protocoalele și pachetele noastre premium de suplimente cu reducere garantată.',
+  title: 'Bundles & Offers | Longevity Pharma',
+  description: 'Discover our premium supplement protocols and bundles, with guaranteed savings.',
 };
 
 export default async function PachetePage() {

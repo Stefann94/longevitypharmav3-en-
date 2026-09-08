@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import SearchResultsClient from './SearchResultsClient';
 
 export const metadata = {
-  title: 'Rezultatele căutării | Longevity Pharma',
+  title: 'Search results | Longevity Pharma',
   // Pagina depinde de ce caută fiecare vizitator, deci nu are ce oferi
   // motoarelor de căutare.
   robots: { index: false, follow: true },
