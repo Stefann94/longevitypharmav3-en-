@@ -30,12 +30,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     .single();
 
   if (!category) {
-    return { title: 'Categorie negăsită | Longevity Pharma' };
+    return { title: 'Category not found | Longevity Pharma' };
   }
 
   const description =
     category.description ||
-    `Descoperă gama ${category.name} de la Longevity Pharma: suplimente premium, formulate științific. Livrare rapidă și transport gratuit peste 200 RON.`;
+    `Discover the ${category.name} range from Longevity Pharma: premium, scientifically formulated supplements. Fast delivery and free shipping over 40 €.`;
 
   return {
     title: `${category.name} | Longevity Pharma`,

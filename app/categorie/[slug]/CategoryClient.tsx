@@ -148,9 +148,9 @@ export default function CategoryClient({ category, products, allCategories }: Ca
       <div className="container">
         {/* BREADCRUMBS */}
         <nav className={styles.breadcrumbs}>
-          <Link href="/">Acasă</Link>
+          <Link href="/">Home</Link>
           <span className={styles.breadcrumbSep}>›</span>
-          <Link href="/">Categorii</Link>
+          <Link href="/">Categories</Link>
           <span className={styles.breadcrumbSep}>›</span>
           <span className={styles.breadcrumbCurrent}>{category.name}</span>
         </nav>
@@ -252,7 +252,7 @@ export default function CategoryClient({ category, products, allCategories }: Ca
                 </span>
                 <input
                   type="text"
-                  placeholder="Caută brand..."
+                  placeholder="Search brand…"
                   className={styles.brandSearchInput}
                   value={brandSearchTerm}
                   onChange={(e) => setBrandSearchTerm(e.target.value)}
@@ -278,7 +278,7 @@ export default function CategoryClient({ category, products, allCategories }: Ca
             {/* PREȚ */}
             <div className={styles.filterSection}>
               <div className={styles.filterTitle}>
-                Preț
+                Price
                 <span className={styles.filterToggle}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9" /></svg>
                 </span>
@@ -330,33 +330,33 @@ export default function CategoryClient({ category, products, allCategories }: Ca
             {/* TOOLBAR */}
             <div className={styles.toolbar}>
               <div className={styles.productCount}>
-                Afișăm <strong>{sortedProducts.length}</strong> produse
+                Showing <strong>{sortedProducts.length}</strong> products
               </div>
               <div className={styles.sortOptions}>
-                <span className={styles.sortLabel}>Sortează:</span>
+                <span className={styles.sortLabel}>Sort by:</span>
                 <button
                   className={`${styles.sortBtn} ${sortBy === 'popular' ? styles.sortBtnActive : ''}`}
                   onClick={() => setSortBy('popular')}
                 >
-                  Populare
+                  Popular
                 </button>
                 <button
                   className={`${styles.sortBtn} ${sortBy === 'price_asc' ? styles.sortBtnActive : ''}`}
                   onClick={() => setSortBy('price_asc')}
                 >
-                  Preț ↑
+                  Price ↑
                 </button>
                 <button
                   className={`${styles.sortBtn} ${sortBy === 'price_desc' ? styles.sortBtnActive : ''}`}
                   onClick={() => setSortBy('price_desc')}
                 >
-                  Preț ↓
+                  Price ↓
                 </button>
                 <button
                   className={`${styles.sortBtn} ${sortBy === 'newest' ? styles.sortBtnActive : ''}`}
                   onClick={() => setSortBy('newest')}
                 >
-                  Noi
+                  New
                 </button>
               </div>
             </div>
@@ -365,8 +365,8 @@ export default function CategoryClient({ category, products, allCategories }: Ca
             {sortedProducts.length === 0 ? (
               <div className={styles.emptyState}>
                 <div className={styles.emptyStateIcon}>🔬</div>
-                <p>Momentan nu avem produse disponibile în această categorie.</p>
-                <p style={{ fontSize: '0.9rem', marginTop: '8px' }}>Te rugăm să revii în curând!</p>
+                <p>We have no products available in this category right now.</p>
+                <p style={{ fontSize: '0.9rem', marginTop: '8px' }}>Please check back soon.</p>
               </div>
             ) : (
               <div className={styles.productsGrid}>
@@ -413,13 +413,13 @@ export default function CategoryClient({ category, products, allCategories }: Ca
 /* Category descriptions dictionary */
 function getCategoryDescription(slug: string): string {
   const descriptions: Record<string, string> = {
-    'longevitate': 'Explorează gama noastră de suplimente premium pentru longevitate și anti-aging. Formule avansate bazate pe cercetări științifice recente, create pentru regenerare celulară și vitalitate de durată.',
-    'focus': 'Suplimente premium pentru performanță mentală superioară. Nootropice și extracte standardizate care susțin concentrarea, claritatea mentală și energia cognitivă fără crash.',
-    'somn': 'Descoperă secretul unui somn restaurativ. Formule naturale care promovează adormirea rapidă, somnul adânc și reducerea stresului pentru o recuperare completă.',
-    'pachete': 'Protocoale complete și pachete sinergice create de specialiști. Combină mai multe suplimente într-un singur program optimizat pentru rezultate maxime.',
-    'esentiale': 'Nutrienții fundamentali pe care corpul tău îi necesită zilnic. Vitamine, minerale și cofactori esențiali în formele cele mai biodisponibile.',
-    'imunitate': 'Întărește bariera ta naturală de protecție. Antioxidanți puternici, vitamine și extracte botanice care susțin un sistem imunitar robust.',
-    'energie': 'Energie curată și susținută pe tot parcursul zilei. Fără crash, fără stimulente agresive — doar nutrienți care susțin producția naturală de energie celulară.',
+    'longevitate': 'Explore our range of premium supplements for longevity and anti-aging. Advanced formulas grounded in recent scientific research, created for cellular regeneration and lasting vitality.',
+    'focus': 'Premium supplements for superior mental performance. Nootropics and standardized extracts that support concentration, mental clarity and cognitive energy, with no crash.',
+    'somn': 'Discover the secret of restorative sleep. Natural formulas that help you fall asleep faster, sleep more deeply and reduce stress for a complete recovery.',
+    'pachete': 'Complete protocols and synergistic bundles created by specialists. Combine several supplements into a single programme optimized for maximum results.',
+    'esentiale': 'The fundamental nutrients your body needs every day. Vitamins, minerals and essential cofactors in their most bioavailable forms.',
+    'imunitate': 'Strengthen your natural line of defense. Powerful antioxidants, vitamins and botanical extracts that support a robust immune system.',
+    'energie': 'Clean, sustained energy throughout the day. No crash, no aggressive stimulants — only nutrients that support your natural cellular energy production.',
   };
-  return descriptions[slug] || 'Explorează colecția noastră de suplimente premium, selectate cu grijă pentru un stil de viață sănătos și echilibrat.';
+  return descriptions[slug] || 'Explore our collection of premium supplements, carefully selected for a healthy, balanced lifestyle.';
 }

@@ -24,7 +24,7 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = await getJournalArticleBySlug(slug);
-  if (!article) return { title: 'Articol inexistent' };
+  if (!article) return { title: 'Article not found' };
 
   return {
     title: `${article.title} | Longevity Pharma`,
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('ro-RO', {
+  return new Date(dateStr).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
@@ -74,9 +74,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         
         {/* Breadcrumb */}
         <div className={styles.breadcrumb}>
-          <Link href="/">Acasă</Link>
+          <Link href="/">Home</Link>
           <span className={styles.breadcrumbSep}>/</span>
-          <Link href="/jurnal">Jurnal Științific</Link>
+          <Link href="/jurnal">Science Journal</Link>
           <span className={styles.breadcrumbSep}>/</span>
           <span className={styles.breadcrumbCurrent}>{article.title}</span>
         </div>
@@ -133,7 +133,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {/* Share / Back */}
         <div className={styles.articleFooter}>
           <Link href="/jurnal" className={styles.backBtn}>
-            &larr; Înapoi la Jurnal
+            &larr; Back to the Journal
           </Link>
         </div>
       </article>
@@ -141,7 +141,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {/* Recomandari produse */}
       <div className={styles.recommendedSection}>
         <ProductSection 
-          title="Produse recomandate pentru tine" 
+          title="Recommended products for you"
           products={recommendedProducts || []} 
         />
       </div>

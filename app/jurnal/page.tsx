@@ -5,13 +5,14 @@ import { getJournalArticles, JournalArticle } from './actions';
 import styles from './Jurnal.module.css';
 
 export const metadata = {
-  title: 'Jurnal Științific | Longevity Pharma',
-  description: 'Informații susținute de știință despre medicină preventivă, anti-aging, ingrediente și protocoale de sănătate.',
+  title: 'Science Journal | Longevity Pharma',
+  description: 'Science-backed information on preventive medicine, anti-aging, ingredients and health protocols.',
 };
 
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('ro-RO', {
+  // en-GB, ca data sa iasa „8 September 2026", nu „September 8, 2026".
+  return new Date(dateStr).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
@@ -25,8 +26,8 @@ export default async function JurnalPage() {
     return (
       <div className={styles.pageWrapper}>
         <div className={styles.container}>
-          <h1 className={styles.pageTitle}>Jurnal Științific</h1>
-          <p className={styles.emptyText}>Momentan nu există articole publicate.</p>
+          <h1 className={styles.pageTitle}>Science Journal</h1>
+          <p className={styles.emptyText}>There are no published articles at the moment.</p>
         </div>
       </div>
     );
@@ -40,9 +41,9 @@ export default async function JurnalPage() {
       <div className={styles.container}>
         
         <div className={styles.header}>
-          <h1 className={styles.pageTitle}>Jurnal Științific</h1>
+          <h1 className={styles.pageTitle}>Science Journal</h1>
           <p className={styles.pageSubtitle}>
-            Medicină preventivă, studii clinice și protocoale de longevitate explicate de experți.
+            Preventive medicine, clinical studies and longevity protocols, explained by experts.
           </p>
         </div>
 
@@ -78,7 +79,7 @@ export default async function JurnalPage() {
         {/* Grid Articles */}
         {gridArticles.length > 0 && (
           <div className={styles.gridSection}>
-            <h3 className={styles.sectionTitle}>Ultimele Articole</h3>
+            <h3 className={styles.sectionTitle}>Latest articles</h3>
             <div className={styles.articlesGrid}>
               {gridArticles.map((article) => (
                 <Link key={article.id} href={`/jurnal/${article.slug}`} className={styles.cardLink}>
@@ -121,9 +122,9 @@ export default async function JurnalPage() {
               className={styles.promoBannerImage}
             />
             <div className={styles.promoBannerOverlay}>
-              <h3>Performanță Mentală Absolută</h3>
-              <p>Descoperă noile extracte standardizate pentru focus și energie curată.</p>
-              <span className={styles.promoBannerBtn}>Vezi Colecția</span>
+              <h3>Absolute Mental Performance</h3>
+              <p>Discover our new standardized extracts for focus and clean energy.</p>
+              <span className={styles.promoBannerBtn}>View Collection</span>
             </div>
           </a>
         </section>

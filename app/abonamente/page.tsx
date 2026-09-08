@@ -3,8 +3,8 @@ import Link from 'next/link';
 import styles from './Abonamente.module.css';
 
 export const metadata = {
-  title: 'Abonamente | Longevity Pharma',
-  description: 'Alege planul de abonament care ți se potrivește și bucură-te de reduceri și beneficii exclusive la suplimentele tale preferate.',
+  title: 'Subscriptions | Longevity Pharma',
+  description: 'Choose the subscription plan that suits you and enjoy discounts and exclusive benefits on your favorite supplements.',
 };
 
 export default function AbonamentePage() {
@@ -14,16 +14,16 @@ export default function AbonamentePage() {
         
         {/* BREADCRUMBS */}
         <nav className={styles.breadcrumbs}>
-          <Link href="/">Acasă</Link>
+          <Link href="/">Home</Link>
           <span className={styles.breadcrumbSep}>›</span>
-          <span className={styles.breadcrumbCurrent}>Abonamente</span>
+          <span className={styles.breadcrumbCurrent}>Subscriptions</span>
         </nav>
 
         {/* TITLU SIMPLU CENTRAT */}
         <div className={styles.headerSection}>
-          <h1 className={styles.pageTitle}>Abonamente</h1>
+          <h1 className={styles.pageTitle}>Subscriptions</h1>
           <p className={styles.pageSubtitle}>
-            Alege planul potrivit pentru obiectivele tale de sănătate. Flexibilitate totală, anulezi oricând.
+            Choose the plan that fits your health goals. Fully flexible — cancel any time.
           </p>
         </div>
 
@@ -37,17 +37,17 @@ export default function AbonamentePage() {
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
               </svg>
             </div>
-            <h3 className={styles.cardTitle}>Abonament Lunar</h3>
+            <h3 className={styles.cardTitle}>Monthly plan</h3>
             <p className={styles.cardDesc}>
-              Ideal pentru a testa produsele noastre și a-ți construi o rutină zilnică de sănătate.
+              Ideal for trying our products and building a daily health routine.
             </p>
             <ul className={styles.benefitsList}>
-              <li>Reducere <strong>10%</strong> la fiecare comandă</li>
-              <li>Livrare gratuită (peste 200 RON)</li>
-              <li>Reînnoire automată la 30 de zile</li>
+              <li><strong>10%</strong> off every order</li>
+              <li>Free shipping (over 40 €)</li>
+              <li>Renews automatically every 30 days</li>
             </ul>
             <div className={styles.cardFooter}>
-              <button className={styles.actionBtn}>Alege planul</button>
+              <button className={styles.actionBtn}>Choose this plan</button>
             </div>
           </div>
 
@@ -58,17 +58,17 @@ export default function AbonamentePage() {
                 <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line>
               </svg>
             </div>
-            <h3 className={styles.cardTitle}>Pachet Trimestrial</h3>
+            <h3 className={styles.cardTitle}>Quarterly plan</h3>
             <p className={styles.cardDesc}>
-              Alegerea populară. O sursă constantă de nutrienți pentru rezultate vizibile pe termen mediu.
+              The popular choice. A steady supply of nutrients for visible results over the medium term.
             </p>
             <ul className={styles.benefitsList}>
-              <li>Reducere <strong>15%</strong> la fiecare comandă</li>
-              <li>Livrare gratuită inclusă</li>
-              <li>Reînnoire automată la 3 luni</li>
+              <li><strong>15%</strong> off every order</li>
+              <li>Free shipping included</li>
+              <li>Renews automatically every 3 months</li>
             </ul>
             <div className={styles.cardFooter}>
-              <button className={styles.actionBtn}>Alege planul</button>
+              <button className={styles.actionBtn}>Choose this plan</button>
             </div>
           </div>
 
@@ -79,17 +79,17 @@ export default function AbonamentePage() {
                 <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
               </svg>
             </div>
-            <h3 className={styles.cardTitle}>Pachet Semestrial</h3>
+            <h3 className={styles.cardTitle}>Half-yearly plan</h3>
             <p className={styles.cardDesc}>
-              Dedicat celor care au integrat perfect suplimentele în stilul lor de viață biohacking.
+              For those who have fully built supplements into their biohacking lifestyle.
             </p>
             <ul className={styles.benefitsList}>
-              <li>Reducere <strong>20%</strong> la fiecare comandă</li>
-              <li>Livrare gratuită inclusă</li>
-              <li>Acces anticipat la produse noi</li>
+              <li><strong>20%</strong> off every order</li>
+              <li>Free shipping included</li>
+              <li>Early access to new products</li>
             </ul>
             <div className={styles.cardFooter}>
-              <button className={styles.actionBtn}>Alege planul</button>
+              <button className={styles.actionBtn}>Choose this plan</button>
             </div>
           </div>
 
@@ -100,18 +100,18 @@ export default function AbonamentePage() {
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
             </div>
-            <h3 className={styles.cardTitle}>Protocol VIP (Anual)</h3>
+            <h3 className={styles.cardTitle}>VIP Protocol (yearly)</h3>
             <p className={styles.cardDesc}>
-              Nivelul suprem de longevitate. Fără grija stocurilor timp de un an întreg, plus extra beneficii.
+              The highest level of longevity. No worrying about running out for a whole year, plus extra benefits.
             </p>
             <ul className={styles.benefitsList}>
-              <li>Reducere <strong>25%</strong> la fiecare comandă</li>
-              <li>Livrare gratuită inclusă</li>
-              <li>Consultanță și suport prioritar</li>
-              <li>Cadouri surpriză periodice</li>
+              <li><strong>25%</strong> off every order</li>
+              <li>Free shipping included</li>
+              <li>Consultation and priority support</li>
+              <li>Occasional surprise gifts</li>
             </ul>
             <div className={styles.cardFooter}>
-              <button className={styles.actionBtnVip}>Devino VIP</button>
+              <button className={styles.actionBtnVip}>Become VIP</button>
             </div>
           </div>
 
