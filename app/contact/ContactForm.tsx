@@ -12,10 +12,10 @@ export default function ContactForm() {
   });
   
   const subjectOptions = [
-    'Suport Comandă',
-    'Întrebare Medicală / Suplimente',
-    'Colaborare B2B / Distribuție',
-    'Altele'
+    'Order support',
+    'Medical / supplement question',
+    'B2B partnership / distribution',
+    'Other'
   ];
   
   const [subject, setSubject] = useState(subjectOptions[0]);
@@ -44,10 +44,10 @@ export default function ContactForm() {
     const result = await submitContactMessage(formData);
 
     if (result.success) {
-      setStatus({ type: 'success', message: 'Mesajul tău a fost trimis cu succes! Te vom contacta în scurt timp.' });
+      setStatus({ type: 'success', message: 'Your message has been sent. We will get back to you shortly.' });
       (e.target as HTMLFormElement).reset();
     } else {
-      setStatus({ type: 'error', message: result.error || 'A apărut o eroare.' });
+      setStatus({ type: 'error', message: result.error || 'Something went wrong.' });
     }
     
     setIsPending(false);
@@ -56,7 +56,7 @@ export default function ContactForm() {
   return (
     <form className={authStyles.classicForm} onSubmit={handleSubmit}>
       <div className={authStyles.formSection}>
-        <h2>Trimite un mesaj</h2>
+        <h2>Send us a message</h2>
         
         {status.type === 'success' && (
           <div style={{ backgroundColor: '#e6f4ea', color: '#1e4620', padding: '12px 16px', borderRadius: '4px', marginBottom: '20px', fontSize: '0.95rem' }}>
@@ -71,7 +71,7 @@ export default function ContactForm() {
         )}
 
         <div className={authStyles.formGroup}>
-          <label htmlFor="name">Nume complet <span>*</span></label>
+          <label htmlFor="name">Full name <span>*</span></label>
           <input type="text" id="name" name="name" required disabled={isPending} />
         </div>
 
@@ -81,7 +81,7 @@ export default function ContactForm() {
         </div>
 
         <div className={authStyles.formGroup} style={{ position: 'relative' }} ref={dropdownRef}>
-          <label>Subiect <span>*</span></label>
+          <label>Subject <span>*</span></label>
           
           <input type="hidden" name="subject" value={subject} />
           
@@ -159,13 +159,13 @@ export default function ContactForm() {
         </div>
 
         <div className={authStyles.formGroup}>
-          <label htmlFor="message">Mesaj <span>*</span></label>
+          <label htmlFor="message">Message <span>*</span></label>
           <textarea id="message" name="message" required disabled={isPending} style={{ width: '100%', padding: '12px 14px', border: '1px solid #ccc', borderRadius: '4px', minHeight: '150px', fontFamily: 'inherit' }}></textarea>
         </div>
 
         <div className={authStyles.formActions}>
           <button type="submit" className={authStyles.submitBtn} disabled={isPending} style={{ width: '100%' }}>
-            {isPending ? 'Se trimite...' : 'Trimite mesaj'}
+            {isPending ? 'Sending…' : 'Send message'}
           </button>
         </div>
       </div>

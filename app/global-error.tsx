@@ -16,7 +16,7 @@ export default function GlobalError({
   unstable_retry: () => void;
 }) {
   return (
-    <html lang="ro">
+    <html lang="en">
       <body
         style={{
           margin: 0,
@@ -31,7 +31,7 @@ export default function GlobalError({
           lineHeight: 1.6,
         }}
       >
-        <title>Eroare | Longevity Pharma</title>
+        <title>Error | Longevity Pharma</title>
 
         <div
           style={{
@@ -66,10 +66,10 @@ export default function GlobalError({
           </div>
 
           <h1 style={{ fontSize: '1.7rem', fontWeight: 700, marginBottom: '14px' }}>
-            Site-ul întâmpină o problemă
+            The site is having a problem
           </h1>
           <p style={{ color: '#5c6f61', marginBottom: '32px' }}>
-            Lucrăm la remedierea ei. Te rugăm să încerci din nou în câteva momente.
+            We are working on it. Please try again in a few moments.
           </p>
 
           <button
@@ -87,12 +87,12 @@ export default function GlobalError({
               cursor: 'pointer',
             }}
           >
-            Reîncarcă pagina
+            Reload the page
           </button>
 
           {error.digest && (
             <div style={{ marginTop: '20px', fontSize: '0.72rem', color: '#a3b0a7', fontFamily: 'monospace' }}>
-              Cod referință: {error.digest}
+              Reference code: {error.digest}
             </div>
           )}
         </div>

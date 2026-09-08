@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styles from './StatusPage.module.css';
 
 export const metadata = {
-  title: 'Pagină negăsită | Longevity Pharma',
+  title: 'Page not found | Longevity Pharma',
   // Paginile de eroare nu trebuie indexate de motoarele de căutare
   robots: { index: false, follow: true },
 };
@@ -18,30 +18,30 @@ export default function NotFound() {
           </svg>
         </div>
 
-        <div className={styles.code}>Eroare 404</div>
-        <h1 className={styles.title}>Pagina căutată nu există</h1>
+        <div className={styles.code}>Error 404</div>
+        <h1 className={styles.title}>This page does not exist</h1>
         <p className={styles.description}>
-          Este posibil ca adresa să fie greșită sau ca produsul să nu mai fie
-          disponibil. Îți lăsăm mai jos câteva direcții utile.
+          The address may be wrong, or the product may no longer be available.
+          Here are a few useful directions instead.
         </p>
 
         <div className={styles.actions}>
           <Link href="/" className={styles.primaryButton}>
-            Înapoi la pagina principală
+            Back to the homepage
           </Link>
           <Link href="/contact" className={styles.secondaryLink}>
-            Contactează-ne
+            Contact us
           </Link>
         </div>
 
         <div className={styles.suggestions}>
-          <div className={styles.suggestionsTitle}>Categorii populare</div>
+          <div className={styles.suggestionsTitle}>Popular categories</div>
           <div className={styles.suggestionsList}>
             <Link href="/bestsellers" className={styles.suggestionChip}>Bestsellers</Link>
-            <Link href="/categorie/longevitate" className={styles.suggestionChip}>Longevitate</Link>
-            <Link href="/categorie/imunitate" className={styles.suggestionChip}>Imunitate</Link>
+            <Link href="/categorie/longevitate" className={styles.suggestionChip}>Longevity</Link>
+            <Link href="/categorie/imunitate" className={styles.suggestionChip}>Immunity</Link>
             <Link href="/categorie/focus" className={styles.suggestionChip}>Focus</Link>
-            <Link href="/jurnal" className={styles.suggestionChip}>Jurnal</Link>
+            <Link href="/jurnal" className={styles.suggestionChip}>Journal</Link>
           </div>
         </div>
       </div>

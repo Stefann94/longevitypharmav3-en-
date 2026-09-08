@@ -38,7 +38,7 @@ export default function MedicalPage() {
 
   return (
     <div>
-      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Informații <strong>medicale</strong></h2>
+      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Medical <strong>details</strong></h2>
       {/* Formularul își copiază valorile inițiale în starea proprie la prima
           randare, deci nu îl afișăm înainte să avem datele — altfel ar rămâne gol. */}
       {initialData && <MedicalForm initialData={initialData} />}

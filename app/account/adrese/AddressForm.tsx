@@ -94,7 +94,7 @@ export default function AddressForm({ type, title, description, initialData }: A
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            {hasData ? 'Editează adresa' : 'Adaugă adresa'}
+            {hasData ? 'Edit address' : 'Add address'}
           </button>
         )}
       </div>
@@ -110,11 +110,11 @@ export default function AddressForm({ type, title, description, initialData }: A
           {error && <div style={{ color: '#e53935', fontSize: '0.9rem' }}>{error}</div>}
 
           <div>
-            <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Stradă și Număr</label>
-            <input 
-              type="text" 
+            <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Street and number</label>
+            <input
+              type="text"
               name="street"
-              placeholder="Ex: Str. Florilor, Nr. 10, Ap. 4" 
+              placeholder="e.g. 10 Florilor St., Flat 4"
               style={inputStyle}
               value={formData.street}
               onChange={handleChange}
@@ -125,11 +125,11 @@ export default function AddressForm({ type, title, description, initialData }: A
           
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Oraș</label>
-              <input 
-                type="text" 
+              <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>City</label>
+              <input
+                type="text"
                 name="city"
-                placeholder="Ex: București" 
+                placeholder="e.g. Bucharest"
                 style={inputStyle} 
                 value={formData.city}
                 onChange={handleChange}
@@ -138,11 +138,11 @@ export default function AddressForm({ type, title, description, initialData }: A
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Județ</label>
-              <input 
-                type="text" 
+              <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>County / Region</label>
+              <input
+                type="text"
                 name="county"
-                placeholder="Ex: Ilfov" 
+                placeholder="e.g. Ilfov"
                 style={inputStyle} 
                 value={formData.county}
                 onChange={handleChange}
@@ -153,11 +153,11 @@ export default function AddressForm({ type, title, description, initialData }: A
           </div>
 
           <div>
-            <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Cod Poștal</label>
-            <input 
-              type="text" 
+            <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>Postal code</label>
+            <input
+              type="text"
               name="zip"
-              placeholder="Ex: 012345" 
+              placeholder="e.g. 012345"
               style={inputStyle} 
               value={formData.zip}
               onChange={handleChange}
@@ -168,7 +168,7 @@ export default function AddressForm({ type, title, description, initialData }: A
           {isEditing && (
             <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
               <button type="submit" className={styles.actionLink} disabled={loading}>
-                {loading ? 'Se salvează...' : 'Salvează adresa'}
+                {loading ? 'Saving…' : 'Save address'}
               </button>
               <button 
                 type="button" 
@@ -184,7 +184,7 @@ export default function AddressForm({ type, title, description, initialData }: A
                 }} 
                 style={{ padding: '10px 20px', background: 'transparent', border: '1px solid #ccc', borderRadius: '8px', cursor: 'pointer', color: '#666', fontWeight: 500 }}
               >
-                Anulează
+                Cancel
               </button>
             </div>
           )}

@@ -40,7 +40,7 @@ export default function PersonalInfoPage() {
 
   return (
     <div>
-      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Informații <strong>cont</strong></h2>
+      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Account <strong>details</strong></h2>
       {initialData && <ProfileForm initialData={initialData} />}
     </div>
   );

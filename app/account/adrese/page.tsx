@@ -46,7 +46,7 @@ export default function AddressesPage() {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-        <h2 className={styles.heroTitle} style={{ marginBottom: 0 }}>Agenda de <strong>adrese</strong></h2>
+        <h2 className={styles.heroTitle} style={{ marginBottom: 0 }}>Address <strong>book</strong></h2>
       </div>
       
       {/* Formularele își preiau valorile inițiale o singură dată, la montare,
@@ -55,15 +55,15 @@ export default function AddressesPage() {
         <div className={styles.dashboardGrid}>
           <AddressForm 
             type="shipping"
-            title="Adresă de livrare implicită"
-            description="Nu ai setat nicio adresă de livrare. Adaugă o adresă pentru o finalizare mai rapidă a comenzilor viitoare."
+            title="Default shipping address"
+            description="You have not set a shipping address yet. Add one to check out faster on future orders."
             initialData={shipping}
           />
 
           <AddressForm 
             type="billing"
-            title="Adresă de facturare implicită"
-            description="Nu ai setat nicio adresă de facturare. Aceasta va fi folosită pentru emiterea facturilor fiscale."
+            title="Default billing address"
+            description="You have not set a billing address yet. It will be used when issuing your invoices."
             initialData={billing}
           />
         </div>

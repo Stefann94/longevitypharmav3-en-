@@ -21,11 +21,11 @@ export default function LoginPage() {
   return (
     <main className={`${styles.pageWrapper} ${styles.loginPageWrapper}`}>
       <div className={styles.loginContainer}>
-        <h1 className={styles.pageTitle}>Autentificare Cont</h1>
+        <h1 className={styles.pageTitle}>Sign in to your account</h1>
         
         <form action={handleSubmit} className={styles.classicForm}>
           <div className={styles.formSection}>
-            <h2>Date de conectare</h2>
+            <h2>Sign-in details</h2>
             
             {error && (
               <div className={styles.errorAlert}>
@@ -39,14 +39,14 @@ export default function LoginPage() {
             </div>
             
             <div className={styles.formGroup}>
-              <label htmlFor="password">Parolă <span>*</span></label>
+              <label htmlFor="password">Password <span>*</span></label>
               <input type="password" id="password" name="password" required disabled={isPending} />
             </div>
             
             <div className={styles.formActions}>
-              <a href="/signup" className={styles.backLink}>Creare cont nou</a>
+              <a href="/signup" className={styles.backLink}>Create a new account</a>
               <button type="submit" className={styles.submitBtn} disabled={isPending}>
-                {isPending ? 'Se autentifică...' : 'Autentificare'}
+                {isPending ? 'Signing in…' : 'Sign in'}
               </button>
             </div>
           </div>

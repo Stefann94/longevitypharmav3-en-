@@ -30,7 +30,7 @@ export default function SignupPage() {
 
   return (
     <main className={styles.pageWrapper}>
-      <h1 className={styles.pageTitle}>Creare Cont Nou</h1>
+      <h1 className={styles.pageTitle}>Create a new account</h1>
       
       {error && (
         <div className={styles.errorAlert} style={{ marginBottom: '20px' }}>
@@ -42,26 +42,26 @@ export default function SignupPage() {
         <div className={styles.formColumns}>
           
           <div className={styles.formSection}>
-            <h2>Informații personale</h2>
-            
+            <h2>Personal details</h2>
+
             <div className={styles.formGroup}>
-              <label htmlFor="firstName">Prenume <span>*</span></label>
+              <label htmlFor="firstName">First name <span>*</span></label>
               <input type="text" id="firstName" name="firstName" required disabled={isPending} />
             </div>
-            
+
             <div className={styles.formGroup}>
-              <label htmlFor="lastName">Nume de familie <span>*</span></label>
+              <label htmlFor="lastName">Last name <span>*</span></label>
               <input type="text" id="lastName" name="lastName" required disabled={isPending} />
             </div>
-            
+
             <div className={styles.formGroup}>
-              <label htmlFor="phone">Număr de telefon</label>
+              <label htmlFor="phone">Phone number</label>
               <input type="tel" id="phone" name="phone" disabled={isPending} />
             </div>
           </div>
 
           <div className={styles.formSection}>
-            <h2>Date de logare</h2>
+            <h2>Sign-in details</h2>
             
             <div className={styles.formGroup}>
               <label htmlFor="email">E-mail <span>*</span></label>
@@ -69,12 +69,12 @@ export default function SignupPage() {
             </div>
             
             <div className={styles.formGroup}>
-              <label htmlFor="password">Parolă <span>*</span></label>
+              <label htmlFor="password">Password <span>*</span></label>
               <input type="password" id="password" name="password" required disabled={isPending} />
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="confirmPassword">Confirmare parolă <span>*</span></label>
+              <label htmlFor="confirmPassword">Confirm password <span>*</span></label>
               <input type="password" id="confirmPassword" name="confirmPassword" required disabled={isPending} />
             </div>
           </div>
@@ -82,9 +82,9 @@ export default function SignupPage() {
         </div>
         
         <div className={styles.formActions}>
-          <a href="/login" className={styles.backLink}>Înapoi</a>
+          <a href="/login" className={styles.backLink}>Back</a>
           <button type="submit" className={styles.submitBtn} disabled={isPending}>
-            {isPending ? 'Se creează contul...' : 'Creează cont'}
+            {isPending ? 'Creating your account…' : 'Create account'}
           </button>
         </div>
       </form>

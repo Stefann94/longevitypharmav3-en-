@@ -32,12 +32,12 @@ export default function NewsletterPage() {
 
   return (
     <div>
-      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Abonare la <strong>newsletter</strong></h2>
-      
+      <h2 className={styles.heroTitle} style={{ marginBottom: '30px' }}>Newsletter <strong>subscription</strong></h2>
+
       <div className={styles.premiumCard}>
-        <div className={styles.cardHeader}>Setări Comunicare</div>
+        <div className={styles.cardHeader}>Communication settings</div>
         <p className={styles.cardContent} style={{ marginBottom: '30px' }}>
-          Abonează-te pentru a primi cele mai noi articole despre longevitate, oferte exclusive și noutăți despre produsele noastre.
+          Subscribe to receive our latest articles on longevity, exclusive offers and news about our products.
         </p>
 
         {/* Comutatorul reține starea inițială la prima randare, deci îl afișăm

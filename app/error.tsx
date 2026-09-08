@@ -27,25 +27,25 @@ export default function Error({
           </svg>
         </div>
 
-        <div className={styles.code}>Eroare neașteptată</div>
-        <h1 className={styles.title}>Ceva nu a funcționat corect</h1>
+        <div className={styles.code}>Unexpected error</div>
+        <h1 className={styles.title}>Something went wrong</h1>
         <p className={styles.description}>
-          Am întâmpinat o problemă la încărcarea acestei pagini. De cele mai multe
-          ori este temporară — poți încerca din nou.
+          We ran into a problem loading this page. It is usually temporary —
+          you can try again.
         </p>
 
         <div className={styles.actions}>
           <button onClick={() => unstable_retry()} className={styles.primaryButton}>
-            Încearcă din nou
+            Try again
           </button>
           <Link href="/" className={styles.secondaryLink}>
-            Înapoi la pagina principală
+            Back to the homepage
           </Link>
         </div>
 
         {/* Identificatorul erorii, util pentru corelarea cu log-urile de pe server */}
         {error.digest && (
-          <div className={styles.errorDigest}>Cod referință: {error.digest}</div>
+          <div className={styles.errorDigest}>Reference code: {error.digest}</div>
         )}
       </div>
     </main>
