@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import CategoryClient from "./CategoryClient";
 
 // Cate o pagina pre-generata pentru fiecare categorie. Vezi comentariul din
-// app/produs/[slug]/page.tsx pentru motiv.
+// app/product/[slug]/page.tsx pentru motiv.
 export async function generateStaticParams() {
   const supabase = createStaticClient();
   const { data } = await supabase.from('categories').select('slug');
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${category.name} | Longevity Pharma`,
     description,
     alternates: {
-      canonical: `/categorie/${encodeURIComponent(decodedSlug)}`,
+      canonical: `/category/${encodeURIComponent(decodedSlug)}`,
     },
     openGraph: {
       title: `${category.name} | Longevity Pharma`,

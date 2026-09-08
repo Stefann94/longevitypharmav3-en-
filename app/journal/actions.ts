@@ -9,7 +9,7 @@ import { createStaticClient } from '@/lib/supabase/static';
  * singură dată, la build.
  *
  * Ambele funcții sunt apelate doar din componente de server
- * (app/jurnal/page.tsx și app/jurnal/[slug]/page.tsx), deci scoaterea
+ * (app/journal/page.tsx și app/journal/[slug]/page.tsx), deci scoaterea
  * directivei `'use server'` nu rupe niciun apel din browser.
  */
 

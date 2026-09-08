@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${article.title} | Longevity Pharma`,
     description: article.summary,
     alternates: {
-      canonical: `/jurnal/${encodeURIComponent(article.slug)}`,
+      canonical: `/journal/${encodeURIComponent(article.slug)}`,
     },
     openGraph: {
       title: article.title,
@@ -76,7 +76,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <div className={styles.breadcrumb}>
           <Link href="/">Home</Link>
           <span className={styles.breadcrumbSep}>/</span>
-          <Link href="/jurnal">Science Journal</Link>
+          <Link href="/journal">Science Journal</Link>
           <span className={styles.breadcrumbSep}>/</span>
           <span className={styles.breadcrumbCurrent}>{article.title}</span>
         </div>
@@ -132,7 +132,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {/* Share / Back */}
         <div className={styles.articleFooter}>
-          <Link href="/jurnal" className={styles.backBtn}>
+          <Link href="/journal" className={styles.backBtn}>
             &larr; Back to the Journal
           </Link>
         </div>

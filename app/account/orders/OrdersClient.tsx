@@ -152,7 +152,7 @@ export default function OrdersClient() {
                             </div>
                           </div>
 
-                          <Link href={`/produs/${item.product_slug}`} style={{ color: '#333', textDecoration: 'none', fontWeight: 500 }} className={styles.itemLink}>
+                          <Link href={`/product/${item.product_slug}`} style={{ color: '#333', textDecoration: 'none', fontWeight: 500 }} className={styles.itemLink}>
                             {item.product_name}
                           </Link>
                         </div>

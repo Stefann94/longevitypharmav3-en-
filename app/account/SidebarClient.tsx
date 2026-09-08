@@ -6,20 +6,17 @@ import { usePathname } from 'next/navigation';
 import styles from './Account.module.css';
 import { logout } from '@/app/auth/actions';
 
-// Etichetele sunt traduse, adresele raman cele romanesti: sunt cai de fisiere
-// din exportul static, iar redenumirea lor ar insemna mutarea folderelor si
-// actualizarea fiecarui link din site.
 const MENU_ITEMS = [
   { label: 'Dashboard', href: '/account' },
-  { label: 'Account details', href: '/account/informatii' },
-  { label: 'Address book', href: '/account/adrese' },
-  { label: 'My orders', href: '/account/comenzi' },
-  { label: 'Favorite products', href: '/account/favorite' },
-  { label: 'Saved payment methods', href: '/account/plata' },
-  { label: 'My reviews', href: '/account/recenzii' },
+  { label: 'Account details', href: '/account/details' },
+  { label: 'Address book', href: '/account/addresses' },
+  { label: 'My orders', href: '/account/orders' },
+  { label: 'Favorite products', href: '/account/favorites' },
+  { label: 'Saved payment methods', href: '/account/payment' },
+  { label: 'My reviews', href: '/account/reviews' },
   { label: 'Newsletter subscription', href: '/account/newsletter' },
   { label: 'Medical details', href: '/account/medical' },
-  { label: 'Invoices', href: '/account/facturi' },
+  { label: 'Invoices', href: '/account/invoices' },
 ];
 
 export default function SidebarClient() {

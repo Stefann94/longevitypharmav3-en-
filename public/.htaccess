@@ -32,7 +32,7 @@
 Options -Indexes
 
 # Apache adauga din proprie initiativa o bara finala la orice adresa care are un
-# folder cu acelasi nume: /produs/x devenea /produs/x/. Asta se intampla INAINTE
+# folder cu acelasi nume: /product/x devenea /product/x/. Asta se intampla INAINTE
 # ca regulile de mai jos sa apuce sa serveasca pagina, si producea doua
 # redirectionari inlantuite, cu `.html` ajuns in bara de adresa.
 #

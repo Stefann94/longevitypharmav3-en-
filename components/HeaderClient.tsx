@@ -48,10 +48,10 @@ function cartTotalFontSize(numar: string): string | undefined {
 // hamburger, ca destinațiile să nu devină inaccesibile.
 const MAIN_NAV_LINKS = [
   { href: '/bestsellers', label: 'Bestsellers' },
-  { href: '/pachete', label: 'Bundles & Offers' },
-  { href: '/abonamente', label: 'Subscriptions' },
-  { href: '/calitate', label: 'Quality & Ingredients' },
-  { href: '/jurnal', label: 'Science Journal' },
+  { href: '/bundles', label: 'Bundles & Offers' },
+  { href: '/subscriptions', label: 'Subscriptions' },
+  { href: '/quality', label: 'Quality & Ingredients' },
+  { href: '/journal', label: 'Science Journal' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -171,7 +171,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
     e.preventDefault();
     if (searchTerm.trim()) {
       setIsSearchOpen(false);
-      router.push(`/produse?q=${encodeURIComponent(searchTerm.trim())}`);
+      router.push(`/products?q=${encodeURIComponent(searchTerm.trim())}`);
     }
   };
 
@@ -365,7 +365,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                       ) : (
                         favoriteItems.map(item => (
                           <Link 
-                            href={`/produs/${item.product_slug}`} 
+                            href={`/product/${item.product_slug}`} 
                             key={item.id} 
                             className={styles.favItem}
                             style={{ textDecoration: 'none', color: 'inherit' }}
@@ -386,7 +386,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                       )}
                     </div>
                     <div className={styles.favFooter}>
-                      <Link href="/account/favorite" className={styles.btnViewAllFavs} onClick={() => { setIsFavOpen(false); window.scrollTo(0, 0); }}>
+                      <Link href="/account/favorites" className={styles.btnViewAllFavs} onClick={() => { setIsFavOpen(false); window.scrollTo(0, 0); }}>
                         View all favorite products
                       </Link>
                     </div>
@@ -517,7 +517,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                         <div className={styles.favList} ref={cartListRef}>
                           {cartItems.map(item => (
                             <Link 
-                              href={`/produs/${item.product_slug}`} 
+                              href={`/product/${item.product_slug}`} 
                               key={item.id} 
                               className={styles.favItem}
                               style={{ textDecoration: 'none', color: 'inherit' }}
@@ -612,10 +612,10 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                 {!searchTerm.trim() ? (
                   <div className={styles.searchQuickLinks}>
                     <span>Quick links:</span>
-                    <Link href="/categorie/longevitate" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Anti-Aging</Link>
-                    <Link href="/categorie/focus" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Focus & Memory</Link>
-                    <Link href="/categorie/somn-stres" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Sleep & Stress</Link>
-                    <Link href="/categorie/imunitate" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Immunity</Link>
+                    <Link href="/category/longevitate" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Anti-Aging</Link>
+                    <Link href="/category/focus" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Focus & Memory</Link>
+                    <Link href="/category/somn-stres" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Sleep & Stress</Link>
+                    <Link href="/category/imunitate" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Immunity</Link>
                   </div>
                 ) : (
                   <div className={styles.searchResults}>
@@ -624,7 +624,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                     ) : searchResults.length > 0 ? (
                       searchResults.map((prod) => (
                         <Link 
-                          href={`/produs/${prod.slug}`} 
+                          href={`/product/${prod.slug}`} 
                           key={prod.id} 
                           className={styles.searchResultItem}
                           onClick={() => setIsSearchOpen(false)}
@@ -676,7 +676,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                       <h3>{groupName}</h3>
                       <ul>
                         {cats.map((cat) => (
-                          <li key={cat.id}><Link href={`/categorie/${cat.slug}`}>{cat.name}</Link></li>
+                          <li key={cat.id}><Link href={`/category/${cat.slug}`}>{cat.name}</Link></li>
                         ))}
                       </ul>
                     </div>
@@ -686,7 +686,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                     <h3>Top Products</h3>
                     <ul>
                       {featuredProducts?.map((prod) => (
-                        <li key={prod.id}><Link href={`/produs/${prod.slug}`}>{prod.name}</Link></li>
+                        <li key={prod.id}><Link href={`/product/${prod.slug}`}>{prod.name}</Link></li>
                       ))}
                     </ul>
                   </div>

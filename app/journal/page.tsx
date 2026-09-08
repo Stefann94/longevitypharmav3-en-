@@ -48,7 +48,7 @@ export default async function JurnalPage() {
         </div>
 
         {/* Hero Article */}
-        <Link href={`/jurnal/${heroArticle.slug}`} className={styles.heroLink}>
+        <Link href={`/journal/${heroArticle.slug}`} className={styles.heroLink}>
           <article className={styles.heroArticle}>
             <div className={styles.heroImageWrapper}>
               <Image 
@@ -82,7 +82,7 @@ export default async function JurnalPage() {
             <h3 className={styles.sectionTitle}>Latest articles</h3>
             <div className={styles.articlesGrid}>
               {gridArticles.map((article) => (
-                <Link key={article.id} href={`/jurnal/${article.slug}`} className={styles.cardLink}>
+                <Link key={article.id} href={`/journal/${article.slug}`} className={styles.cardLink}>
                   <article className={styles.articleCard}>
                     <div className={styles.cardImageWrapper}>
                       <Image 
@@ -114,7 +114,7 @@ export default async function JurnalPage() {
 
         {/* PROMO BANNER */}
         <section className={styles.promoBannerSection}>
-          <a href="/categorie/focus" className={styles.promoBannerLink}>
+          <a href="/category/focus" className={styles.promoBannerLink}>
             <Image 
               src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop" 
               alt="Promo Banner" 

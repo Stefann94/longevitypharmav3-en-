@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { useFavorites } from '@/app/context/FavoritesContext';
-import styles from '@/app/produs/[slug]/ProductPage.module.css';
+import styles from '@/app/product/[slug]/ProductPage.module.css';
 
 interface FavoriteButtonProps {
   productSlug: string;

@@ -103,7 +103,7 @@ export async function processCheckout(formData: FormData) {
     shipping_name: fullName,
     shipping_phone: phone,
     shipping_address: fullAddress,
-    // Valoarea se salveaza in baza si e comparata in app/account/comenzi/
+    // Valoarea se salveaza in baza si e comparata in app/account/orders/
     // OrdersClient.tsx, care alege culoarea insignei dupa ea. Cele doua trebuie
     // schimbate impreuna, altfel insigna ramane mereu pe varianta „livrata".
     status: 'Processing'

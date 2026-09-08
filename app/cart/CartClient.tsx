@@ -97,7 +97,7 @@ export default function CartClient() {
                 </div>
                 
                 <div className={styles.itemDetails}>
-                  <Link href={`/produs/${item.product_slug}`} className={styles.itemTitle}>
+                  <Link href={`/product/${item.product_slug}`} className={styles.itemTitle}>
                     {item.name}
                   </Link>
                   <div className={styles.itemStock}>Availability: In stock</div>

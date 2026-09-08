@@ -39,10 +39,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${product.name} | Longevity Pharma`,
     description: product.description || `Order ${product.name} for only ${product.price} €. Fast delivery.`,
     // URL-ul canonic: spune motoarelor de căutare care este adresa "oficială" a paginii.
-    // Fără el, o vizită venită din reclamă (/produs/x?utm_source=google) ar putea fi
+    // Fără el, o vizită venită din reclamă (/product/x?utm_source=google) ar putea fi
     // indexată ca pagină separată, ceea ce înseamnă conținut duplicat.
     alternates: {
-      canonical: `/produs/${encodeURIComponent(decodedSlug)}`,
+      canonical: `/product/${encodeURIComponent(decodedSlug)}`,
     },
     openGraph: {
       title: `${product.name} | Longevity Pharma`,
@@ -83,7 +83,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const similarProducts = shuffledProducts.slice(0, 8);
 
   const siteUrl = getSiteUrl();
-  const productUrl = `${siteUrl}/produs/${encodeURIComponent(decodedSlug)}`;
+  const productUrl = `${siteUrl}/product/${encodeURIComponent(decodedSlug)}`;
 
   // Generate Structured Data (JSON-LD) for SEO
   const jsonLd = {
@@ -128,7 +128,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             "@type": "ListItem",
             "position": 2,
             "name": category.name,
-            "item": `${siteUrl}/categorie/${encodeURIComponent(category.slug)}`,
+            "item": `${siteUrl}/category/${encodeURIComponent(category.slug)}`,
           }]
         : []),
       {
@@ -159,7 +159,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           {category ? (
             <>
               {' / '}
-              <Link href={`/categorie/${encodeURIComponent(category.slug)}`}>{category.name}</Link>
+              <Link href={`/category/${encodeURIComponent(category.slug)}`}>{category.name}</Link>
             </>
           ) : null}
           {' / '}

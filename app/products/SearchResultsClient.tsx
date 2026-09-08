@@ -9,7 +9,7 @@ import AddToCartButton from '@/components/AddToCartButton';
 import FavoriteButton from '@/components/FavoriteButton';
 // Aceleași stiluri ca pagina de categorie: grila și cardurile arată identic și
 // moștenesc automat comportamentul responsive deja existent.
-import styles from '../categorie/[slug]/Category.module.css';
+import styles from '../category/[slug]/Category.module.css';
 import pageStyles from '../page.module.css';
 
 type Product = {
@@ -115,7 +115,7 @@ export default function SearchResultsClient() {
                 <div className={pageStyles.productImageWrapper}>
                   {product.is_bestseller && <div className={pageStyles.productBadge}>Bestseller</div>}
                   <FavoriteButton className={pageStyles.favoriteBtn} productSlug={product.slug} />
-                  <a href={`/produs/${product.slug}`} style={{ display: 'block' }}>
+                  <a href={`/product/${product.slug}`} style={{ display: 'block' }}>
                     <Image
                       src={product.image_url || '/placeholder.png'}
                       alt={product.name}
@@ -126,7 +126,7 @@ export default function SearchResultsClient() {
                 </div>
                 <div className={pageStyles.productInfo}>
                   <h3 className={pageStyles.productName}>
-                    <a href={`/produs/${product.slug}`}>{product.name}</a>
+                    <a href={`/product/${product.slug}`}>{product.name}</a>
                   </h3>
                   <div className={pageStyles.productFooter}>
                     <div className={pageStyles.productPrice}>

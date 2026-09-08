@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCart } from '@/app/context/CartContext';
-import styles from '@/app/produs/[slug]/ProductPage.module.css';
+import styles from '@/app/product/[slug]/ProductPage.module.css';
 
 import stylesCarousel from '@/components/ProductCarousel.module.css';
 

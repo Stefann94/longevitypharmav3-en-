@@ -98,7 +98,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
               <Link href="/bestsellers" className={styles.ctaPrimary}>
                 Discover the Products
               </Link>
-              <Link href="/calitate" className={styles.ctaOutline}>Quality & Ingredients</Link>
+              <Link href="/quality" className={styles.ctaOutline}>Quality & Ingredients</Link>
             </div>
           </div>
 

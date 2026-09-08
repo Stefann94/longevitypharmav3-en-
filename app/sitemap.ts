@@ -21,9 +21,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static routes
   const routes = [
     '',
-    '/jurnal',
+    '/journal',
     '/contact',
-    '/abonamente',
+    '/subscriptions',
     '/login',
     '/signup',
   ].map((route) => ({
@@ -36,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch categories
   const { data: categories } = await supabase.from('categories').select('slug');
   const categoryRoutes = (categories || []).map((cat) => ({
-    url: `${baseUrl}/categorie/${encodeSlug(cat.slug)}`,
+    url: `${baseUrl}/category/${encodeSlug(cat.slug)}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
@@ -45,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch products
   const { data: products } = await supabase.from('products').select('slug');
   const productRoutes = (products || []).map((prod) => ({
-    url: `${baseUrl}/produs/${encodeSlug(prod.slug)}`,
+    url: `${baseUrl}/product/${encodeSlug(prod.slug)}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
@@ -54,7 +54,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch articles (jurnal) — tabelul se numește `journal_articles`, nu `articles`
   const { data: articles } = await supabase.from('journal_articles').select('slug');
   const articleRoutes = (articles || []).map((article) => ({
-    url: `${baseUrl}/jurnal/${encodeSlug(article.slug)}`,
+    url: `${baseUrl}/journal/${encodeSlug(article.slug)}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,

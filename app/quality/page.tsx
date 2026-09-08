@@ -27,27 +27,27 @@ export default async function CalitatePage() {
   const hero = contentMap['hero'] || {
     title: 'Quality & Ingredients',
     description: 'We make no compromises when it comes to your health. We source only pharmaceutical-grade raw materials.',
-    image_url: '/images/banners/calitate_hero.png'
+    image_url: '/images/banners/quality_hero.png'
   };
 
   const simple = contentMap['simple_section'] || {
     title: 'The science of absolute purity',
     description: 'The effectiveness of any supplement depends on the quality of its raw materials. That is why Longevity Pharma works only with certified suppliers and rigorously tests every batch of ingredients.',
-    image_url: '/images/banners/calitate_ingrediente.png'
+    image_url: '/images/banners/quality_ingrediente.png'
   };
 
   const card1 = contentMap['card_1'] || {
     title: 'Standardized Extracts',
     description: 'We do not use plain plant powders, but standardized extracts, delivering exactly the amount of active substance your body needs.',
     label: 'Efficacy',
-    image_url: '/images/banners/calitate_proces.png'
+    image_url: '/images/banners/quality_proces.png'
   };
 
   const card2 = contentMap['card_2'] || {
     title: 'Liposomal Technology',
     description: 'We encapsulate sensitive nutrients in lipid spheres (liposomes) to protect them from stomach acid and increase their absorption rate.',
     label: 'Absorption',
-    image_url: '/images/banners/calitate_surse.png'
+    image_url: '/images/banners/quality_surse.png'
   };
 
   const card3 = contentMap['card_3'] || {

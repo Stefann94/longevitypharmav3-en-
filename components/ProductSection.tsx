@@ -49,7 +49,7 @@ export default function ProductSection({ title, products, viewAllLink, badgeText
                   className={styles.favoriteBtn} 
                   productSlug={product.slug} 
                 />
-                <a href={`/produs/${product.slug}`} style={{ display: 'block' }}>
+                <a href={`/product/${product.slug}`} style={{ display: 'block' }}>
                   <Image 
                     src={product.image_url || '/placeholder.png'} 
                     alt={product.name}
@@ -60,7 +60,7 @@ export default function ProductSection({ title, products, viewAllLink, badgeText
               </div>
               <div className={styles.productInfo}>
                 <h3 className={styles.productName}>
-                  <a href={`/produs/${product.slug}`}>{product.name}</a>
+                  <a href={`/product/${product.slug}`}>{product.name}</a>
                 </h3>
                 <div className={styles.productFooter}>
                   <div className={styles.productPrice}>{product.price} <span className={styles.currency}>€</span></div>

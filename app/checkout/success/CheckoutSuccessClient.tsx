@@ -46,7 +46,7 @@ export default function CheckoutSuccessClient() {
             <p style={descStyle}>
               Thank you for your order. A confirmation email has been sent to your address.
             </p>
-            <Link href="/account/comenzi" style={btnStyle}>
+            <Link href="/account/orders" style={btnStyle}>
               View your orders
             </Link>
           </>

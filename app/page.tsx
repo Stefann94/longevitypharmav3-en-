@@ -45,7 +45,7 @@ export default async function Home() {
           <div className="container">
             <div className={styles.quickCategoriesContainer}>
               {quickCategories?.map(cat => (
-                <a key={cat.id} href={`/categorie/${cat.slug}`} className={styles.quickCategoryCard}>
+                <a key={cat.id} href={`/category/${cat.slug}`} className={styles.quickCategoryCard}>
                   <span className={styles.quickCategoryName}>{cat.name}</span>
                   <div className={styles.quickCategoryIcon}>
                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -60,16 +60,16 @@ export default async function Home() {
         <ProductSection 
           title={<>Essentials <span>for</span> Longevity</>}
           products={essentials || []}
-          viewAllLink="/categorie/longevitate"
+          viewAllLink="/category/longevitate"
           badgeText="Bestseller"
         />
 
         {/* PROMO BANNER (Între Esențiale și Focus) */}
         <section className={styles.promoBannerSection}>
           <div className="container">
-            <a href="/categorie/focus" className={styles.promoBannerLink}>
+            <a href="/category/focus" className={styles.promoBannerLink}>
               <img 
-                src="/images/jurnal/promo_banner.png" 
+                src="/images/journal/promo_banner.png" 
                 alt="Promo Banner" 
                 className={styles.promoBannerImage}
               />
@@ -85,7 +85,7 @@ export default async function Home() {
         <ProductSection 
           title={<>Focus & <span>Mental Clarity</span></>}
           products={focusEnergy || []}
-          viewAllLink="/categorie/focus"
+          viewAllLink="/category/focus"
         />
 
         {/* DISCOVER CARDS - "Descoperă după nevoie" */}
@@ -98,7 +98,7 @@ export default async function Home() {
             </div>
             <div className={styles.discoverCardsGrid}>
 
-              <a href="/categorie/focus" className={styles.discoverCard}>
+              <a href="/category/focus" className={styles.discoverCard}>
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/energie-focus.png" 
@@ -115,7 +115,7 @@ export default async function Home() {
                 </div>
               </a>
 
-              <a href="/categorie/longevitate" className={styles.discoverCard}>
+              <a href="/category/longevitate" className={styles.discoverCard}>
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/anti-aging.png" 
@@ -132,7 +132,7 @@ export default async function Home() {
                 </div>
               </a>
 
-              <a href="/categorie/imunitate" className={styles.discoverCard}>
+              <a href="/category/imunitate" className={styles.discoverCard}>
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/imunitate.png" 

@@ -80,7 +80,7 @@ export default function AccountPage() {
             <strong>{fullName || 'Name not set'}</strong><br/>
             {email}
           </div>
-          <a href="/account/informatii" className={styles.actionLink}>
+          <a href="/account/details" className={styles.actionLink}>
             Edit details
           </a>
         </div>
@@ -112,7 +112,7 @@ export default function AccountPage() {
               ? `${defaultShipping.street}, ${defaultShipping.city}, ${defaultShipping.country}`
               : 'You have not set a default shipping address yet.'}
           </div>
-          <a href="/account/adrese" className={styles.actionLink}>
+          <a href="/account/addresses" className={styles.actionLink}>
             {defaultShipping ? 'Edit address' : 'Add address'}
           </a>
         </div>

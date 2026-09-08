@@ -74,7 +74,7 @@ export default function FavoritesClient() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
           {favoriteProducts.map((product) => (
             <div key={product.product_slug} className={styles.premiumCard} style={{ display: 'flex', flexDirection: 'column', padding: '20px', border: '2px solid var(--color-primary)' }}>
-              <Link href={`/produs/${product.slug}`} style={{ display: 'block', textDecoration: 'none' }}>
+              <Link href={`/product/${product.slug}`} style={{ display: 'block', textDecoration: 'none' }}>
                 <div style={{ position: 'relative', height: '150px', marginBottom: '15px', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#f9f9f9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <img src={product.image_url || '/placeholder.png'} alt={product.name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                 </div>

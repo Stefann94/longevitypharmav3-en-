@@ -52,7 +52,7 @@ export default function CheckoutClient({ profile, address }: CheckoutClientProps
       setIsSubmitting(false)
     } else if (result.success) {
       clearCart()
-      router.push('/checkout/succes')
+      router.push('/checkout/success')
     }
   }
 
