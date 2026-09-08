@@ -58,7 +58,7 @@ export default async function Home() {
 
         {/* PRODUCTS SECTIONS */}
         <ProductSection 
-          title={<>Esențiale <span>pentru</span> Longevitate</>}
+          title={<>Essentials <span>for</span> Longevity</>}
           products={essentials || []}
           viewAllLink="/categorie/longevitate"
           badgeText="Bestseller"
@@ -74,16 +74,16 @@ export default async function Home() {
                 className={styles.promoBannerImage}
               />
               <div className={styles.promoBannerOverlay}>
-                <h3>Performanță Mentală Absolută</h3>
-                <p>Descoperă noile extracte standardizate pentru focus și energie curată.</p>
-                <span className={styles.promoBannerBtn}>Vezi Colecția</span>
+                <h3>Absolute Mental Performance</h3>
+                <p>Discover our new standardized extracts for focus and clean energy.</p>
+                <span className={styles.promoBannerBtn}>View Collection</span>
               </div>
             </a>
           </div>
         </section>
 
         <ProductSection 
-          title={<>Focus & <span>Claritate Mentală</span></>}
+          title={<>Focus & <span>Mental Clarity</span></>}
           products={focusEnergy || []}
           viewAllLink="/categorie/focus"
         />
@@ -93,7 +93,7 @@ export default async function Home() {
           <div className="container">
             <div className={styles.discoverSectionHeader}>
               <h2 className={styles.discoverSectionTitle}>
-                Descoperă <span>după obiectiv</span>
+                Discover <span>by goal</span>
               </h2>
             </div>
             <div className={styles.discoverCardsGrid}>
@@ -102,16 +102,16 @@ export default async function Home() {
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/energie-focus.png" 
-                    alt="Energie și Focus" 
+                    alt="Energy and Focus"
                     className={styles.discoverCardImage}
                     loading="lazy"
                   />
                 </div>
                 <div className={styles.discoverCardContent}>
-                  <span className={styles.discoverCardLabel}>Performanță</span>
-                  <h3 className={styles.discoverCardTitle}>Energie & Focus</h3>
-                  <p className={styles.discoverCardSubtitle}>Concentrare maximă și energie curată, fără crash.</p>
-                  <span className={styles.discoverCardBtn}>Descoperă</span>
+                  <span className={styles.discoverCardLabel}>Performance</span>
+                  <h3 className={styles.discoverCardTitle}>Energy & Focus</h3>
+                  <p className={styles.discoverCardSubtitle}>Sharp concentration and clean energy, with no crash.</p>
+                  <span className={styles.discoverCardBtn}>Discover</span>
                 </div>
               </a>
 
@@ -119,16 +119,16 @@ export default async function Home() {
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/anti-aging.png" 
-                    alt="Anti-Aging și Longevitate" 
+                    alt="Anti-Aging and Longevity"
                     className={styles.discoverCardImage}
                     loading="lazy"
                   />
                 </div>
                 <div className={styles.discoverCardContent}>
-                  <span className={styles.discoverCardLabel}>Longevitate</span>
+                  <span className={styles.discoverCardLabel}>Longevity</span>
                   <h3 className={styles.discoverCardTitle}>Anti-Aging</h3>
-                  <p className={styles.discoverCardSubtitle}>Formule avansate pentru regenerare celulară și vitalitate.</p>
-                  <span className={styles.discoverCardBtn}>Descoperă</span>
+                  <p className={styles.discoverCardSubtitle}>Advanced formulas for cellular regeneration and vitality.</p>
+                  <span className={styles.discoverCardBtn}>Discover</span>
                 </div>
               </a>
 
@@ -136,16 +136,16 @@ export default async function Home() {
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/imunitate.png" 
-                    alt="Imunitate și Detox" 
+                    alt="Immunity and Detox"
                     className={styles.discoverCardImage}
                     loading="lazy"
                   />
                 </div>
                 <div className={styles.discoverCardContent}>
-                  <span className={styles.discoverCardLabel}>Protecție</span>
-                  <h3 className={styles.discoverCardTitle}>Imunitate & Detox</h3>
-                  <p className={styles.discoverCardSubtitle}>Susține apărarea naturală a organismului tău.</p>
-                  <span className={styles.discoverCardBtn}>Descoperă</span>
+                  <span className={styles.discoverCardLabel}>Protection</span>
+                  <h3 className={styles.discoverCardTitle}>Immunity & Detox</h3>
+                  <p className={styles.discoverCardSubtitle}>Support your body's natural defenses.</p>
+                  <span className={styles.discoverCardBtn}>Discover</span>
                 </div>
               </a>
 
@@ -154,14 +154,14 @@ export default async function Home() {
         </section>
 
         <ProductSection 
-          title={<>Protocoale & <span>Pachete Premium</span></>}
+          title={<>Protocols & <span>Premium Bundles</span></>}
           products={premiumBundles || []}
           badgeText="-15% Extra"
         />
         
         {/* RECOMMENDED CAROUSEL */}
         <ProductCarousel 
-          title={<>Produse <span>Recomandate</span></>}
+          title={<>Recommended <span>Products</span></>}
           products={finalRecommended || []}
         />
 
@@ -170,12 +170,12 @@ export default async function Home() {
           <div className="container">
             <div className={styles.contactBannerWrapper}>
               <div className={styles.contactBannerContent}>
-                <h3 className={styles.contactBannerTitle}>Ai nevoie de îndrumare?</h3>
+                <h3 className={styles.contactBannerTitle}>Need guidance?</h3>
                 <p className={styles.contactBannerDesc}>
-                  Fiecare organism este unic. Dacă nu ești sigur ce suplimente ți se potrivesc cel mai bine pentru a-ți atinge obiectivele de sănătate, specialiștii noștri sunt aici să te ajute cu o recomandare personalizată.
+                  Every body is different. If you are not sure which supplements suit you best for reaching your health goals, our specialists are here to help with a personalized recommendation.
                 </p>
                 <a href="/contact" className={styles.contactBannerBtn}>
-                  Contactează-ne
+                  Contact us
                 </a>
               </div>
             </div>

@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: `${product.name} | Longevity Pharma`,
-    description: product.description || `Comandă ${product.name} la doar ${product.price} RON. Livrare rapidă.`,
+    description: product.description || `Order ${product.name} for only ${product.price} RON. Fast delivery.`,
     // URL-ul canonic: spune motoarelor de căutare care este adresa "oficială" a paginii.
     // Fără el, o vizită venită din reclamă (/produs/x?utm_source=google) ar putea fi
     // indexată ca pagină separată, ceea ce înseamnă conținut duplicat.
@@ -91,7 +91,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     "@type": "Product",
     "name": product.name,
     "image": product.image_url,
-    "description": product.description || `Descoperă beneficiile ${product.name}.`,
+    "description": product.description || `Discover the benefits of ${product.name}.`,
     "url": productUrl,
     "brand": {
       "@type": "Brand",
@@ -122,7 +122,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Acasă", "item": siteUrl },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
       ...(category
         ? [{
             "@type": "ListItem",
@@ -155,7 +155,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="container">
         {/* BREADCRUMB */}
         <div className={styles.breadcrumb}>
-          <Link href="/">Acasă</Link>
+          <Link href="/">Home</Link>
           {category ? (
             <>
               {' / '}
@@ -201,12 +201,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {/* Devine link doar dacă există efectiv o secțiune de recenzii mai jos,
                   ca să nu ducem utilizatorul spre o ancoră inexistentă. */}
               {hasReviews ? (
-                <a href="#recenzii" className={`${styles.reviewsCount} ${styles.reviewsLink}`}>
-                  {product.rating || "5.0"} ({product.reviews_count || "0"} review-uri)
+                <a href="#reviews" className={`${styles.reviewsCount} ${styles.reviewsLink}`}>
+                  {product.rating || "5.0"} ({product.reviews_count || "0"} reviews)
                 </a>
               ) : (
                 <span className={styles.reviewsCount}>
-                  {product.rating || "5.0"} ({product.reviews_count || "0"} review-uri)
+                  {product.rating || "5.0"} ({product.reviews_count || "0"} reviews)
                 </span>
               )}
             </div>
@@ -219,10 +219,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* INSTALLMENT BOX */}
             <div className={styles.installmentBox}>
               <div className={styles.installmentText}>
-                <span className={styles.installmentTitle}>Plătește în 4 rate egale</span>
-                <span className={styles.installmentSub}>de la {(product.price / 4).toFixed(2)} Lei / lună</span>
+                <span className={styles.installmentTitle}>Pay in 4 equal installments</span>
+                <span className={styles.installmentSub}>from {(product.price / 4).toFixed(2)} Lei / month</span>
               </div>
-              <span className={styles.installmentBadge}>0% Dobândă</span>
+              <span className={styles.installmentBadge}>0% Interest</span>
             </div>
 
             {/* BUTTONS */}
@@ -234,17 +234,17 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* INFO & LOGISTICS */}
             <div className={styles.infoNotice}>
               <svg className={styles.infoIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-              <span>Ofertă exclusivă online. Prețurile din farmaciile fizice pot fi diferite.</span>
+              <span>Online exclusive offer. Prices in physical pharmacies may differ.</span>
             </div>
 
             <div className={styles.logisticsBlock}>
               <div className={styles.logisticRow}>
                 <svg className={styles.logisticIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                <span>{product.in_stock !== false ? 'Disponibil în stoc cu livrare rapidă' : 'Stoc epuizat temporar'}</span>
+                <span>{product.in_stock !== false ? 'In stock, with fast delivery' : 'Temporarily out of stock'}</span>
               </div>
               <div className={styles.logisticRow}>
                 <svg className={styles.logisticIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                <span>Fără costuri de transport la ridicarea din farmacie</span>
+                <span>No delivery charge when you collect from the pharmacy</span>
               </div>
             </div>
 
@@ -259,7 +259,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {/* 1. Descriere Extinsă */}
               {product.rich_content.intro_description && (
                 <div className={styles.richBlock}>
-                  <h3 className={styles.richTitle}>Despre Produs</h3>
+                  <h3 className={styles.richTitle}>About the Product</h3>
                   <div 
                     className={styles.richText}
                     dangerouslySetInnerHTML={{ __html: product.rich_content.intro_description }}
@@ -270,14 +270,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {/* 2. Tabel Nutrițional / Ingrediente */}
               {product.rich_content.ingredients_table && product.rich_content.ingredients_table.length > 0 && (
                 <div className={styles.richBlock}>
-                  <h3 className={styles.richTitle}>Ingrediente & Compoziție</h3>
+                  <h3 className={styles.richTitle}>Ingredients & Composition</h3>
                   <div className={styles.tableWrapper}>
                     <table className={styles.ingredientsTable}>
                       <thead>
                         <tr>
-                          <th>Ingredient Activ</th>
-                          <th>Cantitate / Doză</th>
-                          <th>VNR %</th>
+                          <th>Active Ingredient</th>
+                          <th>Amount / Dose</th>
+                          <th>NRV %</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -299,7 +299,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className={styles.richImageWrapper}>
                   <Image 
                     src={product.rich_content.content_image} 
-                    alt="Prezentare produs"
+                    alt="Product presentation"
                     fill
                     className={styles.richImage}
                   />
@@ -316,7 +316,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {/* 5. De ce recomandăm? */}
               {product.rich_content.why_recommend && product.rich_content.why_recommend.length > 0 && (
                 <div className={styles.richBlockCentered}>
-                  <h3 className={styles.richTitle}>De ce recomandăm acest produs?</h3>
+                  <h3 className={styles.richTitle}>Why we recommend this product</h3>
                   <ul className={styles.recommendList}>
                     {product.rich_content.why_recommend.map((reason: string, idx: number) => (
                       <li key={idx} className={styles.recommendItem}>
@@ -333,7 +333,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {/* 6. FAQ (Întrebări frecvente) */}
               {product.rich_content.faq && product.rich_content.faq.length > 0 && (
                 <div className={styles.richBlock}>
-                  <h3 className={styles.richTitle}>Întrebări Frecvente</h3>
+                  <h3 className={styles.richTitle}>Frequently Asked Questions</h3>
                   <div className={styles.faqContainer}>
                     <FAQAccordion faqs={product.rich_content.faq} />
                   </div>
@@ -342,8 +342,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               {/* 7. Recenzii Clienți (Infinite Marquee) */}
               {product.rich_content.reviews && product.rich_content.reviews.length > 0 && (
-                <div className={`${styles.richBlock} ${styles.reviewsAnchor}`} id="recenzii">
-                  <h3 className={styles.richTitle}>Părerile Clienților</h3>
+                <div className={`${styles.richBlock} ${styles.reviewsAnchor}`} id="reviews">
+                  <h3 className={styles.richTitle}>What Our Customers Say</h3>
                   <div className={styles.marqueeContainer}>
                     <div className={styles.marqueeTrack}>
                       {/* Generăm 6 seturi identice (grupuri) pentru a ne asigura că acoperim lățimea oricărui ecran, 
@@ -369,7 +369,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                   </svg>
-                                  Cumpărător Verificat
+                                  Verified Buyer
                                 </span>
                               </div>
                               <p className={styles.reviewText}>"{rev.comment}"</p>
@@ -386,9 +386,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           ) : (
             /* FALLBACK Dacă nu există rich_content */
             <div className={styles.descriptionBlock}>
-              <h3 className={styles.descriptionTitle}>Informații Produs</h3>
+              <h3 className={styles.descriptionTitle}>Product Information</h3>
               <p className={styles.descriptionText}>
-                {product.description || "Informațiile detaliate despre acest produs urmează a fi actualizate în curând. Formulele Longevity Pharma sunt dezvoltate pentru eficiență și puritate maximă."}
+                {product.description || "Detailed information about this product will be added shortly. Longevity Pharma formulas are developed for maximum efficacy and purity."}
               </p>
             </div>
           )}
