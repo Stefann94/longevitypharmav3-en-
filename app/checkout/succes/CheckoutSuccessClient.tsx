@@ -38,16 +38,16 @@ export default function CheckoutSuccessClient() {
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
-        <h1 style={titleStyle}>Comanda a fost înregistrată!</h1>
+        <h1 style={titleStyle}>Your order has been placed!</h1>
 
         {seIncarca ? null : user ? (
           /* Utilizator autentificat: comanda este deja legată de contul lui. */
           <>
             <p style={descStyle}>
-              Îți mulțumim pentru cumpărături. Un email de confirmare a fost trimis către adresa ta de email.
+              Thank you for your order. A confirmation email has been sent to your address.
             </p>
             <Link href="/account/comenzi" style={btnStyle}>
-              Vezi comenzile tale
+              View your orders
             </Link>
           </>
         ) : (
@@ -57,24 +57,24 @@ export default function CheckoutSuccessClient() {
              ca obligație. */
           <>
             <p style={descStyle}>
-              Îți mulțumim pentru cumpărături. Am trimis confirmarea cu toate
-              detaliile comenzii pe adresa de email completată la finalizare.
+              Thank you for your order. We have sent the confirmation, with all
+              the order details, to the email address you entered at checkout.
             </p>
             <p style={noteStyle}>
-              Creează-ți un cont cu <strong>aceeași adresă de email</strong> și
-              comanda aceasta va apărea automat în istoricul tău.
+              Create an account with <strong>the same email address</strong> and
+              this order will appear in your history automatically.
             </p>
             <Link href="/signup" style={btnStyle}>
-              Creează cont
+              Create an account
             </Link>
             <Link href="/login" style={{ ...linkStyle, marginBottom: '15px' }}>
-              Am deja cont
+              I already have an account
             </Link>
           </>
         )}
 
         <Link href="/" style={linkStyle}>
-          Întoarce-te la magazin
+          Back to the shop
         </Link>
       </div>
     </div>

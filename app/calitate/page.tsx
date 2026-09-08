@@ -6,8 +6,8 @@ import pageStyles from '../page.module.css';
 import { createStaticClient } from '@/lib/supabase/static';
 
 export const metadata = {
-  title: 'Calitate & Ingrediente | Longevity Pharma',
-  description: 'Nu facem compromisuri când vine vorba de calitatea și puritatea ingredientelor noastre.',
+  title: 'Quality & Ingredients | Longevity Pharma',
+  description: 'We make no compromises when it comes to the quality and purity of our ingredients.',
 };
 
 
@@ -25,35 +25,35 @@ export default async function CalitatePage() {
 
   // Valori default (fallback) în cazul în care tabelul nu e populat
   const hero = contentMap['hero'] || {
-    title: 'Calitate & Ingrediente',
-    description: 'Nu facem compromisuri când vine vorba de sănătatea ta. Selectăm doar materie primă de grad farmaceutic.',
+    title: 'Quality & Ingredients',
+    description: 'We make no compromises when it comes to your health. We source only pharmaceutical-grade raw materials.',
     image_url: '/images/banners/calitate_hero.png'
   };
 
   const simple = contentMap['simple_section'] || {
-    title: 'Știința purității absolute',
-    description: 'Eficiența oricărui supliment depinde de calitatea materiei prime. Din acest motiv, la Longevity Pharma lucrăm exclusiv cu furnizori certificați și verificăm riguros fiecare lot de ingrediente.',
+    title: 'The science of absolute purity',
+    description: 'The effectiveness of any supplement depends on the quality of its raw materials. That is why Longevity Pharma works only with certified suppliers and rigorously tests every batch of ingredients.',
     image_url: '/images/banners/calitate_ingrediente.png'
   };
 
   const card1 = contentMap['card_1'] || {
-    title: 'Extracte Standardizate',
-    description: 'Nu folosim pulberi de plante simple, ci extracte standardizate, asigurând exact cantitatea de substanță activă de care corpul are nevoie.',
-    label: 'Eficiență',
+    title: 'Standardized Extracts',
+    description: 'We do not use plain plant powders, but standardized extracts, delivering exactly the amount of active substance your body needs.',
+    label: 'Efficacy',
     image_url: '/images/banners/calitate_proces.png'
   };
 
   const card2 = contentMap['card_2'] || {
-    title: 'Tehnologie Lipozomală',
-    description: 'Încapsulăm nutrienții sensibili în sfere lipidice (lipozomi) pentru a-i proteja de acidul gastric și a le crește rata de absorbție.',
-    label: 'Absorbție',
+    title: 'Liposomal Technology',
+    description: 'We encapsulate sensitive nutrients in lipid spheres (liposomes) to protect them from stomach acid and increase their absorption rate.',
+    label: 'Absorption',
     image_url: '/images/banners/calitate_surse.png'
   };
 
   const card3 = contentMap['card_3'] || {
-    title: 'Curat & Vegan',
-    description: 'Capsulele noastre sunt 100% vegetale. Excludem coloranții, aromele artificiale, glutenul sau conservanții toxici din toate formulele.',
-    label: 'Puritate',
+    title: 'Clean & Vegan',
+    description: 'Our capsules are 100% plant-based. We exclude colourings, artificial flavours, gluten and harmful preservatives from every formula.',
+    label: 'Purity',
     image_url: '/images/zen_stones.png'
   };
 
@@ -63,9 +63,9 @@ export default async function CalitatePage() {
         
         {/* 1. BREADCRUMBS */}
         <nav className={styles.breadcrumbs}>
-          <Link href="/">Acasă</Link>
+          <Link href="/">Home</Link>
           <span className={styles.breadcrumbSep}>›</span>
-          <span className={styles.breadcrumbCurrent}>Calitate & Ingrediente</span>
+          <span className={styles.breadcrumbCurrent}>Quality & Ingredients</span>
         </nav>
 
         {/* 2. HERO BANNER */}
@@ -97,13 +97,13 @@ export default async function CalitatePage() {
               {simple.description}
             </p>
             <p className={styles.simpleDesc}>
-              Alegem forme bioactive superioare, precum extractele standardizate și vitaminele lipozomale, 
-              care asigură o absorbție celulară maximă, fără aditivi inutili sau substanțe de umplutură sintetice.
+              We choose superior bioactive forms, such as standardized extracts and liposomal vitamins,
+              which deliver maximum cellular absorption, with no unnecessary additives or synthetic fillers.
             </p>
             <ul className={styles.simpleList}>
-              <li>Garantăm o puritate de 99.8% pentru moleculele cheie (ex. NMN, Resveratrol).</li>
-              <li>Toate produsele sunt fabricate în unități certificate GMP (Good Manufacturing Practice).</li>
-              <li>Fiecare formulă se bazează pe rezultatele ultimelor studii clinice din domeniul longevității.</li>
+              <li>We guarantee 99.8% purity for key molecules such as NMN and Resveratrol.</li>
+              <li>All products are manufactured in GMP-certified facilities (Good Manufacturing Practice).</li>
+              <li>Every formula is based on the findings of the latest clinical studies in longevity research.</li>
             </ul>
           </div>
           <div className={styles.simpleImageWrapper}>
@@ -182,13 +182,13 @@ export default async function CalitatePage() {
 
         {/* 5. CERTIFICĂRI */}
         <section className={styles.certBar}>
-          <div className={styles.certItem}>Certificat GMP</div>
+          <div className={styles.certItem}>GMP Certified</div>
           <div className={styles.certDivider}>|</div>
-          <div className={styles.certItem}>Formule Vegane</div>
+          <div className={styles.certItem}>Vegan Formulas</div>
           <div className={styles.certDivider}>|</div>
-          <div className={styles.certItem}>Fără Organisme Modificate (Non-GMO)</div>
+          <div className={styles.certItem}>Non-GMO</div>
           <div className={styles.certDivider}>|</div>
-          <div className={styles.certItem}>Testare în Laboratoare Terțe</div>
+          <div className={styles.certItem}>Third-Party Lab Tested</div>
         </section>
 
       </div>

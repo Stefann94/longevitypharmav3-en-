@@ -235,11 +235,29 @@
 .cartTotal {
   font-weight: 600;
   font-size: 0.95rem;
+  /* Latimea e fixa pentru ca `.rightActions` e aliniat la dreapta: daca suma
+     si-ar schimba latimea, butonul ar creste spre stanga si ar impinge toate
+     celelalte iconite din antet.
+
+     74px, mai putin decat cei 80px de pe site-ul romanesc: „€" e un singur
+     caracter, mult mai ingust decat „RON", deci rezerva necesara e mai mica. */
   width: 74px;
-  text-align: right;
+  /* Centrata, nu aliniata la dreapta. La sumele scurte ramane spatiu; aliniata
+     la dreapta, tot golul s-ar aduna intre iconita cosului si cifre, iar
+     butonul ar parea dezechilibrat. Centrarea il imparte in doua parti egale. */
+  text-align: center;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   overflow: hidden;
+}
+
+/* Moneda, ca sufix discret. Scrisa mai mic si putin mai stearsa, lasa suma la
+   marimea ei pentru totalurile obisnuite. */
+.cartCurrency {
+  font-size: 0.72em;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-left: 2px;
 }
 
 /* PROFILE DROPDOWN */

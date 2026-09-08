@@ -53,7 +53,7 @@ export default function FavoriteButton({ productSlug, className, label, activeLa
     <>
       <button
         className={`${className || ''} ${isFav ? 'is-favorite-active' : ''}`}
-        aria-label={isFav ? 'Elimină de la favorite' : 'Adaugă la favorite'}
+        aria-label={isFav ? 'Remove from favorites' : 'Add to favorites'}
         onClick={handleClick}
       >
         <svg
@@ -88,26 +88,26 @@ export default function FavoriteButton({ productSlug, className, label, activeLa
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
               </div>
-              <h3 className={styles.modalTitle} id="fav-auth-title">Păstrează-ți produsele favorite</h3>
+              <h3 className={styles.modalTitle} id="fav-auth-title">Keep your favorite products</h3>
               <p className={styles.modalText}>
-                Ai nevoie de un cont pentru a salva produsele care îți plac.
-                Le vei regăsi oricând, de pe orice dispozitiv.
+                You need an account to save the products you like.
+                You will find them anytime, from any device.
               </p>
             </div>
 
             <div className={styles.modalButtons}>
               <Link href="/login" className={styles.btnCart}>
-                Autentifică-te
+                Sign in
               </Link>
               <Link href="/signup" className={`${styles.btnContinue} ${styles.btnAsLink}`}>
-                Creează cont nou
+                Create a new account
               </Link>
               <button
                 type="button"
                 className={styles.modalDismiss}
                 onClick={() => setShowAuthModal(false)}
               >
-                Poate mai târziu
+                Maybe later
               </button>
             </div>
           </div>

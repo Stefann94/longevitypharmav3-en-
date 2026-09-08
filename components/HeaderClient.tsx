@@ -23,20 +23,24 @@ interface HeaderClientProps {
 }
 
 /**
- * Mărimea sumei din butonul coșului, în funcție de cât de lung este textul.
+ * Mărimea sumei din butonul coșului, în funcție de câte cifre are.
  *
  * Butonul are lățime fixă, ca bara de iconițe din dreapta să nu se miște
- * niciodată. Totalurile obișnuite (până la „999.99 Lei") încap la mărimea
- * normală; peste ele se micșorează scrisul, în loc să crească butonul.
+ * niciodată. Micșorarea intervine doar la sume neobișnuit de mari, ca text de
+ * rezervă — nu ca soluție pentru totaluri normale.
  *
- * Pragurile sunt pe lungimea șirului, nu pe lățimea măsurată în browser:
+ * Primește DOAR partea numerică, fără monedă. Simbolul „€" este scris separat,
+ * mai mic, deci nu influențează decizia. Fiind un singur caracter, e mult mai
+ * îngust decât „RON" de pe site-ul românesc, iar totalurile încap mai ușor.
+ *
+ * Pragurile sunt pe numărul de caractere, nu pe lățimea măsurată în browser:
  * cifrele folosesc `tabular-nums`, deci au toate aceeași lățime, iar rezultatul
  * este identic fără să fie nevoie de vreo măsurătoare și de un reflow.
  */
-function cartTotalFontSize(text: string): string | undefined {
-  if (text.length >= 12) return '0.76rem'; // de la 10.000 Lei în sus
-  if (text.length >= 11) return '0.86rem'; // 1.000 – 9.999 Lei
-  return undefined;                        // mărimea din CSS
+function cartTotalFontSize(numar: string): string | undefined {
+  if (numar.length >= 9) return '0.76rem';  // de la 100.000 în sus
+  if (numar.length >= 8) return '0.82rem';  // 10.000 – 99.999
+  return undefined;                         // mărimea din CSS
 }
 
 // Linkurile din bara de sub antet. Pe desktop apar în `.bottomMenu`; pe
@@ -178,7 +182,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
         <div className={styles.topBar}>
           <div className={styles.tickerContent}>
             <div className={styles.tickerGroup}>
-              <span className={styles.tickerItem}>Free shipping on orders over <strong>200 RON</strong></span>
+              <span className={styles.tickerItem}>Free shipping on orders over <strong>40 €</strong></span>
               <span className={styles.tickerItem}>•</span>
               <span className={styles.tickerItem}>Use code <strong>LONGEVITY15</strong> for 15% off</span>
               <span className={styles.tickerItem}>•</span>
@@ -186,7 +190,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
               <span className={styles.tickerItem}>•</span>
               <span className={styles.tickerItem}>Subscribe to our newsletter and get <strong>10% OFF</strong></span>
               <span className={styles.tickerItem}>•</span>
-              <span className={styles.tickerItem}>Free shipping on orders over <strong>200 RON</strong></span>
+              <span className={styles.tickerItem}>Free shipping on orders over <strong>40 €</strong></span>
               <span className={styles.tickerItem}>•</span>
               <span className={styles.tickerItem}>Use code <strong>LONGEVITY15</strong> for 15% off</span>
               <span className={styles.tickerItem}>•</span>
@@ -196,7 +200,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
               <span className={styles.tickerItem}>•</span>
             </div>
             <div className={styles.tickerGroup} aria-hidden="true">
-              <span className={styles.tickerItem}>Free shipping on orders over <strong>200 RON</strong></span>
+              <span className={styles.tickerItem}>Free shipping on orders over <strong>40 €</strong></span>
               <span className={styles.tickerItem}>•</span>
               <span className={styles.tickerItem}>Use code <strong>LONGEVITY15</strong> for 15% off</span>
               <span className={styles.tickerItem}>•</span>
@@ -204,7 +208,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
               <span className={styles.tickerItem}>•</span>
               <span className={styles.tickerItem}>Subscribe to our newsletter and get <strong>10% OFF</strong></span>
               <span className={styles.tickerItem}>•</span>
-              <span className={styles.tickerItem}>Free shipping on orders over <strong>200 RON</strong></span>
+              <span className={styles.tickerItem}>Free shipping on orders over <strong>40 €</strong></span>
               <span className={styles.tickerItem}>•</span>
               <span className={styles.tickerItem}>Use code <strong>LONGEVITY15</strong> for 15% off</span>
               <span className={styles.tickerItem}>•</span>
@@ -372,7 +376,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                             </div>
                             <div className={styles.favItemInfo}>
                               <div className={styles.favItemName}>{item.name}</div>
-                              <div className={styles.favItemPrice}>{item.price} Lei</div>
+                              <div className={styles.favItemPrice}>{item.price} €</div>
                             </div>
                             <button aria-label="Remove from favorites" onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(item.product_slug) }} style={{ alignSelf: 'center', background: 'none', border: 'none', cursor: 'pointer', color: '#999', zIndex: 2 }}>
                               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -451,7 +455,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                           </div>
                           <p className={styles.favAuthText}>
                             Track your orders, save your shipping addresses
-                            și primește oferte dedicate.
+                            and receive offers made for you.
                           </p>
                         </div>
                         <div className={styles.favFooter}>
@@ -482,13 +486,14 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                       {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
                     </div>
                     {(() => {
-                      const totalText = `${cartTotal.toFixed(2)} Lei`;
+                      const numar = cartTotal.toFixed(2);
                       return (
                         <span
                           className={styles.cartTotal}
-                          style={{ fontSize: cartTotalFontSize(totalText) }}
+                          style={{ fontSize: cartTotalFontSize(numar) }}
                         >
-                          {totalText}
+                          {numar}
+                          <span className={styles.cartCurrency}>€</span>
                         </span>
                       );
                     })()}
@@ -527,7 +532,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                                     trebuie să oprească navigarea, la fel ca butonul de
                                     ștergere de mai jos. */}
                                 <div className={styles.favItemRow}>
-                                  <div className={styles.favItemPrice}>{item.price} Lei</div>
+                                  <div className={styles.favItemPrice}>{item.price} €</div>
                                   <div className={styles.favItemQty}>
                                     <button
                                       type="button"
@@ -566,7 +571,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                         </div>
                         <div className={styles.favFooter}>
                           <div style={{ textAlign: 'center', marginBottom: '15px', fontSize: '1.05rem', color: '#222' }}>
-                            Total: <strong>{cartTotal.toFixed(2)} Lei</strong>
+                            Total: <strong>{cartTotal.toFixed(2)} €</strong>
                           </div>
                           <Link href="/cart" className={styles.btnViewAllFavs} onClick={() => setIsCartOpen(false)}>
                             View cart
@@ -633,7 +638,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                           />
                           <div className={styles.searchResultInfo}>
                             <span className={styles.searchResultName}>{prod.name}</span>
-                            <span className={styles.searchResultPrice}>{prod.price} Lei</span>
+                            <span className={styles.searchResultPrice}>{prod.price} €</span>
                           </div>
                         </Link>
                       ))

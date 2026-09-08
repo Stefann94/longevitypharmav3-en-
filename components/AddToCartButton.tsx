@@ -49,7 +49,7 @@ export default function AddToCartButton({ productSlug, price, variant = 'full' }
           className={stylesCarousel.addToCartBtn} 
           onClick={handleAddToCart}
           disabled={loading}
-          aria-label="Adaugă în coș"
+          aria-label="Add to cart"
           style={{ opacity: loading ? 0.5 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}
         >
           {loading ? (
@@ -76,7 +76,7 @@ export default function AddToCartButton({ productSlug, price, variant = 'full' }
             <circle cx="20" cy="21" r="1"></circle>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
           </svg>
-          {loading ? 'Se adaugă...' : 'Adaugă în Coș'}
+          {loading ? 'Adding…' : 'Add to Cart'}
         </button>
       )}
 
@@ -90,7 +90,7 @@ export default function AddToCartButton({ productSlug, price, variant = 'full' }
                   <polyline points="22 4 12 14.01 9 11.01"></polyline>
                 </svg>
               </div>
-              <h3 className={styles.modalTitle}>Produs adăugat în coș!</h3>
+              <h3 className={styles.modalTitle}>Product added to your cart!</h3>
             </div>
             
             <div className={styles.modalButtons}>
@@ -109,10 +109,10 @@ export default function AddToCartButton({ productSlug, price, variant = 'full' }
                   }
                 }}
               >
-                Spre coșul meu
+                Go to my cart
               </Link>
               <button className={styles.btnContinue} onClick={() => setShowPopup(false)}>
-                Continuă cumpărăturile
+                Continue shopping
               </button>
             </div>
           </div>

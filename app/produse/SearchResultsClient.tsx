@@ -71,20 +71,20 @@ export default function SearchResultsClient() {
   return (
     <main className="container">
       <div className={styles.breadcrumbs}>
-        <Link href="/">Acasă</Link>
+        <Link href="/">Home</Link>
         <span className={styles.breadcrumbSep}>/</span>
-        <span className={styles.breadcrumbCurrent}>Căutare</span>
+        <span className={styles.breadcrumbCurrent}>Search</span>
       </div>
 
       <header className={styles.categoryHeader}>
         <h1 className={styles.categoryTitle}>
-          {term ? <>Rezultate pentru „{term}&rdquo;</> : 'Caută un produs'}
+          {term ? <>Results for &ldquo;{term}&rdquo;</> : 'Search for a product'}
         </h1>
         {term && !seIncarca && (
           <p className={styles.categoryDescription}>
             {products.length === 0
-              ? 'Niciun produs găsit.'
-              : `Am găsit ${products.length} ${products.length === 1 ? 'produs' : 'produse'}.`}
+              ? 'No products found.'
+              : `We found ${products.length} ${products.length === 1 ? 'product' : 'products'}.`}
           </p>
         )}
       </header>
@@ -93,19 +93,19 @@ export default function SearchResultsClient() {
         {!term ? (
           <div className={styles.emptyState}>
             <div className={styles.emptyStateIcon}>🔍</div>
-            <p>Scrie ce cauți în câmpul de căutare din partea de sus.</p>
+            <p>Type what you are looking for in the search box at the top.</p>
           </div>
         ) : seIncarca ? (
           <div className={styles.emptyState}>
             <div className={styles.emptyStateIcon}>🔍</div>
-            <p>Se caută…</p>
+            <p>Searching…</p>
           </div>
         ) : products.length === 0 ? (
           <div className={styles.emptyState}>
             <div className={styles.emptyStateIcon}>🔬</div>
-            <p>Nu am găsit niciun produs pentru „{term}&rdquo;.</p>
+            <p>We found no products for &ldquo;{term}&rdquo;.</p>
             <p style={{ fontSize: '0.9rem', marginTop: '8px' }}>
-              Încearcă un alt termen sau <Link href="/bestsellers" style={{ textDecoration: 'underline' }}>vezi cele mai vândute produse</Link>.
+              Try another term, or <Link href="/bestsellers" style={{ textDecoration: 'underline' }}>browse our bestsellers</Link>.
             </p>
           </div>
         ) : (
