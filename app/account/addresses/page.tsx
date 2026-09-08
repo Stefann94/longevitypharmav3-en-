@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../Account.module.css';
 import { createClient } from '@/lib/supabase/client';
-import { useUtilizatorCurent } from '../useUtilizatorCurent';
+import { useCurrentUser } from '../useCurrentUser';
 import AddressForm from './AddressForm';
 
 // Campurile sunt cele asteptate de AddressForm, toate optionale: un rand
@@ -18,7 +18,7 @@ type Address = {
 };
 
 export default function AddressesPage() {
-  const { user } = useUtilizatorCurent();
+  const { user } = useCurrentUser();
   const [addresses, setAddresses] = useState<Address[] | null>(null);
 
   useEffect(() => {

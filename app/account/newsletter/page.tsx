@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../Account.module.css';
 import { createClient } from '@/lib/supabase/client';
-import { useUtilizatorCurent } from '../useUtilizatorCurent';
+import { useCurrentUser } from '../useCurrentUser';
 import NewsletterSwitch from './NewsletterSwitch';
 
 export default function NewsletterPage() {
-  const { user } = useUtilizatorCurent();
+  const { user } = useCurrentUser();
   const [isSubscribed, setIsSubscribed] = useState<boolean | null>(null);
 
   useEffect(() => {

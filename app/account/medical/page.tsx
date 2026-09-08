@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../Account.module.css';
 import { createClient } from '@/lib/supabase/client';
-import { useUtilizatorCurent } from '../useUtilizatorCurent';
+import { useCurrentUser } from '../useCurrentUser';
 import MedicalForm from './MedicalForm';
 
 type DateMedicale = { allergies: string; current_treatments: string };
 
 export default function MedicalPage() {
-  const { user } = useUtilizatorCurent();
+  const { user } = useCurrentUser();
   const [initialData, setInitialData] = useState<DateMedicale | null>(null);
 
   useEffect(() => {

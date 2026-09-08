@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../Account.module.css';
 import { createClient } from '@/lib/supabase/client';
-import { useUtilizatorCurent } from '../useUtilizatorCurent';
+import { useCurrentUser } from '../useCurrentUser';
 
 export default function InvoicesPage() {
-  const { user } = useUtilizatorCurent();
+  const { user } = useCurrentUser();
   const [invoices, setInvoices] = useState<any[]>([]);
 
   useEffect(() => {

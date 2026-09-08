@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../Account.module.css';
 import { createClient } from '@/lib/supabase/client';
-import { useUtilizatorCurent } from '../useUtilizatorCurent';
+import { useCurrentUser } from '../useCurrentUser';
 import ProfileForm from './ProfileForm';
 
 type DateProfil = { first_name: string; last_name: string; email: string; phone: string };
 
 export default function PersonalInfoPage() {
-  const { user } = useUtilizatorCurent();
+  const { user } = useCurrentUser();
   const [initialData, setInitialData] = useState<DateProfil | null>(null);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './Calitate.module.css';
+import styles from './Quality.module.css';
 import pageStyles from '../page.module.css';
 import { createStaticClient } from '@/lib/supabase/static';
 

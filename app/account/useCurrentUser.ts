@@ -19,7 +19,7 @@ import { createClient } from '@/lib/supabase/client';
  * `seIncarca` rămâne `true` până se știe sigur dacă există sesiune, ca paginile
  * să nu afișeze pentru o clipă date goale înainte de a primi răspunsul.
  */
-export function useUtilizatorCurent() {
+export function useCurrentUser() {
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
   const [seIncarca, setSeIncarca] = useState(true);

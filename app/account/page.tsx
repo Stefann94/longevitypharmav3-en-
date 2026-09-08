@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import styles from './Account.module.css';
-import { useUtilizatorCurent } from './useUtilizatorCurent';
+import { useCurrentUser } from './useCurrentUser';
 
 type Address = {
   id: string;
@@ -14,7 +14,7 @@ type Address = {
 };
 
 export default function AccountPage() {
-  const { user } = useUtilizatorCurent();
+  const { user } = useCurrentUser();
 
   const [defaultShipping, setDefaultShipping] = useState<Address | null>(null);
   const [isSubscribed, setIsSubscribed] = useState(false);

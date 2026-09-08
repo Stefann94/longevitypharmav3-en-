@@ -5,10 +5,10 @@ import styles from '../Account.module.css';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import RemoveFavoriteButton from './RemoveFavoriteButton';
-import { useUtilizatorCurent } from '../useUtilizatorCurent';
+import { useCurrentUser } from '../useCurrentUser';
 
 export default function FavoritesClient() {
-  const { user } = useUtilizatorCurent();
+  const { user } = useCurrentUser();
   const [favoriteProducts, setFavoriteProducts] = useState<any[]>([]);
 
   useEffect(() => {

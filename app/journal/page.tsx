@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getJournalArticles, JournalArticle } from './actions';
-import styles from './Jurnal.module.css';
+import styles from './Journal.module.css';
 
 export const metadata = {
   title: 'Science Journal | Longevity Pharma',

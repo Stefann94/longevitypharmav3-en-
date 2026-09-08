@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './Pachete.module.css';
+import styles from './Bundles.module.css';
 import pageStyles from '../page.module.css';
 import AddToCartButton from '../../components/AddToCartButton';
 import FavoriteButton from '../../components/FavoriteButton';
@@ -16,11 +16,11 @@ interface Product {
   price: number;
 }
 
-interface PacheteClientProps {
+interface BundlesClientProps {
   products: Product[];
 }
 
-export default function PacheteClient({ products }: PacheteClientProps) {
+export default function BundlesClient({ products }: BundlesClientProps) {
   const [sortOption, setSortOption] = useState('price-desc');
 
   const sortedProducts = useMemo(() => {

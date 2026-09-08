@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './Abonamente.module.css';
+import styles from './Subscriptions.module.css';
 
 export const metadata = {
   title: 'Subscriptions | Longevity Pharma',

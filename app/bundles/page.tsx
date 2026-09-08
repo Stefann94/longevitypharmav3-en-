@@ -1,5 +1,5 @@
 import { createStaticClient } from '@/lib/supabase/static';
-import PacheteClient from "./PacheteClient";
+import BundlesClient from "./BundlesClient";
 
 
 export const metadata = {
@@ -16,5 +16,5 @@ export default async function PachetePage() {
     .eq('is_premium_bundle', true)
     .order('price', { ascending: false });
 
-  return <PacheteClient products={products || []} />;
+  return <BundlesClient products={products || []} />;
 }

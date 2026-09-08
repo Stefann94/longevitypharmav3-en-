@@ -2,7 +2,7 @@
 
 import SidebarClient from './SidebarClient';
 import styles from './Account.module.css';
-import { useUtilizatorCurent } from './useUtilizatorCurent';
+import { useCurrentUser } from './useCurrentUser';
 
 /**
  * Poarta de acces în zona de cont.
@@ -19,7 +19,7 @@ export default function AccountLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user, seIncarca } = useUtilizatorCurent();
+  const { user, seIncarca } = useCurrentUser();
 
   return (
     <div className={styles.pageBackground}>

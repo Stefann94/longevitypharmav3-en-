@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import styles from '../Account.module.css';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
-import { useUtilizatorCurent } from '../useUtilizatorCurent';
+import { useCurrentUser } from '../useCurrentUser';
 
 export default function OrdersClient() {
-  const { user } = useUtilizatorCurent();
+  const { user } = useCurrentUser();
   const [orders, setOrders] = useState<any[]>([]);
   const [productImages, setProductImages] = useState<Record<string, string>>({});
 
