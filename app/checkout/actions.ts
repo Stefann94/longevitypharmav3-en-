@@ -29,7 +29,7 @@ export async function processCheckout(formData: FormData) {
     try {
       clientCartItems = JSON.parse(guestCartRaw)
     } catch (e) {
-      console.error('Eroare parsare guestCartItems', e)
+      console.error('Failed to parse guestCartItems', e)
     }
   }
 
@@ -126,8 +126,8 @@ export async function processCheckout(formData: FormData) {
   // revendicată decât un checkout care refuză să meargă.
   if (orderError && orderError.message?.includes('guest_email')) {
     console.warn(
-      'Coloana orders.guest_email lipseste; comanda se salveaza fara ea. ' +
-      'Ruleaza setup_guest_orders.sql in Supabase pentru a activa revendicarea.'
+      'The orders.guest_email column is missing; the order is saved without it. ' +
+      'Run setup_guest_orders.sql in Supabase to enable order claiming.'
     )
     delete orderRow.guest_email
     const retry = await supabase.from('orders').insert(orderRow)
@@ -187,7 +187,7 @@ export async function processCheckout(formData: FormData) {
       body: { tip: 'comanda', id: orderId },
     })
   } catch (err) {
-    console.error('Emailul de confirmare nu a putut fi trimis:', err)
+    console.error('The confirmation email could not be sent:', err)
   }
   return { success: true }
 }

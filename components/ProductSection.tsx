@@ -33,7 +33,7 @@ export default function ProductSection({ title, products, viewAllLink, badgeText
           <h2 className={styles.sectionTitle}>{title}</h2>
           {viewAllLink && (
             <a href={viewAllLink} className={styles.viewAllLink}>
-              Vezi toate <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              View all <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
           )}
         </div>

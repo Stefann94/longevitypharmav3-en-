@@ -163,7 +163,7 @@ export default function ProductCarousel({ title, products }: ProductCarouselProp
               key={idx}
               className={`${styles.dot} ${idx === currentIndex ? styles.activeDot : ''}`}
               onClick={() => goToSlide(idx)}
-              aria-label={`Mergi la pagina ${idx + 1}`}
+              aria-label={`Go to page ${idx + 1}`}
             />
           ))}
         </div>

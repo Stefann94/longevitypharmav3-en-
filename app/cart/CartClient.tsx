@@ -90,7 +90,7 @@ export default function CartClient() {
                 <div className={styles.itemImageContainer}>
                   <Image 
                     src={item.image_url || '/placeholder.png'} 
-                    alt={item.name || 'Produs'} 
+                    alt={item.name || 'Product'} 
                     fill
                     className={styles.itemImage}
                   />

@@ -56,7 +56,7 @@ export async function fetchCart(): Promise<FetchCartResult> {
     const product = productsMap.get(item.product_slug)
     return {
       ...item,
-      name: product?.name || 'Produs',
+      name: product?.name || 'Product',
       image_url: product?.image_url || '/placeholder.png'
     }
   })

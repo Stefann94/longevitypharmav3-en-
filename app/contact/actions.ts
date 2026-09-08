@@ -53,7 +53,7 @@ export async function submitContactMessage(formData: FormData) {
       body: { tip: 'contact', id: mesajId },
     });
   } catch (err) {
-    console.error('Notificarea de contact nu a putut fi trimisa:', err);
+    console.error('The contact notification could not be sent:', err);
   }
 
   return { success: true };

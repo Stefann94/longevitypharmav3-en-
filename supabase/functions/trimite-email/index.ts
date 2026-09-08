@@ -61,7 +61,7 @@ async function trimitePrinResend(mesaj: {
 }) {
   const cheie = Deno.env.get('RESEND_API_KEY');
   if (!cheie) {
-    console.warn('RESEND_API_KEY nu este setat: emailul nu a fost trimis.');
+    console.warn('RESEND_API_KEY is not set: the email was not sent.');
     return { trimis: false, motiv: 'lipseste RESEND_API_KEY' };
   }
 
@@ -84,7 +84,7 @@ async function trimitePrinResend(mesaj: {
 
   if (!raspunsResend.ok) {
     const detaliu = await raspunsResend.text();
-    console.error('Eroare Resend:', raspunsResend.status, detaliu);
+    console.error('Resend error:', raspunsResend.status, detaliu);
     return { trimis: false, motiv: detaliu };
   }
 
@@ -100,7 +100,7 @@ Deno.serve(async (req) => {
     const { tip, id } = await req.json();
 
     if (!id || (tip !== 'comanda' && tip !== 'contact')) {
-      return raspuns({ error: 'Parametri lipsă sau invalizi.' }, 400);
+      return raspuns({ error: 'Missing or invalid parameters.' }, 400);
     }
 
     // Cheia de serviciu ocolește RLS: e nevoie, pentru că funcția trebuie să
@@ -114,7 +114,7 @@ Deno.serve(async (req) => {
     if (tip === 'contact') {
       const destinatar = Deno.env.get('CONTACT_NOTIFICATION_EMAIL');
       if (!destinatar) {
-        console.warn('CONTACT_NOTIFICATION_EMAIL nu este setat.');
+        console.warn('CONTACT_NOTIFICATION_EMAIL is not set.');
         return raspuns({ trimis: false, motiv: 'destinatar neconfigurat' });
       }
 
@@ -125,7 +125,7 @@ Deno.serve(async (req) => {
         .single();
 
       if (error || !mesaj) {
-        return raspuns({ error: 'Mesajul nu a fost găsit.' }, 404);
+        return raspuns({ error: 'Message not found.' }, 404);
       }
 
       const safe = {
@@ -197,7 +197,7 @@ Deno.serve(async (req) => {
       .single();
 
     if (eroareComanda || !comanda) {
-      return raspuns({ error: 'Comanda nu a fost găsită.' }, 404);
+      return raspuns({ error: 'Order not found.' }, 404);
     }
 
     // Destinatarul nu vine niciodată de la apelant. Pentru un client cu cont îl
@@ -209,7 +209,7 @@ Deno.serve(async (req) => {
     }
 
     if (!destinatar) {
-      return raspuns({ trimis: false, motiv: 'comanda nu are adresa de email' });
+      return raspuns({ trimis: false, motiv: 'the order has no email address' });
     }
 
     const { data: produse } = await supabase
@@ -270,7 +270,7 @@ Deno.serve(async (req) => {
 
     return raspuns(rezultat);
   } catch (err) {
-    console.error('Eroare in functia de email:', err);
-    return raspuns({ error: 'Eroare internă.' }, 500);
+    console.error('Error in the email function:', err);
+    return raspuns({ error: 'Internal error.' }, 500);
   }
 });

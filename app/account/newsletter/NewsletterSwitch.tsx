@@ -17,7 +17,7 @@ export default function NewsletterSwitch({ initialSubscribed }: { initialSubscri
     if (result?.error) {
       // Revert if error
       setIsSubscribed(!newState);
-      alert('Eroare: ' + result.error);
+      alert('Error: ' + result.error);
     }
     setLoading(false);
   };

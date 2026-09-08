@@ -77,7 +77,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     for (const item of localCart) {
       const result = await addToCartDB(item.product_slug, item.price, item.quantity)
       if (!result.success) {
-        console.warn('Produsul nu a putut fi mutat in cont:', item.product_slug, result.error)
+        console.warn('The product could not be moved into the account:', item.product_slug, result.error)
         notMerged.push(item)
       }
     }
@@ -107,7 +107,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           const product = productsMap.get(item.product_slug)
           return {
             ...item,
-            name: product?.name || 'Produs',
+            name: product?.name || 'Product',
             image_url: product?.image_url || '/placeholder.png',
             price: product?.price || item.price // keep price synced with DB
           }

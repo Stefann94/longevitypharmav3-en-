@@ -120,7 +120,7 @@ export default async function CalitatePage() {
         <section className={styles.zigzagSection}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>
-              Pilonii <span>Formulelor Noastre</span>
+              The Pillars of <span>Our Formulas</span>
             </h2>
           </div>
           

@@ -34,7 +34,7 @@ export async function getJournalArticles(): Promise<JournalArticle[]> {
     .order('published_at', { ascending: false });
 
   if (error) {
-    console.error('Eroare la citirea articolelor din jurnal:', error);
+    console.error('Error reading the journal articles:', error);
     return [];
   }
 
@@ -52,7 +52,7 @@ export async function getJournalArticleBySlug(slug: string): Promise<JournalArti
     .single();
 
   if (error) {
-    console.error(`Eroare la citirea articolului cu slug-ul ${slug}:`, error);
+    console.error(`Error reading the article with slug ${slug}:`, error);
     return null;
   }
 

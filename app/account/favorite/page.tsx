@@ -1,7 +1,7 @@
 import FavoritesClient from './FavoritesClient';
 
 export const metadata = {
-  title: 'Produse Favorite | Longevity Pharma',
+  title: 'Favorite Products | Longevity Pharma',
 };
 
 // Invelisul ramane componenta de server doar ca sa poata exporta `metadata`.

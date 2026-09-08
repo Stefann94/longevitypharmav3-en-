@@ -27,7 +27,7 @@ export default function SidebarClient() {
 
   return (
     <aside className={styles.sidebar}>
-      <h2 className={styles.sidebarTitle}>Contul meu</h2>
+      <h2 className={styles.sidebarTitle}>My Account</h2>
       
       <nav className={styles.sidebarMenu}>
         {MENU_ITEMS.map((item) => {
@@ -49,7 +49,7 @@ export default function SidebarClient() {
 
       <nav className={styles.sidebarMenu}>
         <button onClick={() => logout()} className={styles.logoutLink} style={{ textAlign: 'left', width: '100%', cursor: 'pointer', border: 'none' }}>
-          Deconectare
+          Sign out
         </button>
       </nav>
     </aside>

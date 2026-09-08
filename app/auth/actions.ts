@@ -32,16 +32,16 @@ async function claimGuestOrders(supabase: SupabaseClient) {
   try {
     const { data, error } = await supabase.rpc('claim_guest_orders')
     if (error) {
-      console.warn('Revendicarea comenzilor fara cont a esuat:', error.message)
+      console.warn('Claiming the guest orders failed:', error.message)
       return
     }
     if (data) {
-      console.log(`[COMENZI] ${data} comanda/comenzi legate de cont.`)
+      console.log(`[ORDERS] ${data} order(s) linked to the account.`)
       // Fără revalidatePath: pagina de comenzi își citește singură datele din
       // browser, iar reîncărcarea de mai jos o va aduce oricum la zi.
     }
   } catch (err) {
-    console.warn('Revendicarea comenzilor fara cont a esuat:', err)
+    console.warn('Claiming the guest orders failed:', err)
   }
 }
 
@@ -74,7 +74,7 @@ export async function login(formData: FormData) {
       return { error: error.message }
     }
   } catch (err) {
-    console.error('Eroare neasteptata la autentificare:', err)
+    console.error('Unexpected error while signing in:', err)
     return { error: 'There was a problem signing you in. Please try again.' }
   }
 
@@ -134,7 +134,7 @@ export async function signup(formData: FormData) {
 
     signUpData = data
   } catch (err) {
-    console.error('Eroare neasteptata la inregistrare:', err)
+    console.error('Unexpected error while signing up:', err)
     return { error: 'There was a problem creating your account. Please try again.' }
   }
 

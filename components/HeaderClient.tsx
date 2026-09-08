@@ -387,7 +387,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                     </div>
                     <div className={styles.favFooter}>
                       <Link href="/account/favorite" className={styles.btnViewAllFavs} onClick={() => { setIsFavOpen(false); window.scrollTo(0, 0); }}>
-                        Vezi toate produsele favorite
+                        View all favorite products
                       </Link>
                     </div>
                     </>
@@ -506,7 +506,7 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                   <div className={`${styles.favDropdown} ${styles.cartDropdown} ${isCartOpen ? styles.favDropdownOpen : ''}`}>
                     {cartCount === 0 ? (
                       <div className={styles.favHeader} style={{ padding: '20px' }}>
-                        Your cart este gol.
+                        Your cart is empty.
                         <div style={{ marginTop: '15px' }}>
                           <Link href="/" className={styles.btnViewAllFavs} onClick={() => setIsCartOpen(false)}>Back to shop</Link>
                         </div>

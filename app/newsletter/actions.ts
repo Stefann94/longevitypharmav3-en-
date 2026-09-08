@@ -45,7 +45,7 @@ export async function subscribeToNewsletter(formData: FormData) {
       if (error.code === '23505') {
         return { success: true, alreadySubscribed: true }
       }
-      console.error('Eroare abonare newsletter (utilizator autentificat):', error)
+      console.error('Newsletter subscription error (signed-in user):', error)
       return { error: 'We could not save your subscription. Please try again.' }
     }
 
@@ -67,7 +67,7 @@ export async function subscribeToNewsletter(formData: FormData) {
     if (error.code === '23505') {
       return { success: true, alreadySubscribed: true }
     }
-    console.error('Eroare abonare newsletter (vizitator):', error)
+    console.error('Newsletter subscription error (guest):', error)
     return { error: 'We could not save your subscription. Please try again.' }
   }
 

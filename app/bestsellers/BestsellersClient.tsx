@@ -120,7 +120,7 @@ export default function BestsellersClient({ products }: BestsellersClientProps) 
                 className={`${styles.sortBtn} ${sortOption === 'category' ? styles.sortBtnActive : ''}`}
                 onClick={() => setSortOption('category')}
               >
-                Categorie
+                Category
               </button>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function BestsellersClient({ products }: BestsellersClientProps) 
         {/* PRODUCTS GRID */}
         {sortedProducts.length === 0 ? (
           <div className={styles.emptyState}>
-            <p>Momentan nu avem produse bestseller disponibile.</p>
+            <p>We have no bestsellers available at the moment.</p>
           </div>
         ) : (
           <div className={styles.productsGrid}>

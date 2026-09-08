@@ -55,7 +55,7 @@ export default function SearchResultsClient() {
       if (!activ) return;
 
       if (error) {
-        console.error('Eroare la cautarea produselor:', error);
+        console.error('Error while searching for products:', error);
         setProducts([]);
       } else {
         setProducts(data ?? []);

@@ -64,8 +64,8 @@ export default function CategoryClient({ category, products, allCategories }: Ca
       // Tags filter
       if (selectedTags.length > 0) {
         const hasBestseller = selectedTags.includes('Bestseller') && p.is_bestseller;
-        const hasProdusNou = selectedTags.includes('Produs Nou') && p.tags?.includes('Produs Nou');
-        const hasTransportGratuit = selectedTags.includes('Transport Gratuit') && p.tags?.includes('Transport Gratuit');
+        const hasProdusNou = selectedTags.includes('New Product') && p.tags?.includes('New Product');
+        const hasTransportGratuit = selectedTags.includes('Free Shipping') && p.tags?.includes('Free Shipping');
         
         // Match ANY selected tag
         if (!hasBestseller && !hasProdusNou && !hasTransportGratuit) return false;
@@ -113,12 +113,12 @@ export default function CategoryClient({ category, products, allCategories }: Ca
     let freeShippingCount = 0;
 
     products?.forEach(p => {
-      // Consider a product "Nou" if it has the tag 'Produs Nou'
-      if (p.tags && Array.isArray(p.tags) && p.tags.includes('Produs Nou')) {
+      // Consider a product "Nou" if it has the tag 'New Product'
+      if (p.tags && Array.isArray(p.tags) && p.tags.includes('New Product')) {
         newCount++;
       }
-      // Consider it has free shipping if it has the tag 'Transport Gratuit'
-      if (p.tags && Array.isArray(p.tags) && p.tags.includes('Transport Gratuit')) {
+      // Consider it has free shipping if it has the tag 'Free Shipping'
+      if (p.tags && Array.isArray(p.tags) && p.tags.includes('Free Shipping')) {
         freeShippingCount++;
       }
     });
@@ -216,21 +216,21 @@ export default function CategoryClient({ category, products, allCategories }: Ca
                   <span className={styles.filterItemCount}>({products?.filter(p => p.is_bestseller).length || 0})</span>
                 </label>
                 <label className={styles.filterItem}>
-                  <input type="checkbox" style={{ display: 'none' }} checked={selectedTags.includes('Produs Nou')} onChange={(e) => {
-                    if (e.target.checked) setSelectedTags([...selectedTags, 'Produs Nou']);
-                    else setSelectedTags(selectedTags.filter(t => t !== 'Produs Nou'));
+                  <input type="checkbox" style={{ display: 'none' }} checked={selectedTags.includes('New Product')} onChange={(e) => {
+                    if (e.target.checked) setSelectedTags([...selectedTags, 'New Product']);
+                    else setSelectedTags(selectedTags.filter(t => t !== 'New Product'));
                   }} />
-                  <span className={`${styles.customCheckbox} ${selectedTags.includes('Produs Nou') ? styles.customCheckboxChecked : ''}`} />
-                  Produs Nou
+                  <span className={`${styles.customCheckbox} ${selectedTags.includes('New Product') ? styles.customCheckboxChecked : ''}`} />
+                  New Product
                   <span className={styles.filterItemCount}>({tagsCount.new})</span>
                 </label>
                 <label className={styles.filterItem}>
-                  <input type="checkbox" style={{ display: 'none' }} checked={selectedTags.includes('Transport Gratuit')} onChange={(e) => {
-                    if (e.target.checked) setSelectedTags([...selectedTags, 'Transport Gratuit']);
-                    else setSelectedTags(selectedTags.filter(t => t !== 'Transport Gratuit'));
+                  <input type="checkbox" style={{ display: 'none' }} checked={selectedTags.includes('Free Shipping')} onChange={(e) => {
+                    if (e.target.checked) setSelectedTags([...selectedTags, 'Free Shipping']);
+                    else setSelectedTags(selectedTags.filter(t => t !== 'Free Shipping'));
                   }} />
-                  <span className={`${styles.customCheckbox} ${selectedTags.includes('Transport Gratuit') ? styles.customCheckboxChecked : ''}`} />
-                  Transport Gratuit
+                  <span className={`${styles.customCheckbox} ${selectedTags.includes('Free Shipping') ? styles.customCheckboxChecked : ''}`} />
+                  Free Shipping
                   <span className={styles.filterItemCount}>({tagsCount.freeShipping})</span>
                 </label>
               </div>
@@ -304,7 +304,7 @@ export default function CategoryClient({ category, products, allCategories }: Ca
             {/* ALTE CATEGORII */}
             <div className={styles.filterSection}>
               <div className={styles.filterTitle}>
-                Categorii
+                Categories
               </div>
               <div className={styles.brandList}>
                 {allCategories.map((cat) => {
