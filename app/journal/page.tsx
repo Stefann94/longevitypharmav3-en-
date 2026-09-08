@@ -114,7 +114,7 @@ export default async function JurnalPage() {
 
         {/* PROMO BANNER */}
         <section className={styles.promoBannerSection}>
-          <a href="/category/focus" className={styles.promoBannerLink}>
+          <a href="/category/focus-memory" className={styles.promoBannerLink}>
             <Image 
               src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop" 
               alt="Promo Banner" 

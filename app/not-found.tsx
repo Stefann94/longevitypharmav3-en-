@@ -38,9 +38,9 @@ export default function NotFound() {
           <div className={styles.suggestionsTitle}>Popular categories</div>
           <div className={styles.suggestionsList}>
             <Link href="/bestsellers" className={styles.suggestionChip}>Bestsellers</Link>
-            <Link href="/category/longevitate" className={styles.suggestionChip}>Longevity</Link>
-            <Link href="/category/imunitate" className={styles.suggestionChip}>Immunity</Link>
-            <Link href="/category/focus" className={styles.suggestionChip}>Focus</Link>
+            <Link href="/category/longevity-anti-aging" className={styles.suggestionChip}>Longevity</Link>
+            <Link href="/category/immunity-protection" className={styles.suggestionChip}>Immunity</Link>
+            <Link href="/category/focus-memory" className={styles.suggestionChip}>Focus</Link>
             <Link href="/journal" className={styles.suggestionChip}>Journal</Link>
           </div>
         </div>

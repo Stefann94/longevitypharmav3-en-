@@ -60,14 +60,14 @@ export default async function Home() {
         <ProductSection 
           title={<>Essentials <span>for</span> Longevity</>}
           products={essentials || []}
-          viewAllLink="/category/longevitate"
+          viewAllLink="/category/longevity-anti-aging"
           badgeText="Bestseller"
         />
 
         {/* PROMO BANNER (Între Esențiale și Focus) */}
         <section className={styles.promoBannerSection}>
           <div className="container">
-            <a href="/category/focus" className={styles.promoBannerLink}>
+            <a href="/category/focus-memory" className={styles.promoBannerLink}>
               <img 
                 src="/images/journal/promo_banner.png" 
                 alt="Promo Banner" 
@@ -85,7 +85,7 @@ export default async function Home() {
         <ProductSection 
           title={<>Focus & <span>Mental Clarity</span></>}
           products={focusEnergy || []}
-          viewAllLink="/category/focus"
+          viewAllLink="/category/focus-memory"
         />
 
         {/* DISCOVER CARDS - "Descoperă după nevoie" */}
@@ -98,7 +98,7 @@ export default async function Home() {
             </div>
             <div className={styles.discoverCardsGrid}>
 
-              <a href="/category/focus" className={styles.discoverCard}>
+              <a href="/category/focus-memory" className={styles.discoverCard}>
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/energie-focus.png" 
@@ -115,7 +115,7 @@ export default async function Home() {
                 </div>
               </a>
 
-              <a href="/category/longevitate" className={styles.discoverCard}>
+              <a href="/category/longevity-anti-aging" className={styles.discoverCard}>
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/anti-aging.png" 
@@ -132,7 +132,7 @@ export default async function Home() {
                 </div>
               </a>
 
-              <a href="/category/imunitate" className={styles.discoverCard}>
+              <a href="/category/immunity-protection" className={styles.discoverCard}>
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
                     src="/images/cards/imunitate.png" 

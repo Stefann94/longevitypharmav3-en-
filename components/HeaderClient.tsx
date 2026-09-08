@@ -612,10 +612,10 @@ export default function HeaderClient({ categories, featuredProducts, activePromo
                 {!searchTerm.trim() ? (
                   <div className={styles.searchQuickLinks}>
                     <span>Quick links:</span>
-                    <Link href="/category/longevitate" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Anti-Aging</Link>
-                    <Link href="/category/focus" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Focus & Memory</Link>
-                    <Link href="/category/somn-stres" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Sleep & Stress</Link>
-                    <Link href="/category/imunitate" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Immunity</Link>
+                    <Link href="/category/longevity-anti-aging" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Anti-Aging</Link>
+                    <Link href="/category/focus-memory" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Focus & Memory</Link>
+                    <Link href="/category/sleep-stress" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Sleep & Stress</Link>
+                    <Link href="/category/immunity-protection" className={styles.quickLinkBtn} onClick={() => setIsSearchOpen(false)}>Immunity</Link>
                   </div>
                 ) : (
                   <div className={styles.searchResults}>

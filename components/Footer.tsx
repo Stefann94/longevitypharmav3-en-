@@ -35,6 +35,9 @@ export default function Footer() {
             <div className={styles.footerCol}>
               <h4 className={styles.colTitle}>Useful Information</h4>
               <ul className={styles.linkList}>
+                {/* Pagina About Us nu exista inca: folderul app/about-us/ are doar CSS si
+                    un actions.ts orfan, iar tabela about_us_content lipseste din baza.
+                    Linkul ramane inert pana cand pagina este construita. */}
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Terms and Conditions</a></li>
                 <li><a href="#">Privacy Policy</a></li>
@@ -47,7 +50,7 @@ export default function Footer() {
             <div className={styles.footerCol}>
               <h4 className={styles.colTitle}>Customer Support</h4>
               <ul className={styles.linkList}>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Frequently Asked Questions</a></li>
                 <li><a href="#">How to Order</a></li>
                 <li><a href="#">Shipping and Payment</a></li>
