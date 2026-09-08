@@ -1,83 +1,100 @@
-# Configurația Apache pentru găzduirea pe Hostico
+# Configuratia Apache pentru gazduirea pe Hostico
 #
-# Fișierul stă în `public/`, deci Next.js îl copiază automat în rădăcina
-# exportului (`out/`), de unde ajunge în `public_html` pe server.
+# Comentariile sunt scrise intentionat fara diacritice. Fisierul trece prin
+# clipboard, prin editorul din cPanel si prin FTP, iar oricare dintre ele poate
+# strica textul non-ASCII. Un fisier de configurare de server trebuie sa ramana
+# lizibil dupa orice drum.
 #
-# Preia rolul funcției `headers()` din next.config.ts, care nu mai poate fi
-# folosită: la export static nu există niciun server Node care să adauge
-# anteturi la răspuns. Le adaugă Apache în locul lui, cu exact aceleași valori.
+# Fisierul sta in `public/`, deci Next.js il copiaza automat in radacina
+# exportului (`out/`), de unde ajunge in `public_html` pe server.
+#
+# Preia rolul functiei `headers()` din next.config.ts, care nu mai poate fi
+# folosita: la export static nu exista niciun server Node care sa adauge
+# anteturi la raspuns. Le adauga Apache in locul lui, cu exact aceleasi valori.
 
 # ---------------------------------------------------------------------------
-# Adrese fără .html
+# Adrese fara .html
 # ---------------------------------------------------------------------------
-# Exportul produce, pentru fiecare pagină, DOUĂ lucruri cu același nume:
+# Exportul produce, pentru fiecare pagina, DOUA lucruri cu acelasi nume:
 #
-#   contact.html   pagina propriu-zisă
+#   contact.html   pagina propriu-zisa
 #   contact/       un folder cu date interne, folosite la navigarea prin site
 #
-# Ordinea regulilor de mai jos este esențială, iar prima variantă a acestui
-# fișier o avea greșită. Dacă folderul e lăsat să treacă primul, Apache
-# redirecționează /contact către /contact/ și afișează lista fișierelor din
-# folder în locul paginii. Pagina trebuie deci verificată ÎNAINTEA folderului
-# cu același nume.
+# Ordinea regulilor de mai jos este esentiala, iar prima varianta a acestui
+# fisier o avea gresita. Daca folderul e lasat sa treaca primul, Apache
+# redirectioneaza /contact catre /contact/ si afiseaza lista fisierelor din
+# folder in locul paginii. Pagina trebuie deci verificata INAINTEA folderului
+# cu acelasi nume.
 
-# Nicio listare de fișiere, în niciun folder.
-# Dacă serverul răspunde cu eroare 500 după salvare, șterge linia asta: unele
-# configurații Apache nu permit directiva `Options` dintr-un fișier .htaccess.
+# Nicio listare de fisiere, in niciun folder.
+# Daca serverul raspunde cu eroare 500 dupa salvare, sterge linia asta: unele
+# configuratii Apache nu permit directiva `Options` dintr-un fisier .htaccess.
 Options -Indexes
+
+# Apache adauga din proprie initiativa o bara finala la orice adresa care are un
+# folder cu acelasi nume: /produs/x devenea /produs/x/. Asta se intampla INAINTE
+# ca regulile de mai jos sa apuce sa serveasca pagina, si producea doua
+# redirectionari inlantuite, cu `.html` ajuns in bara de adresa.
+#
+# Oprita, adresa ramane cea scrisa de vizitator, iar pagina este servita direct.
+<IfModule mod_dir.c>
+  DirectorySlash Off
+</IfModule>
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # 1. Fișierele care există exact așa se servesc direct: CSS, JavaScript,
-  #    imagini, fonturi. Nu li se aplică nicio rescriere.
+  # 1. Fisierele care exista exact asa se servesc direct: CSS, JavaScript,
+  #    imagini, fonturi. Nu li se aplica nicio rescriere.
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
   # 2. /contact -> contact.html
-  #    Are prioritate față de folderul cu același nume. Fiindcă rescrierea se
-  #    face aici, Apache nu mai ajunge să vadă un folder și nu mai adaugă bara
-  #    finală la adresă.
+  #    Are prioritate fata de folderul cu acelasi nume. Fiindca rescrierea se
+  #    face aici, Apache nu mai ajunge sa vada un folder si nu mai adauga bara
+  #    finala la adresa.
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
 
-  # 3. /contact/ -> contact.html
-  #    Pentru cine ajunge cu bară finală dintr-un link vechi sau din istoricul
-  #    browserului. Redirecționare permanentă, ca adresa să rămână una singură.
+  # 3. /contact/ -> /contact
+  #    Pentru cine ajunge cu bara finala dintr-un link vechi sau din istoricul
+  #    browserului. Trimite catre adresa fara bara, nu direct catre fisierul
+  #    .html: asa exista o singura adresa oficiala pentru fiecare pagina, iar
+  #    `.html` nu ajunge niciodata in bara browserului. De acolo preia regula 2.
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^(.+)/$ /$1.html [L,R=301]
+  RewriteRule ^(.+)/$ /$1 [L,R=301]
 </IfModule>
 
-# Pagina de eroare generată de Next.js
+# Pagina de eroare generata de Next.js
 ErrorDocument 404 /404.html
 
 # ---------------------------------------------------------------------------
 # Anteturi de securitate
 # ---------------------------------------------------------------------------
-# Copiate identic din next.config.ts. Singura diferență: `unsafe-eval` lipsește
-# din script-src, pentru că era necesar doar pentru reîncărcarea la cald în
-# timpul dezvoltării, nu în producție.
+# Copiate identic din next.config.ts. Singura diferenta: `unsafe-eval` lipseste
+# din script-src, pentru ca era necesar doar pentru reincarcarea la cald in
+# timpul dezvoltarii, nu in productie.
 <IfModule mod_headers.c>
-  # Forțează HTTPS timp de 2 ani, inclusiv pe subdomenii
+  # Forteaza HTTPS timp de 2 ani, inclusiv pe subdomenii
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
 
-  # Împiedică încărcarea site-ului într-un iframe pe alt domeniu (clickjacking)
+  # Impiedica incarcarea site-ului intr-un iframe pe alt domeniu (clickjacking)
   Header always set X-Frame-Options "DENY"
 
-  # Interzice browserului să „ghicească" tipul unui fișier (MIME sniffing)
+  # Interzice browserului sa ghiceasca tipul unui fisier (MIME sniffing)
   Header always set X-Content-Type-Options "nosniff"
 
-  # Nu trimite calea completă a paginii către site-uri externe
+  # Nu trimite calea completa a paginii catre site-uri externe
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
 
-  # Dezactivează API-uri de browser pe care site-ul nu le folosește
+  # Dezactiveaza API-uri de browser pe care site-ul nu le foloseste
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 
   Header always set X-DNS-Prefetch-Control "on"
 
-  # Politica de conținut. Sursele sunt aceleași ca înainte:
+  # Politica de continut. Sursele sunt aceleasi ca inainte:
   #   googletagmanager.com   scriptul Google Analytics 4
-  #   *.supabase.co          imaginile din storage, apelurile REST și realtime
+  #   *.supabase.co          imaginile din storage, apelurile REST si realtime
   #   *.google-analytics.com colectarea datelor GA4
   #   images.unsplash.com    imaginile decorative din jurnal
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://images.unsplash.com https://*.supabase.co https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.g.doubleclick.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
@@ -98,12 +115,12 @@ ErrorDocument 404 /404.html
 # ---------------------------------------------------------------------------
 # Cache
 # ---------------------------------------------------------------------------
-# Fișierele din `_next/static` au un hash în nume: la orice modificare se
-# schimbă numele, deci pot fi păstrate în cache la nesfârșit fără riscul de a
+# Fisierele din `_next/static` au un hash in nume: la orice modificare se
+# schimba numele, deci pot fi pastrate in cache la nesfarsit fara riscul de a
 # servi o versiune veche.
 #
-# Paginile HTML NU se pun în cache pe termen lung: altfel, după o reîncărcare a
-# site-ului, vizitatorii ar continua să vadă varianta veche.
+# Paginile HTML NU se pun in cache pe termen lung: altfel, dupa o reincarcare a
+# site-ului, vizitatorii ar continua sa vada varianta veche.
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/html "access plus 0 seconds"
@@ -123,9 +140,9 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ---------------------------------------------------------------------------
-# Fișiere ascunse
+# Fisiere ascunse
 # ---------------------------------------------------------------------------
-# Nimeni nu are ce căuta în .env, .git sau în acest fișier.
+# Nimeni nu are ce cauta in .env, .git sau in acest fisier.
 <FilesMatch "^\.">
   Require all denied
 </FilesMatch>

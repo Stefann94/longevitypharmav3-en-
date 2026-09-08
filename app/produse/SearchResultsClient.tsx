@@ -130,7 +130,7 @@ export default function SearchResultsClient() {
                   </h3>
                   <div className={pageStyles.productFooter}>
                     <div className={pageStyles.productPrice}>
-                      {product.price} <span className={pageStyles.currency}>RON</span>
+                      {product.price} <span className={pageStyles.currency}>€</span>
                     </div>
                     <AddToCartButton
                       productSlug={product.slug}

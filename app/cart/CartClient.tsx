@@ -16,7 +16,7 @@ export default function CartClient() {
     return (
       <div className={styles.cartWrapper}>
         <div className={styles.emptyState}>
-          <div className={styles.emptyTitle}>Se încarcă...</div>
+          <div className={styles.emptyTitle}>Loading…</div>
         </div>
       </div>
     )
@@ -25,13 +25,13 @@ export default function CartClient() {
   if (cartItems.length === 0) {
     return (
       <div className={styles.cartWrapper}>
-        <h1 className={styles.cartTitle}>Coșul meu</h1>
+        <h1 className={styles.cartTitle}>My cart</h1>
         <div className={styles.emptyState}>
           <div className={styles.emptyIcon}>🛒</div>
-          <h2 className={styles.emptyTitle}>Coșul tău este gol</h2>
-          <p className={styles.emptyDesc}>Pentru a adăuga produse în coș, te rugăm să te întorci în magazin.</p>
+          <h2 className={styles.emptyTitle}>Your cart is empty</h2>
+          <p className={styles.emptyDesc}>To add products to your cart, please head back to the shop.</p>
           <Link href="/" className={styles.shopButton}>
-            Întoarce-te la magazin
+            Back to the shop
           </Link>
         </div>
       </div>
@@ -39,8 +39,11 @@ export default function CartClient() {
   }
 
   // Calculate Shipping
-  const FREE_SHIPPING_THRESHOLD = 200
-  const STANDARD_SHIPPING_COST = 19.99
+  // Convertite din RON la acelasi curs ca preturile produselor, 1 EUR = 5.25 RON:
+  // pragul de 200 RON devine 40 EUR (rotunjit de la 38.10), iar transportul de
+  // 19.99 RON devine 3.90 EUR, pastrand terminatia .90 folosita la produse.
+  const FREE_SHIPPING_THRESHOLD = 40
+  const STANDARD_SHIPPING_COST = 3.90
   
   const isFreeShipping = cartTotal >= FREE_SHIPPING_THRESHOLD
   const shippingCost = isFreeShipping ? 0 : STANDARD_SHIPPING_COST
@@ -51,8 +54,8 @@ export default function CartClient() {
 
   return (
     <div className={styles.cartWrapper}>
-      <h1 className={styles.cartTitle}>Coșul meu</h1>
-      
+      <h1 className={styles.cartTitle}>My cart</h1>
+
       <div className={styles.cartGrid}>
         <div className={styles.leftColumn}>
           {/* Free Shipping Banner */}
@@ -60,11 +63,11 @@ export default function CartClient() {
             {isFreeShipping ? (
               <div className={styles.freeShippingText}>
                 <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: '#2e8b57', marginRight: '5px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Ai <span>livrare gratuită!</span>
+                You have <span>free shipping!</span>
               </div>
             ) : (
               <div className={styles.freeShippingText}>
-                Mai adaugă produse de <span>{amountToFreeShipping.toFixed(2)} Lei</span> pentru <span>livrare gratuită!</span>
+                Add <span>{amountToFreeShipping.toFixed(2)} €</span> more for <span>free shipping!</span>
               </div>
             )}
             
@@ -76,7 +79,7 @@ export default function CartClient() {
             </div>
             
             <div className={styles.deliveryCostText}>
-              Cost livrare: {isFreeShipping ? <span>GRATUIT</span> : `${STANDARD_SHIPPING_COST} Lei`}
+              Shipping cost: {isFreeShipping ? <span>FREE</span> : `${STANDARD_SHIPPING_COST} €`}
             </div>
           </div>
 
@@ -97,14 +100,14 @@ export default function CartClient() {
                   <Link href={`/produs/${item.product_slug}`} className={styles.itemTitle}>
                     {item.name}
                   </Link>
-                  <div className={styles.itemStock}>Disponibilitate: În stoc</div>
+                  <div className={styles.itemStock}>Availability: In stock</div>
                   
                   <div className={styles.itemActions}>
                     <button 
                       onClick={() => removeFromCart(item.product_slug)} 
                       className={styles.actionButton}
                     >
-                      <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Șterge
+                      <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Remove
                     </button>
                     {/* Butonul era decorativ, fără acțiune. Acum refolosește
                         componenta de favorite, împreună cu modalul de
@@ -112,15 +115,15 @@ export default function CartClient() {
                     <FavoriteButton
                       productSlug={item.product_slug}
                       className={`${styles.actionButton} ${styles.favorite}`}
-                      label="Adaugă la favorite"
-                      activeLabel="Salvat la favorite"
+                      label="Add to favorites"
+                      activeLabel="Saved to favorites"
                     />
                   </div>
                 </div>
 
                 <div className={styles.itemPriceSection}>
                   <div className={styles.itemPrice}>
-                    {item.price.toFixed(2)} Lei
+                    {item.price.toFixed(2)} €
                   </div>
                   
                   <div className={styles.quantityControl}>
@@ -147,26 +150,26 @@ export default function CartClient() {
 
         {/* Right Summary Column */}
         <div className={styles.summaryContainer}>
-          <h2 className={styles.summaryTitle}>Sumar comandă</h2>
-          
+          <h2 className={styles.summaryTitle}>Order summary</h2>
+
           <div className={styles.summaryRow}>
-            <span>Cost produse:</span>
-            <span>{cartTotal.toFixed(2)} Lei</span>
+            <span>Items:</span>
+            <span>{cartTotal.toFixed(2)} €</span>
           </div>
           <div className={styles.summaryRow}>
-            <span>Cost livrare:</span>
-            <span>{isFreeShipping ? <span className={styles.freeText}>GRATUIT</span> : `${STANDARD_SHIPPING_COST} Lei`}</span>
+            <span>Shipping:</span>
+            <span>{isFreeShipping ? <span className={styles.freeText}>FREE</span> : `${STANDARD_SHIPPING_COST} €`}</span>
           </div>
-          
+
           <div className={`${styles.summaryRow} ${styles.total}`}>
             <div className={styles.totalRowInner}>
               <span>Total:</span>
-              <span>{finalTotal.toFixed(2)} Lei</span>
+              <span>{finalTotal.toFixed(2)} €</span>
             </div>
           </div>
 
           <Link href="/checkout" className={styles.checkoutButton}>
-            Continuă <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" className={styles.checkoutIcon}><polyline points="9 18 15 12 9 6"></polyline></svg>
+            Continue <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" className={styles.checkoutIcon}><polyline points="9 18 15 12 9 6"></polyline></svg>
           </Link>
           
           {/* Voucher */}
@@ -175,15 +178,15 @@ export default function CartClient() {
               className={styles.voucherHeader} 
               onClick={() => setVoucherOpen(!voucherOpen)}
             >
-              <span>% Vezi/adaugă vouchere</span>
+              <span>% View / add vouchers</span>
               <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ transform: voucherOpen ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s' }}><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
             {voucherOpen && (
               <div className={styles.voucherContent}>
-                <div>Ai un cod de reducere?</div>
+                <div>Have a discount code?</div>
                 <div className={styles.voucherInputGroup}>
-                  <input type="text" placeholder="Introdu codul" className={styles.voucherInput} />
-                  <button className={styles.voucherApply}>Aplică</button>
+                  <input type="text" placeholder="Enter your code" className={styles.voucherInput} />
+                  <button className={styles.voucherApply}>Apply</button>
                 </div>
               </div>
             )}

@@ -63,7 +63,7 @@ export default function ProductSection({ title, products, viewAllLink, badgeText
                   <a href={`/produs/${product.slug}`}>{product.name}</a>
                 </h3>
                 <div className={styles.productFooter}>
-                  <div className={styles.productPrice}>{product.price} <span className={styles.currency}>RON</span></div>
+                  <div className={styles.productPrice}>{product.price} <span className={styles.currency}>€</span></div>
                   <AddToCartButton 
                     productSlug={product.slug}
                     price={product.price}
