@@ -23,7 +23,7 @@ export default function Footer() {
                 </div>
               </a>
               <p className={styles.brandDesc}>
-                Investește astăzi în ziua de mâine. Suplimente premium bazate pe știință pentru vitalitate, focus și longevitate.
+                Invest today in your tomorrow. Premium, science-backed supplements for vitality, focus and longevity.
               </p>
               <div className={styles.socialLinks}>
                 <a href="https://www.facebook.com/solaronero/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
@@ -31,27 +31,27 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Coloana 2: Informații Utile */}
+            {/* Coloana 2: Useful Information */}
             <div className={styles.footerCol}>
-              <h4 className={styles.colTitle}>Informații Utile</h4>
+              <h4 className={styles.colTitle}>Useful Information</h4>
               <ul className={styles.linkList}>
-                <li><a href="#">Despre Noi</a></li>
-                <li><a href="#">Termeni și Condiții</a></li>
-                <li><a href="#">Politica de Confidențialitate</a></li>
-                <li><a href="#">Politica de Cookie-uri</a></li>
-                <li><a href="#">Politica de Retur</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Return Policy</a></li>
               </ul>
             </div>
 
             {/* Coloana 3: Asistență */}
             <div className={styles.footerCol}>
-              <h4 className={styles.colTitle}>Asistență Clienți</h4>
+              <h4 className={styles.colTitle}>Customer Support</h4>
               <ul className={styles.linkList}>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#">Întrebări Frecvente (FAQ)</a></li>
-                <li><a href="#">Cum Cumpăr?</a></li>
-                <li><a href="#">Livrare și Plată</a></li>
-                <li><a href="#">Urmărire Comandă</a></li>
+                <li><a href="#">Frequently Asked Questions</a></li>
+                <li><a href="#">How to Order</a></li>
+                <li><a href="#">Shipping and Payment</a></li>
+                <li><a href="#">Track Your Order</a></li>
               </ul>
             </div>
 
@@ -74,7 +74,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  <span>Str. Nordului 8A, Piatra Neamț, Neamț</span>
+                  <span>Nordului St. 8A, Piatra Neamt, Romania</span>
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
@@ -87,7 +87,7 @@ export default function Footer() {
               </ul>
               
               <div className={styles.newsletter}>
-                <h4>Abonează-te la Newsletter</h4>
+                <h4>Subscribe to our Newsletter</h4>
                 <NewsletterForm />
               </div>
             </div>
@@ -101,32 +101,32 @@ export default function Footer() {
             <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener noreferrer" className={styles.anpcBadge}>
               <div className={styles.anpcText}>
                 <strong>ANPC - SAL</strong>
-                <span>Soluționarea Alternativă a Litigiilor</span>
+                <span>Alternative Dispute Resolution</span>
               </div>
             </a>
             <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className={styles.anpcBadge}>
               <div className={styles.anpcText}>
                 <strong>ANPC - SOL</strong>
-                <span>Soluționarea Online a Litigiilor</span>
+                <span>Online Dispute Resolution</span>
               </div>
             </a>
           </div>
           
           <div className={styles.legalInfo}>
-            <strong>Date comerciale</strong>
+            <strong>Company details</strong>
             <span>S.C. AVO GRUP INVEST S.R.L.</span>
             <span className={styles.legalSep}>|</span>
-            <span>Sediu social: Str. Nordului 8A, Piatra Neamț, jud. Neamț</span>
+            <span>Registered office: Nordului St. 8A, Piatra Neamt, Neamt County, Romania</span>
             <span className={styles.legalSep}>|</span>
-            <span>Nr. reg. com.: J27/1242/2006</span>
+            <span>Trade Register No.: J27/1242/2006</span>
             <span className={styles.legalSep}>|</span>
-            <span>C.I.F.: RO19135483</span>
+            <span>VAT No.: RO19135483</span>
             <span className={styles.legalSep}>|</span>
-            <span>Administrator persoană juridică: Ionuț Ciocodan</span>
+            <span>Managing Director: Ionut Ciocodan</span>
           </div>
 
           <div className={styles.copyright}>
-            <p>&copy; {new Date().getFullYear()} Longevity Pharma. Toate drepturile rezervate.</p>
+            <p>&copy; {new Date().getFullYear()} Longevity Pharma. All rights reserved.</p>
             <div className={styles.paymentMethods}>
               {/* Dummy icons for payment */}
               <div className={styles.payIcon}>VISA</div>

@@ -19,15 +19,15 @@ export const metadata: Metadata = {
   // Fără ea, imaginile Open Graph rămân căi relative pe care Facebook/WhatsApp
   // nu le pot rezolva, iar previzualizarea la distribuire apare goală.
   metadataBase: new URL(getSiteUrl()),
-  title: "Longevity Pharma | Suplimente Premium pentru Sănătate",
-  description: "Investește Astăzi în Ziua de Mâine. Suplimente alimentare premium, formulate științific pentru vitalitate, energie și funcția cognitivă.",
-  keywords: ["suplimente", "longevitate", "anti-aging", "nootropice", "sanatate", "vitamine premium"],
+  title: "Longevity Pharma | Premium Supplements for Health",
+  description: "Invest Today in Your Tomorrow. Premium food supplements, scientifically formulated for vitality, energy and cognitive function.",
+  keywords: ["supplements", "longevity", "anti-aging", "nootropics", "health", "premium vitamins"],
   openGraph: {
-    title: "Longevity Pharma | Suplimente Premium",
-    description: "Investește Astăzi în Ziua de Mâine cu cele mai bune suplimente pentru corpul tău.",
+    title: "Longevity Pharma | Premium Supplements",
+    description: "Invest Today in Your Tomorrow with the finest supplements for your body.",
     url: "/",
     siteName: "Longevity Pharma",
-    locale: "ro_RO",
+    locale: "en_GB",
     type: "website",
   },
 };
@@ -42,7 +42,7 @@ export default function RootLayout({
   // site, inclusiv cele de catalog care nu au nevoie de nimic personal.
   // Detecția utilizatorului s-a mutat în SessionProviders, în browser.
   return (
-    <html lang="ro">
+    <html lang="en">
       <body className={`${outfit.variable}`}>
         <GoogleAnalytics />
         <ScrollToTop />
