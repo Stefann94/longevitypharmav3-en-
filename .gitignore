@@ -45,3 +45,4 @@ next-env.d.ts
 
 # dumpuri temporare din baza de date (se regenereaza cu dump-en.mjs)
 tmp-en-*.json
+tmp-*

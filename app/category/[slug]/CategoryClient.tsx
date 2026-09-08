@@ -413,13 +413,16 @@ export default function CategoryClient({ category, products, allCategories }: Ca
 /* Category descriptions dictionary */
 function getCategoryDescription(slug: string): string {
   const descriptions: Record<string, string> = {
-    'longevitate': 'Explore our range of premium supplements for longevity and anti-aging. Advanced formulas grounded in recent scientific research, created for cellular regeneration and lasting vitality.',
-    'focus': 'Premium supplements for superior mental performance. Nootropics and standardized extracts that support concentration, mental clarity and cognitive energy, with no crash.',
-    'somn': 'Discover the secret of restorative sleep. Natural formulas that help you fall asleep faster, sleep more deeply and reduce stress for a complete recovery.',
-    'pachete': 'Complete protocols and synergistic bundles created by specialists. Combine several supplements into a single programme optimized for maximum results.',
-    'esentiale': 'The fundamental nutrients your body needs every day. Vitamins, minerals and essential cofactors in their most bioavailable forms.',
-    'imunitate': 'Strengthen your natural line of defense. Powerful antioxidants, vitamins and botanical extracts that support a robust immune system.',
-    'energie': 'Clean, sustained energy throughout the day. No crash, no aggressive stimulants — only nutrients that support your natural cellular energy production.',
+    // Cheile sunt slug-urile din tabela `categories`. Daca un slug se schimba
+    // acolo, trebuie schimbat si aici, altfel categoria cade pe textul generic
+    // de mai jos fara sa se vada vreo eroare.
+    'longevity-anti-aging': 'Explore our range of premium supplements for longevity and anti-aging. Advanced formulas grounded in recent scientific research, created for cellular regeneration and lasting vitality.',
+    'focus-memory': 'Premium supplements for superior mental performance. Nootropics and standardized extracts that support concentration, mental clarity and cognitive energy, with no crash.',
+    'sleep-stress': 'Discover the secret of restorative sleep. Natural formulas that help you fall asleep faster, sleep more deeply and reduce stress for a complete recovery.',
+    'bundles': 'Complete protocols and synergistic bundles created by specialists. Combine several supplements into a single program optimized for maximum results.',
+    'essentials': 'The fundamental nutrients your body needs every day. Vitamins, minerals and essential cofactors in their most bioavailable forms.',
+    'immunity-protection': 'Strengthen your natural line of defense. Powerful antioxidants, vitamins and botanical extracts that support a robust immune system.',
+    'energy-vitality': 'Clean, sustained energy throughout the day. No crash, no aggressive stimulants — only nutrients that support your natural cellular energy production.',
   };
   return descriptions[slug] || 'Explore our collection of premium supplements, carefully selected for a healthy, balanced lifestyle.';
 }

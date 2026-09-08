@@ -57,7 +57,7 @@ export default function BundlesClient({ products }: BundlesClientProps) {
         <section className={pageStyles.promoBannerSection} style={{ padding: '0 0 32px 0', backgroundColor: 'transparent' }}>
             <div className={pageStyles.promoBannerLink} style={{ cursor: 'default' }}>
               <Image 
-                src="/images/banners/banner_pachete.png" 
+                src="/images/banners/banner_bundles.png" 
                 alt="Protocols & Bundles"
                 fill 
                 className={pageStyles.promoBannerImage}
