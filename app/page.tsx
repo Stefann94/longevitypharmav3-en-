@@ -101,7 +101,7 @@ export default async function Home() {
               <a href="/category/focus-memory" className={styles.discoverCard}>
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
-                    src="/images/cards/energie-focus.png" 
+                    src="/images/cards/energy-focus.png" 
                     alt="Energy and Focus"
                     className={styles.discoverCardImage}
                     loading="lazy"
@@ -135,7 +135,7 @@ export default async function Home() {
               <a href="/category/immunity-protection" className={styles.discoverCard}>
                 <div className={styles.discoverCardImageWrapper}>
                   <img 
-                    src="/images/cards/imunitate.png" 
+                    src="/images/cards/immunity.png" 
                     alt="Immunity and Detox"
                     className={styles.discoverCardImage}
                     loading="lazy"
